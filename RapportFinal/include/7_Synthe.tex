@@ -1,0 +1,84 @@
+\section{Synthèse des fonctions}
+
+Une fois la validation en simulation des différents blocs effectuée, il est nécessaire de réaliser la synthèse sur FPGA afin d’observer les ressources logiques attribuées à notre système. 
+Dans le cadre de ce projet, nous avons utilisé un FPGA \textit{AMD Xilinx Artix-7}, plus précisément le modèle \texttt{7A35TCPG236}. 
+L’objectif de cette étape est d’analyser les ressources logiques mobilisées, ainsi que les éléments matériels effectivement utilisés par notre conception.
+\newline
+
+\subsection{Interface Microprocesseur}
+
+Le schéma RTL (\textit{Register Transfer Level}) représente une implémentation 
+synthétisée d’un module matériel décrit en VHDL ou Verilog. 
+Il illustre les registres, les multiplexeurs, les portes logiques, 
+ainsi que la logique séquentielle et combinatoire du circuit.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{images/Synthe/RTL_Shematic.png}
+    \caption{Schéma RTL InterfaceMicroprocesseur}
+    \label{fig:placeholder}
+\end{figure}
+
+\subsection*{Structure générale}
+Le schéma peut être décomposé en plusieurs parties :
+\begin{itemize}
+    \item \textbf{Entrées principales} : signaux tels que 
+    \texttt{H}, \texttt{CnD}, \texttt{RnW}, \texttt{nRST}, \texttt{nCS}, etc.
+    \item \textbf{Registres (Flip-Flops D)} : éléments synchronisés par l’horloge, 
+    servant à mémoriser l’état interne du circuit.
+    \item \textbf{Multiplexeurs (MUX)} : permettent de sélectionner une donnée 
+    parmi plusieurs, selon les conditions de contrôle.
+    \item \textbf{Logique combinatoire} : réalisée par des portes AND, OR, NOT 
+    et XOR, afin de générer les conditions de transition et les sorties.
+    \item \textbf{Sorties} : plusieurs signaux dérivés de l’état interne, 
+    comme \texttt{State\_XX}, \texttt{Output\_XX}, etc.
+\end{itemize}
+
+\subsection*{Fonctionnement global}
+Le circuit implémente une \textbf{machine à états finis} :
+\begin{itemize}
+    \item Les \textbf{registres} contiennent l’état courant.
+    \item La \textbf{logique combinatoire} calcule l’état suivant 
+    en fonction de l’état courant et des entrées.
+    \item Les \textbf{multiplexeurs} dirigent les transitions entre états.
+    \item Les \textbf{sorties} sont activées ou désactivées selon l’état courant 
+    et certaines combinaisons d’entrées.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{images/Synthe/mux_tris.png}
+    \caption{Partie opérative avec multiplexeur et Tristate : InterfaceMicroprocesseur}
+    \label{fig:placeholder}
+\end{figure}
+
+De plus, nous pouvons retrouver la partie opérative dessinée en classe, lors de nos TD, qui permet, 
+grâce à un multiplexeur, de sélectionner \textbf{EtalLu} ou \textbf{OctetLu} pour l'envoyer vers 
+une porte \textbf{Tristate}.  
+Cela démontre la cohérence entre la réalisation théorique et la mise en œuvre pratique.
+\newline
+
+À la suite de la synthèse logique nous pouvons avoir la la synthèse matériel qui transforme la 
+logique en ressource matérielle.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{images/Synthe/RTL_HARD_HDL.jpg}
+    \caption{Synthese matérielle InterfaceMicroprocesseur}
+    \label{fig:placeholder}
+\end{figure}
+
+Cette transformation consiste à mapper les éléments logiques du schéma RTL, tels que les portes 
+\textbf{ AND, OR, NOT} ou les \textbf{multiplexeurs}, sur les \textbf{ressources matérielles 
+physiques} disponibles dans le FPGA, notamment :  
+\newline
+
+\begin{itemize}
+    \item \textbf{LUT (Look-Up Tables)} : les fonctions combinatoires, comme les portes logiques ou les multiplexeurs, sont réalisées à l’aide de LUT. Chaque LUT peut implémenter n’importe quelle fonction booléenne sur un nombre limité d’entrées, ce qui permet de reproduire fidèlement la logique définie dans le HDL.
+    \item \textbf{Flip-flops} : les éléments séquentiels tels que les registres ou les bascules sont mappés sur des flip-flops pour stocker les bits et synchroniser les signaux dans le temps.
+    \item \textbf{Buffers} : certains chemins logiques nécessitent des buffers pour renforcer les signaux ou adapter les niveaux électriques, garantissant ainsi la stabilité et l’intégrité du routage sur la puce.
+\end{itemize}
+
+Grâce à cette conversion, le design passe d’une \textbf{représentation abstraite de la logique} à une \textbf{implémentation matérielle concrète}, optimisée pour le FPGA cible. Cela permet non seulement de visualiser l’organisation physique des composants.
+\newline

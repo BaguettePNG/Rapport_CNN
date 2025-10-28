@@ -1,0 +1,41 @@
+\section{Conclusion}
+
+Pour ce premier rapport concernant le projet \textbf{Réception LIN} de conception de circuit numérique, 
+nous avons suivi plusieurs étapes successives afin de concevoir ce système.  
+
+Dans un premier temps, lors des séances de TD, nous avons décomposé notre étude en plusieurs parties afin de répondre au cahier des charges. 
+L’utilisation du \textbf{diagramme en Y} nous a permis d’analyser séparément chacune de ces étapes et de structurer notre démarche. 
+\newline
+
+La phase de \textbf{spécification fonctionnelle} nous a permis de définir l’ensemble des ressources 
+nécessaires, 
+en lien direct avec le cahier des charges, ainsi que le nombre de blocs et les signaux de base.  
+\newline
+
+Ensuite, la \textbf{solution architecturale} a permis de préciser chaque partie en les reliant à des 
+modèles connus 
+(machines séquentielles, machines de Moore ou machines de Mealy). 
+Cette étape a été essentielle pour découper notre système en une partie opérative et une partie commande :  
+\newline
+
+\begin{itemize}
+    \item la partie opérative a été conçue à partir de blocs logiques simples (multiplexeurs, bascules D, etc.) ;  
+    \item la partie commande a été décrite sous forme d’automates, associés à des machines de Moore ou de Mealy, 
+    afin d’obtenir une description claire et structurée.  
+\end{itemize}
+Cette méthodologie nous a permis d’écrire un code plus simple, lisible et cohérent.  
+
+La phase de \textbf{simulation} a ensuite validé le fonctionnement du système en stimulant les différents ports d’entrée 
+et en observant les sorties.  
+\newline
+
+La phase de \textbf{synthèse} nous a permis de vérifier la logique interne du système à travers les schémas RTL générés. 
+Ces schémas ont ensuite été exploités dans Vivado, qui a associé les différentes fonctions logiques aux \textbf{LUT}.  
+\newline
+
+Enfin, l’\textbf{implémentation} nous a donné accès au routage sur FPGA. 
+Cette étape a permis de vérifier concrètement l’affectation des ressources matérielles et le câblage interne du système.  
+\newline
+
+En conclusion, ce premier travail nous a permis de valider l’\textbf{interface microprocesseur}. 
+La suite du projet consistera à finaliser la conception complète du récepteur LIN afin de répondre à l’intégralité du cahier des charges.

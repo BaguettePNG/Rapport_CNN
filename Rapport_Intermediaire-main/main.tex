@@ -1,0 +1,117 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}   % Pour les fichiers en UTF-8
+\usepackage[french]{babel}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{lipsum} 
+\usepackage{eso-pic}
+\usepackage{tikz}
+\usepackage{everypage}
+\usepackage{subcaption}
+\usepackage{fancyhdr}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{fancyheadings}
+\usepackage{lastpage}
+\usepackage{eso-pic}
+\usepackage[french]{babel}
+\usepackage[hidelinks]{hyperref}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{titlesec}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{pifont}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{siunitx}
+\usepackage{tabularx} % à mettre dans le préambule
+\usepackage{lastpage} % pour \pageref{LastPage}
+\usepackage{hyperref}
+
+% Définition du style VHDL
+\lstdefinestyle{VHDLStyle}{
+    language=VHDL,
+    basicstyle=\ttfamily\small,      % police monospaced et taille petite
+    keywordstyle=\color{blue}\bfseries, % mots-clés en bleu et gras
+    commentstyle=\color{green!60!black}\itshape, % commentaires en vert italique
+    stringstyle=\color{red},         % chaînes de caractères en rouge
+    numbers=left,                    % numéros de lignes à gauche
+    numberstyle=\tiny\color{gray},   % style des numéros
+    stepnumber=1,                    
+    numbersep=5pt,                   
+    backgroundcolor=\color{gray!10}, % couleur de fond du code
+    frame=single,                    % encadré autour du code
+    rulecolor=\color{black},         
+    breaklines=true,                 % retour à la ligne automatique
+    breakatwhitespace=true,          
+    tabsize=2,                       
+    showstringspaces=false,          
+    captionpos=b                     
+}
+
+
+\usepackage[a4paper, margin=3.2cm, top=3.5cm, bottom=4cm]{geometry}
+
+% Modifier - par numéro du TP à rendre
+\title{Rapport Intermediaire - Conception Circuit Numérique}
+\author{Davy CLARK \& Nolan BUCHET}
+\date{Septembre 2025}
+
+\begin{document}
+
+\maketitle
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{Graphix/Polytech_Univ.png}
+\end{figure}
+
+\vspace{10pt}
+
+\begin{center}
+        {\Huge Recepteur de Transmission LIN}
+\end{center}
+
+\vspace{10pt}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\linewidth]{Image_Base.png}
+\end{figure}
+
+\thispagestyle{empty} 
+
+\include{param} % Stock pied de page
+
+\tableofcontents
+
+\include{include/intro}
+
+\include{include/Protocole_LIN}
+
+\include{include/1_CDC}
+
+\include{include/2_Spec_TD}
+
+\include{include/3_Struc_Fonc}
+
+\include{include/4_solu_archi}
+
+\include{include/5_Pres_Fonc}
+
+\include{include/6_Simu}
+
+\include{include/7_Synthe}
+
+\include{include/8_Routage}
+
+\include{include/Conclusion}
+
+\include{include/Annexes}
+
+\listoffigures
+
+\end{document}

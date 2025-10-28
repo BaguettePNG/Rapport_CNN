@@ -1,0 +1,142 @@
+\section{Présentation du fonctionnement des fonctions}
+
+\subsection{Interface MicroProcesseur}
+
+Dans cette partie, nous avons initié une séance de travaux pratiques pour nous familiariser avec 
+le logiciel HDL Designer. Le programme «Interface Microprocesseur», préalablement implémenté par 
+les enseignants, respecte strictement les données présentées dans le TD et développées dans les 
+sections précédentes du rapport. Nous allons l’étudier en détail afin de démontrer sa correspondance 
+avec le modèle théorique.
+\newline
+
+Pour rappel, l’interface Microprocesseur a été conçue selon une machine séquentielle, tandis que 
+la partie commande a été développée sur le modèle d’une machine de Mealy. Le code présenté respecte 
+rigoureusement la structure des blocs : réseau combinatoire d’entrée, réseau combinatoire de sortie 
+et registres correspondant à la machine à états.
+\newline
+
+\subsubsection{Réseau Combinatoire d’Entrée}
+
+\begin{lstlisting}[style=VHDLStyle, caption={Reseau Cominatoire d'entrée}]
+InputProc_Synchro :  PROCESS(H, nRST)
+BEGIN
+  IF (nRST='0') THEN 
+    nCS_Synchro <= '1';
+    RnW_Synchro <= '1';
+    CnD_Synchro <= '1';
+    D07_Synchro <= (others => '0');
+  ELSIF (H'EVENT AND H='1') THEN
+    nCS_Synchro <= nCS;
+    RnW_Synchro <= RnW;
+    CnD_Synchro <= CnD;
+    D07_Synchro <= D07;
+  END IF;
+END PROCESS InputProc_Synchro;
+\end{lstlisting}
+
+Ce bloc VHDL gère la synchronisation des signaux provenant du microprocesseur. Le processus \texttt{InputProc\_Synchro} lit les signaux d’entrée à chaque front montant de l’horloge \texttt{H} et les initialise lors de la mise à zéro \texttt{nRST}. Les signaux synchronisés (\texttt{nCS\_Synchro, RnW\_Synchro, CnD\_Synchro, D07\_Synchro}) sont ensuite utilisés par le reste de l’interface.
+
+\subsubsection{Réseau Combinatoire de Sortie}
+
+\begin{lstlisting}[style=VHDLStyle, caption={Reseau Cominatoire de Sortie}]
+OutputProc_Comb : PROCESS(nCS_Synchro, CnD_Synchro, RnW_Synchro, EtatCourant, OctetLu, EtatLu)
+BEGIN
+  D07 <= (others => 'Z');
+  OctetLu_RD <= '0';
+  EtatLu_RST <= '0';
+  DecNbOctet <= '0';
+  CASE EtatCourant IS
+    WHEN Attente =>
+      IF (nCS_Synchro='0' AND CnD_Synchro='0' AND RnW_Synchro='1') THEN
+        OctetLu_RD <= '1';
+      END IF;
+    WHEN LectureData =>
+      D07 <= OctetLu;
+      IF (nCS_Synchro='1') THEN
+        DecNbOctet <= '1';
+      END IF;
+    WHEN LectureEtat =>
+      D07 <= EtatLu;
+      IF (nCS_Synchro='1') THEN
+        EtatLu_RST <= '1';
+      END IF;
+    WHEN EcritureFiltre =>   
+    END CASE;
+END PROCESS OutputProc_Comb;
+\end{lstlisting}
+
+Le processus \texttt{OutputProc\_Comb} contrôle la sortie des données et des états vers le microprocesseur. Il met à jour les signaux \texttt{D07, OctetLu\_RD, EtatLu\_RST, DecNbOctet} en fonction de l’état courant de la machine et des signaux synchronisés d’entrée. La logique combinatoire assure la correspondance entre les actions de lecture/écriture et l’état de la machine.
+
+\subsubsection{Registres et Machine à États}
+
+\begin{lstlisting}[style=VHDLStyle, caption={Registres}]
+ClockedProc : PROCESS(H, nRST)
+BEGIN
+  IF (nRST='0') THEN
+    EtatCourant <= Attente;
+  ELSIF (H'EVENT AND H='1') THEN
+    EtatCourant <= EtatSuivant;
+  END IF;
+END PROCESS ClockedProc;
+
+NextStateProc : PROCESS(nCS_Synchro, CnD_Synchro, RnW_Synchro, EtatCourant)
+BEGIN
+  EtatSuivant <= EtatCourant;
+  CASE EtatCourant IS
+  WHEN Attente =>
+    IF (nCS_Synchro='0' AND CnD_Synchro='0' AND RnW_Synchro='1') THEN
+      EtatSuivant <= LectureData;
+    ELSIF (nCS_Synchro='0' AND CnD_Synchro='1' AND RnW_Synchro='1') THEN
+      EtatSuivant <= LectureEtat;
+    ELSIF (nCS_Synchro='0' AND CnD_Synchro='0' AND RnW_Synchro='0') THEN
+      EtatSuivant <= EcritureFiltre;
+    ELSE
+      EtatSuivant <= Attente;
+    END IF;
+    WHEN LectureData =>
+      IF (nCS_Synchro='1') THEN
+        EtatSuivant <= Attente;
+      ELSE
+        EtatSuivant <= LectureData;
+      END IF;
+    WHEN LectureEtat =>
+      IF (nCS_Synchro='1') THEN
+        EtatSuivant <= Attente;
+      ELSE
+        EtatSuivant <= LectureEtat;
+      END IF;
+    WHEN EcritureFiltre =>
+      IF (nCS_Synchro='1') THEN
+        EtatSuivant <= Attente;
+      ELSE 
+        EtatSuivant <= EcritureFiltre;
+      END IF;
+  END CASE;
+END PROCESS NextStateProc;
+\end{lstlisting}
+
+Les processus \texttt{ClockedProc} et \texttt{NextStateProc} implémentent la machine séquentielle. \texttt{ClockedProc} met à jour l’état courant à chaque front montant de l’horloge et réinitialise l’état au démarrage. \texttt{NextStateProc} définit l’état suivant selon les conditions des signaux d’entrée et l’état courant, en suivant la logique de la machine de Mealy.
+
+\subsubsection{Réseau Synchronisé de Sortie}
+
+\begin{lstlisting}[style=VHDLStyle, caption={Reseau Synchronisé de Sortie}]
+OutputProc_Synchro : PROCESS(H, nCLR)
+BEGIN 
+  IF (nCLR='0') THEN
+    SelAdr <= (others => '0');
+  ELSIF (H'EVENT AND H='1') THEN 
+    CASE EtatCourant IS 
+    WHEN EcritureFiltre =>
+      IF (nCS_Synchro='1') THEN
+        SelAdr <= D07_Synchro;
+      END IF;
+    WHEN OTHERS =>
+    END CASE;
+  END IF;
+END PROCESS OutputProc_Synchro;
+  
+M_Received <= EtatLu(4);
+
+\end{lstlisting}
+
+Le processus \texttt{OutputProc\_Synchro} synchronise la sélection d’adresse \texttt{SelAdr} avec l’horloge \texttt{H}. Il est actif principalement pendant l’état \texttt{EcritureFiltre}, assurant que les données de l’entrée \texttt{D07\_Synchro} sont correctement mémorisées. Le signal \texttt{M\_Received} est également mis à jour pour refléter l’état du bit correspondant.

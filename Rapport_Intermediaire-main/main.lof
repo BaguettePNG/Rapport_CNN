@@ -1,0 +1,35 @@
+\babel@toc {french}{}\relax 
+\contentsline {figure}{\numberline {1}{\ignorespaces Exemple d'architecture d'un réseau dans un véhicule}}{3}{figure.caption.3}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Exemple d'architecture LIN}}{4}{figure.caption.4}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Connexion physique d'un noeud à la ligne LIN}}{4}{figure.caption.5}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Type de Trame Protocol LIN}}{5}{figure.caption.6}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Interface microprocesseur associée au circuit à concevoir}}{7}{figure.caption.7}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Chronogrammes des échanges entre le circuit et son environnement}}{7}{figure.caption.8}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Schema Conception Registre interne Système}}{8}{figure.caption.9}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Interface microprocesseur associée au circuit à concevoir}}{9}{figure.caption.10}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Structure fonctionnelle du système}}{11}{figure.caption.11}%
+\contentsline {figure}{\numberline {10}{\ignorespaces Architecture du système de réception de trame LIN V1}}{11}{figure.caption.12}%
+\contentsline {figure}{\numberline {11}{\ignorespaces Échanges avec le processeur}}{12}{figure.caption.13}%
+\contentsline {figure}{\numberline {12}{\ignorespaces Architecture du système de réception de trame LIN V2}}{12}{figure.caption.14}%
+\contentsline {figure}{\numberline {13}{\ignorespaces Description finale du circuit}}{13}{figure.caption.15}%
+\contentsline {figure}{\numberline {14}{\ignorespaces Machine Sequentielle Reception Trame}}{16}{figure.caption.16}%
+\contentsline {figure}{\numberline {15}{\ignorespaces Structure partie Opérative Reception Trame}}{17}{figure.caption.18}%
+\contentsline {figure}{\numberline {16}{\ignorespaces Structure partie Commande Reception Trame}}{18}{figure.caption.19}%
+\contentsline {figure}{\numberline {17}{\ignorespaces Machine de MEALY Unité de Commande Reception Trame}}{19}{figure.caption.20}%
+\contentsline {figure}{\numberline {18}{\ignorespaces Machine Sequentielle Reception Trame}}{20}{figure.caption.21}%
+\contentsline {figure}{\numberline {19}{\ignorespaces Structure partie Opérative Interface Microprocesseur}}{20}{figure.caption.22}%
+\contentsline {figure}{\numberline {20}{\ignorespaces Structure partie Commande Interface Microprocesseur}}{21}{figure.caption.23}%
+\contentsline {figure}{\numberline {21}{\ignorespaces Machine de MEALY Unité de Commande Interface Micro}}{21}{figure.caption.24}%
+\contentsline {figure}{\numberline {22}{\ignorespaces Implémentation de la FIFO}}{22}{figure.caption.25}%
+\contentsline {figure}{\numberline {23}{\ignorespaces implémentation de l'état interne en représentation structurelle au niveau RT}}{23}{figure.caption.26}%
+\contentsline {figure}{\numberline {24}{\ignorespaces Chronogramme de simulation de l’Interface Microprocesseur}}{27}{figure.caption.27}%
+\contentsline {figure}{\numberline {25}{\ignorespaces Block Diagramme de test de l’Interface Microprocesseur}}{28}{figure.caption.28}%
+\contentsline {figure}{\numberline {26}{\ignorespaces Schéma RTL InterfaceMicroprocesseur}}{30}{figure.caption.29}%
+\contentsline {figure}{\numberline {27}{\ignorespaces Partie opérative avec multiplexeur et Tristate : InterfaceMicroprocesseur}}{31}{figure.caption.30}%
+\contentsline {figure}{\numberline {28}{\ignorespaces Synthese matérielle InterfaceMicroprocesseur}}{31}{figure.caption.31}%
+\contentsline {figure}{\numberline {29}{\ignorespaces Synthèse matérielle Vivado}}{33}{figure.caption.32}%
+\contentsline {figure}{\numberline {30}{\ignorespaces Illustration d'une LUT et de sa table de vérité}}{34}{figure.caption.33}%
+\contentsline {figure}{\numberline {31}{\ignorespaces Synthèse Logique Vivado}}{34}{figure.caption.34}%
+\contentsline {figure}{\numberline {32}{\ignorespaces Slice du FPGA après routage}}{35}{figure.caption.35}%
+\contentsline {figure}{\numberline {33}{\ignorespaces Vue du système routé et des buffers associés sur le FPGA}}{36}{figure.caption.36}%
+\contentsline {figure}{\numberline {34}{\ignorespaces Exemple de routage d'une LUT3 dans le FPGA}}{36}{figure.caption.37}%
