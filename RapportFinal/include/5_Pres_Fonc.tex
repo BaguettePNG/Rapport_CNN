@@ -140,3 +140,624 @@ M_Received <= EtatLu(4);
 \end{lstlisting}
 
 Le processus \texttt{OutputProc\_Synchro} synchronise la sélection d’adresse \texttt{SelAdr} avec l’horloge \texttt{H}. Il est actif principalement pendant l’état \texttt{EcritureFiltre}, assurant que les données de l’entrée \texttt{D07\_Synchro} sont correctement mémorisées. Le signal \texttt{M\_Received} est également mis à jour pour refléter l’état du bit correspondant.
+
+\subsection{Interface de Réception LIN}
+
+L’interface de réception LIN a été étudiée sous la forme d’une machine séquentielle, composée d’une partie opérative et d’une partie commande.
+La partie opérative est développée sous la forme d’un schéma fonctionnel comprenant différents blocs tels que des multiplexeurs et des compteurs/décompteurs.
+La partie commande, quant à elle, a été modélisée sous la forme d’un automate, traduit en machine de Moore, puis implémenté en VHDL.
+
+Voici un tableau recapitulant les entrées et les sorties du bloc Repetion LIN complet : 
+\newline
+
+\begin{center}
+\renewcommand{\arraystretch}{1.2} % espace vertical
+\small % pour uniformiser la taille du texte
+    \begin{tabularx}{\textwidth}{|c||c|c|X|}
+     \hline			
+       \textbf{Signaux} & \textbf{Mode} & \textbf{Type} & \textbf{Description}  \\ \hline 
+       LIN & IN & \texttt{STD\_LOGIC} & Bus de données d'entrée \\
+       SelAdr & IN & \texttt{STD\_LOGIC\_VECTOR(7 DOWNTO 0)} & Sélection Adrress Composant \\
+       OctetRecu & OUT & \texttt{STD\_LOGIC\_VECTOR(7 DOWNTO 0)} & Bus de données de sortie \\
+       OctetRecu\_WR & OUT & \texttt{STD\_LOGIC} & Read / Write opération \\
+       OctetRecu\_RST & OUT & \texttt{STD\_LOGIC} & Réinitialisation des données reçues \\
+       Erreur\_Start & OUT & \texttt{STD\_LOGIC} & Bit d'erreur de Start \\
+       Erreur\_Stop & OUT & \texttt{STD\_LOGIC} & Bit d'erreur de Stop\\
+       Erreur\_SynchroBreak & OUT & \texttt{STD\_LOGIC} & Bit d'erreur de Synchro Break\\
+       IncNbOctet & OUT & \texttt{STD\_LOGIC} & Flag de reception pour lecture \\
+       MessageReceived\_SET & OUT & \texttt{STD\_LOGIC} & Indicateur de trame reçue \\
+       NbOctetRecu\_RST & OUT & \texttt{STD\_LOGIC} & Réinitialisation du compteur d'octets \\
+     \hline  
+    \end{tabularx}
+\end{center}
+
+\subsubsection{Partie opérative}
+
+La partie opérative, déjà définie dans la section Description de la solution architecturale, a été reprise sous forme de blocs fonctionnels.
+Il a simplement été nécessaire de reproduire le schéma global dans HDL Designer, afin d’assurer la cohérence entre la conception théorique et la modélisation pratique.
+
+Le schéma correspondant est présenté ci-dessous :
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{figure}[H]
+%    \centering
+%    \includegraphics[width=0.95\linewidth]{images/presen/Schema_PO_RectionLin.png}
+%    \caption{Schéma partie opérative réception LIN}
+%    \label{fig:placeholder}
+%\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Voici aussi le tableau des entrées et sorties de la partie opérative : 
+
+\begin{center}
+\renewcommand{\arraystretch}{1.2} % espace vertical
+\small % pour uniformiser la taille du texte
+\begin{tabularx}{\textwidth}{|c||c|c|X|}
+\hline			
+\textbf{Signaux} & \textbf{Mode} & \textbf{Type} & \textbf{Description}  \\ 
+\hline \hline
+
+H & IN & \texttt{STD\_LOGIC} & Horloge principale du système. \\ 
+Identifier & IN & \texttt{STD\_LOGIC\_VECTOR(7 DOWNTO 0)} & Identifiant du message reçu à comparer avec l’adresse sélectionnée. \\ 
+LinSynchro & IN & \texttt{STD\_LOGIC} & Signal de synchronisation de trame LIN. \\ 
+NbTbit\_0 & IN & \texttt{STD\_LOGIC} & Bit de configuration du nombre de bits de trame. \\ 
+NbDataField\_0 & IN & \texttt{STD\_LOGIC} & Bit de configuration du nombre d’octets de données dans le champ Data. \\ 
+SelAdr & IN & \texttt{STD\_LOGIC\_VECTOR(7 DOWNTO 0)} & Sélection de l’adresse du composant (comparée à Identifier). \\ 
+nCLR & IN & \texttt{STD\_LOGIC} & Signal de réinitialisation asynchrone active à l’état bas. \\ 
+n\_0 & IN & \texttt{STD\_LOGIC} & Signal de contrôle interne (sélection ou validation). \\ 
+Error\_Start & OUT & \texttt{STD\_LOGIC} & Bit d’erreur sur le champ Start. \\ 
+Error\_Stop & OUT & \texttt{STD\_LOGIC} & Bit d’erreur sur le champ Stop. \\ 
+Error\_Synchro & OUT & \texttt{STD\_LOGIC} & Bit d’erreur de synchronisation (Synchro Break). \\ 
+Identifieur\_en & OUT & \texttt{STD\_LOGIC} & Validation de l’identifiant reçu. \\ 
+IncNbOctet & OUT & \texttt{STD\_LOGIC} & Incrémentation du compteur d’octets reçus. \\ 
+MessageReceiveSet & OUT & \texttt{STD\_LOGIC} & Indique qu’une trame complète a été reçue. \\ 
+NbDataField\_EN & OUT & \texttt{STD\_LOGIC} & Activation du champ de données (Data Field). \\ 
+NbDataField\_load & OUT & \texttt{STD\_LOGIC} & Chargement du nombre d’octets de données. \\ 
+NbOctetRecu\_RST & OUT & \texttt{STD\_LOGIC} & Réinitialisation du compteur d’octets reçus. \\ 
+OctetRecu\_RST & OUT & \texttt{STD\_LOGIC} & Réinitialisation du registre d’octet reçu. \\ 
+OctetRecu\_WR & OUT & \texttt{STD\_LOGIC} & Signal d’écriture de l’octet reçu. \\ 
+OctetRecu\_en & OUT & \texttt{STD\_LOGIC} & Validation du registre d’octet reçu. \\ 
+n\_Tbit\_Load & OUT & \texttt{STD\_LOGIC} & Chargement du registre associé au Tbit. \\ 
+n\_Tbit\_en & OUT & \texttt{STD\_LOGIC} & Activation du registre Tbit. \\ 
+n\_Tbit\_select & OUT & \texttt{STD\_LOGIC} & Sélection de la source ou mode du Tbit. \\ 
+n\_en & OUT & \texttt{STD\_LOGIC} & Activation du signal ou compteur “n”. \\ 
+n\_load & OUT & \texttt{STD\_LOGIC} & Chargement de la valeur “n”. \\ 
+n\_select & OUT & \texttt{STD\_LOGIC} & Sélection de la source du signal “n”. \\ 
+\hline
+
+\end{tabularx}
+\end{center}
+
+
+\subsubsection{Partie Commande}
+
+La partie commande consiste principalement à \textbf{traduire l’automate} présenté en figure~\ref{fig:automatereceptionlin} en \textbf{code VHDL}.  
+Cette étape reste relativement simple, car elle repose sur la création de \textbf{trois processus principaux} :
+
+\begin{enumerate}
+    \item \textbf{Le réseau combinatoire d’entrée}, chargé de déterminer les \textit{états futurs} de l’automate en fonction des \textit{états présents} et des \textit{signaux d’entrée}.
+    \item \textbf{Le réseau de registres}, synchronisé sur l’horloge, permettant de \textit{mémoriser les états} et d’assurer la transition entre les \textit{états présents} et les \textit{états futurs}.
+    \item \textbf{Le réseau combinatoire de sortie}, qui met à jour les \textit{signaux de sortie} en fonction de l’état courant de l’automate.
+\end{enumerate}
+
+Voici le code suivant qui permet de traduire l'automate : 
+\newline
+
+\begin{lstlisting}[style=VHDLStyle, caption={Declaration des états}]
+-- Etat de la machine
+type CFM is (
+    R_BRK_0, R_BRK_1,                -- Reception Break
+    SYN_A, SYN_RST, SYN_RD, SYN_RSP, -- Synchro
+    IDN_A, IDN_RST, IDN_RD, IDN_RSP, -- Identifier
+    DAT_A, DAT_RST, DAT_RD, DAT_RSP, -- Datafield
+    CHK_A, CHK_RST, CHK_RD, CHK_RSP, -- Checksum
+    REPOS                            -- Repos
+);
+\end{lstlisting}
+
+Dans une première étape, nous déclarons les différents états de l’automate sous la forme d’un type énuméré nommé \texttt{CFM}.
+Chaque état correspond à une étape spécifique du processus de réception LIN, facilitant ainsi la gestion des transitions et des actions associées à chaque état.
+\newline
+
+
+\begin{lstlisting}[style=VHDLStyle, caption={Registres Reception Trame}]
+-- Register
+CFM_Register : process(H, nCLR)
+begin
+    if nCLR = '0' then
+        P_CFM <= REPOS;
+    elsif rising_edge(H) then
+        P_CFM <= N_CFM;
+    end if;
+end process CFM_Register;
+\end{lstlisting}
+
+Dans ce code nous retrouvons la clock qui permet de synchroniser les états de l'automate avec le signal d'horloge H.
+Le changement d'état se fait au front montant de l'horloge.
+Le reset asynchrone nCLR permet de remettre l'automate dans son état initial
+\newline
+
+\begin{lstlisting}[style=VHDLStyle, caption={Réseau Combinatoire d’Entrée Reception Trame}]
+-- Reseau Combinatoire d'Entree
+CFM_RCE : process(P_CFM, H, Identifier, LinSynchro, NbTbit_0, NbDataField_0, SelAdr, nCLR, n_0)
+begin
+    -- Next State <= Present State
+    N_CFM <= P_CFM;
+
+    case P_CFM is
+        when REPOS => -- Attente
+            if LinSynchro = '0' then
+                N_CFM <= R_BRK_0;
+            end if;
+        when R_BRK_0 => -- Synchro Break 0
+            if NbTbit_0 = '1' AND LinSynchro = '1' then
+                N_CFM <= R_BRK_1;
+            elsif NbTbit_0 = '0' AND LinSynchro = '1' then
+                N_CFM <= REPOS;
+            elsif n_0 = '0' AND LinSynchro = '0' AND NbTbit_0 = '0' then
+                N_CFM <= R_BRK_0;
+            elsif NbTbit_0 = '0' AND LinSynchro = '0' AND n_0 = '1' then
+                N_CFM <= R_BRK_0;
+            end if;
+        when R_BRK_1 => -- Synchro Break 1
+            if n_0 = '1' AND LinSynchro = '1' then
+                N_CFM <= SYN_A;
+            elsif n_0 = '0' AND LinSynchro = '0' then
+                N_CFM <= REPOS;
+            elsif n_0 = '0' then
+                N_CFM <= R_BRK_1;
+            end if;
+        when SYN_A => -- Attente bit Start Synchronisation
+            if LinSynchro = '0' then
+                N_CFM <= SYN_RST;
+            end if;
+        when SYN_RST => -- Reception Start Synchronisation
+            if n_0 = '0' AND LinSynchro = '0' then
+                N_CFM <= SYN_RD;
+            elsif n_0 = '0' AND LinSynchro = '1' then
+                N_CFM <= REPOS;
+            elsif n_0 = '0' then
+                N_CFM <= SYN_RST;
+            end if;
+        when SYN_RD => -- Reception Data Synchronisation
+            if NbTbit_0 = '1' then
+                N_CFM <= SYN_RSP;
+            elsif n_0 = '1' AND NbTbit_0 = '0' then
+                N_CFM <= SYN_RD;
+            elsif n_0 = '0' then
+                N_CFM <= SYN_RD;
+            end if;
+        when SYN_RSP => -- Reception bit Stop Synchronisation
+            if n_0 = '1' AND LinSynchro = '1' then
+                N_CFM <= IDN_A;
+            elsif n_0 = '0' AND NbTbit_0 = '0' then
+                N_CFM <= REPOS;
+            elsif n_0 = '0' then
+                N_CFM <= SYN_RSP;
+            end if;
+        when IDN_A => -- Attente bit Start Identifier
+            if LinSynchro = '0' then
+                N_CFM <= IDN_RST;
+            end if;
+        when IDN_RST => -- Reception bit Start Identifier
+            if n_0 = '1' AND LinSynchro = '0' then
+                N_CFM <= IDN_RD;
+            elsif n_0 = '1' AND LinSynchro = '1' then
+                N_CFM <= REPOS;
+            elsif n_0 = '0' AND LinSynchro = '0' then
+                N_CFM <= IDN_RST;
+            end if;       
+        when IDN_RD => -- Reception Data Identifier
+            if NbTbit_0 = '1' AND n_0 = '1' then
+                N_CFM <= IDN_RSP;
+            elsif n_0 = '0' then
+                N_CFM <= IDN_RD;
+            elsif n_0 = '1' AND NbTbit_0 = '0' then
+                N_CFM <= IDN_RD;
+            end if;     
+        when IDN_RSP => -- Reception bit Stop Identifier
+            if n_0 = '1' AND LinSynchro = '1' then
+                N_CFM <= DAT_A;
+            elsif n_0 = '1' AND LinSynchro = '0' then
+                N_CFM <= REPOS;
+            elsif n_0 = '0' AND LinSynchro = '1' then
+                N_CFM <= IDN_RSP;
+            end if;   
+        when DAT_A => -- Attente bit Start Datafield
+            if LinSynchro = '0' then
+                N_CFM <= DAT_RST;
+            end if;   
+        when DAT_RST => -- Reception bit Start Datafield
+            if n_0 = '1' AND LinSynchro = '0' then
+                N_CFM <= DAT_RD;
+            elsif n_0 = '1' AND LinSynchro = '1' then
+                N_CFM <= REPOS;
+            elsif n_0 = '0' AND LinSynchro = '0' then
+                N_CFM <= DAT_RST;
+            end if;         
+        when DAT_RD => -- Reception bit Data Datafield
+            if NbTbit_0 = '1' AND LinSynchro = '1' then
+                N_CFM <= DAT_RSP;
+            elsif n_0 = '1' AND NbTbit_0 = '0' then
+                N_CFM <= DAT_RD;
+            elsif n_0 = '0' then
+                N_CFM <= DAT_RD;
+            end if;          
+        when DAT_RSP => -- Reception bit Stop Datafield
+		        if n_0 = '0' AND NbDataField_0 = '1' AND LinSynchro = '1' then
+                N_CFM <= CHK_A;
+            elsif NbDataField_0 = '0' AND n_0 = '1'AND LinSynchro = '1' then
+                N_CFM <= DAT_A;
+            elsif n_0 = '1' AND LinSynchro = '0' then
+                N_CFM <= REPOS;
+            elsif n_0 = '0' AND LinSynchro = '1'then
+                N_CFM <= DAT_RSP;
+            end if;   
+        when CHK_A => -- Attente bit Start Checksum
+            if LinSynchro = '0' then
+                N_CFM <= CHK_RST;
+            end if;           
+        when CHK_RST => -- Reception bit Start Checksum
+            if n_0 = '1' AND LinSynchro = '0' then
+                N_CFM <= CHK_RD;
+            elsif n_0 = '1' AND LinSynchro = '1' then
+                N_CFM <= REPOS;
+			elsif n_0 = '0' AND LinSynchro = '0' then
+                N_CFM <= CHK_RST;
+            end if;         
+        when CHK_RD => -- Reception bit Data Checksum
+            if NbTbit_0 = '1' AND LinSynchro = '1' then
+                N_CFM <= CHK_RSP;
+            elsif n_0 = '1' AND NbTbit_0 = '0' then
+                N_CFM <= CHK_RD;
+            elsif n_0 = '0' then
+                N_CFM <= CHK_RD;
+            end if;          
+        when CHK_RSP => -- Reception bit Stop Checksum
+            if n_0 = '1' AND LinSynchro = '1' AND Identifier = SelAdr then
+                N_CFM <= REPOS; -- Fin de Trame Complete
+            elsif n_0 = '1' AND LinSynchro = '1' AND Identifier /= SelAdr then
+                N_CFM <= REPOS;
+            elsif n_0 = '0' AND LinSynchro = '0' then
+                N_CFM <= REPOS;
+            elsif n_0 = '0' AND LinSynchro = '1' then
+                N_CFM <= CHK_RSP;
+            end if;               
+    end case;
+    
+end process CFM_RCE;
+\end{lstlisting}
+
+Ce code VHDL traduit l’automate de réception LIN en utilisant un processus combinatoire nommé \texttt{CFM\_RCE}.
+Il détermine l’état suivant (\texttt{N\_CFM}) en fonction de l’état actuel (\texttt{P\_CFM}) et des signaux d’entrée tels que \texttt{LinSynchro}, \texttt{NbTbit\_0}, \texttt{Identifier}, etc.
+Chaque état de l’automate est représenté par une branche dans la structure \texttt{CASE}, avec des conditions spécifiques pour les transitions entre états.
+\newline
+
+\begin{lstlisting}[style=VHDLStyle, caption={Réseau Combinatoire de Sortie Reception Trame}]
+  -- Reseau Combinatoire de Sortie
+CFM_RES : process(P_CFM, H, Identifier, LinSynchro, NbTbit_0, NbDataField_0, SelAdr, nCLR, n_0 )
+begin
+  -- Valeurs par defaut
+  Error_Start       <= '0';
+  Error_Stop        <= '0';
+  Error_Synchro     <= '0';
+  Identifieur_en    <= '0';
+  IncNbOctet        <= '0';
+  MessageReceiveSet <= '0';
+  NbDataField_EN    <= '0';
+  NbDataField_load  <= '0';
+  NbOcyeyRecu_RST   <= '0';
+  OctetRecu_RST     <= '0';
+  OctetRecu_WR      <= '0';
+  OctetRecu_en      <= '0';
+  n_Tbit_Load       <= '0';
+  n_Tbit_en         <= '0';
+  n_Tbit_select     <= '0';
+  n_en              <= '0';
+  n_load            <= '0';
+  n_select          <= '0';
+
+  case P_CFM is 
+    when REPOS => -- Attente
+      if LinSynchro = '0' then 
+        n_select       <= '0';
+        n_load         <= '1';
+        n_en           <= '1';
+        n_Tbit_select  <= '0';
+        n_Tbit_en      <= '1';
+        n_Tbit_Load    <= '1';
+      end if;
+
+    when R_BRK_0 => -- Synchro Break 0
+      if NbTbit_0 = '1' and LinSynchro = '1' then
+        n_select <= '0';
+        n_en     <= '1';
+        n_load   <= '1';
+      elsif NbTbit_0 = '0' and LinSynchro = '1' then
+        Error_Synchro <= '1';
+      elsif NbTbit_0 = '0' and LinSynchro = '0' and n_0 = '1' then
+        n_Tbit_en <= '1';
+        n_select  <= '0';
+        n_load    <= '1';
+        n_en      <= '1';
+      elsif n_0 = '0' AND LinSynchro = '0' AND NbTbit_0 = '0' then 
+         n_en <= '1';
+      end if;
+
+    when R_BRK_1 => -- Synchro Break 1 
+      if n_0 = '1' and LinSynchro = '0' then
+        -- Nothing
+      elsif n_0 = '0' and LinSynchro = '0' then
+        Error_Synchro <= '1';
+      elsif n_0 = '0' then
+        n_en <= '1';
+      end if;
+      
+    when SYN_A => -- Attente bit Start Synchronisation
+        if LinSynchro = '0' then
+            n_select  <= '0';
+            n_load    <= '1';
+            n_en      <= '1';
+        end if;
+        
+    when SYN_RST => -- Reception Start Synchronisation
+        if n_0 = '0' AND LinSynchro = '0' then
+            n_select       <= '1'; -- passage de fin de front a milieu bit
+            n_load         <= '1';
+            n_en           <= '1';
+            n_Tbit_select  <= '1';
+            n_Tbit_en      <= '1';
+            n_Tbit_Load    <= '1';
+        elsif n_0 = '0' AND LinSynchro = '1' then
+            Error_Start    <= '1';
+        elsif n_0 = '0' then
+            n_en           <= '1';
+        end if;
+        
+    when SYN_RD => -- Reception Data Synchronisation
+        if NbTbit_0 = '1' then
+            n_select       <= '0';
+            n_load         <= '1';
+            n_en           <= '1';
+        elsif n_0 = '1' AND NbTbit_0 = '0' then
+            n_select       <= '0';
+            n_load         <= '1';
+            n_en           <= '1';
+            n_Tbit_en      <= '1';
+            OctetRecu_en   <= '1';
+        elsif n_0 = '0' then
+            n_en           <= '1';
+        end if;
+        
+    when SYN_RSP => -- Reception bit Stop Synchronisation
+        if n_0 = '1' AND LinSynchro = '1' then
+            OctetRecu_WR   <= '1';
+            n_select       <= '1';
+            n_load         <= '1';
+            n_en           <= '1';
+        elsif n_0 = '0' AND NbTbit_0 = '0' then
+            Error_Stop     <= '1';
+        elsif n_0 = '0' then
+            n_en           <= '1';
+        end if;
+        
+    when IDN_A => -- Attente bit Start Identifier
+        if LinSynchro = '0' then
+            n_select       <= '0';
+            n_load         <= '1';
+            n_en           <= '1';
+        end if;
+        
+    when IDN_RST => -- Reception bit Start Identifier
+        if n_0 = '1' AND LinSynchro = '0' then
+            n_select       <= '0';
+            n_load         <= '1';
+            n_en           <= '1';
+            n_Tbit_select  <= '1';
+            n_Tbit_Load    <= '1';
+            n_Tbit_en      <= '1';
+        elsif n_0 = '1' AND LinSynchro = '1' then
+            Error_Start    <= '1';
+        elsif n_0 = '0' AND LinSynchro = '0' then
+            n_en           <= '1';
+        end if;   
+            
+    when IDN_RD => -- Reception Data Identifier
+        if NbTbit_0 = '1' AND n_0 = '1' then
+            n_select       <= '0';
+            n_load         <= '1';
+            n_en           <= '1';
+			OctetRecu_en   <= '1';
+        elsif n_0 = '0' then
+            n_en           <= '1';
+        elsif n_0 = '1' AND NbTbit_0 = '0' then
+			n_select       <= '0';
+			n_load         <= '1';
+            n_en           <= '1';
+			n_Tbit_en      <= '1';
+            OctetRecu_en   <= '1';
+        end if; 
+            
+    when IDN_RSP => -- Reception bit Stop Identifier
+        if n_0 = '1' AND LinSynchro = '1' then
+            OctetRecu_en   <= '1';
+			      NbDataField_EN <= '1';
+			      Identifieur_en <= '1';
+			      NbDataField_load <= '1';
+        elsif n_0 = '0' AND LinSynchro = '0' then
+            Error_Stop     <= '1';
+        elsif n_0 = '0' AND LinSynchro = '1' then
+            n_select       <= '0';
+            n_load         <= '0';
+            n_en           <= '1';
+        end if;   
+        
+    when DAT_A => -- Attente bit Start Datafield
+        if LinSynchro = '0' then
+            n_select       <= '0';
+            n_load         <= '1';
+            n_en           <= '1';
+        end if;   
+        
+    when DAT_RST => -- Reception bit Start Datafield
+        if n_0 = '1' AND LinSynchro = '0' then
+            n_select       <= '0';
+            n_load         <= '1';
+            n_en           <= '1';
+            n_Tbit_select  <= '1';
+            n_Tbit_Load    <= '1';
+            n_Tbit_en      <= '1';
+        elsif n_0 = '1' AND LinSynchro = '1' then
+            Error_Start    <= '1';
+        elsif n_0 = '0' AND LinSynchro = '0' then
+            n_en           <= '1';
+        end if;  
+               
+    when DAT_RD => -- Reception bit Data Datafield
+        if NbTbit_0 = '1' AND LinSynchro = '1' then
+            n_select       <= '0';
+            n_load         <= '1';
+            n_en           <= '1';
+            OctetRecu_en   <= '1';
+        elsif n_0 = '0' then
+            n_en           <= '1';
+        elsif n_0 = '1' AND NbTbit_0 = '0' then
+            n_select       <= '0';
+            n_load         <= '1';
+            n_en           <= '1';
+            n_Tbit_en      <= '1';
+            OctetRecu_en   <= '1';
+        end if; 
+                 
+   	when DAT_RSP => -- Reception bit Stop Datafield
+		    if n_0 = '0' AND NbDataField_0 = '1' AND LinSynchro = '1' then
+    			   OctetRecu_WR   <= '1';
+    			   n_select       <= '0';
+    			   n_load         <= '1';
+    			   n_en           <= '1';
+    			   IncNbOctet     <= '1';
+    		  elsif NbDataField_0 = '0' AND n_0 = '1'AND LinSynchro = '1' then
+    			   OctetRecu_WR   <= '1';
+    			   NbDataField_EN <= '1';
+    			   n_select       <= '0';
+    			   n_load         <= '1';
+    			   n_en           <= '1';
+    			   IncNbOctet     <= '1';
+    		  elsif n_0 = '1' AND LinSynchro = '0' then
+    		    Error_Stop     <= '1';
+ 		    elsif n_0 = '0' AND LinSynchro = '1'then
+    			   n_en           <= '1';
+    		end if;  
+          
+    when CHK_A => -- Attente bit Start Checksum
+        if LinSynchro = '0' then
+            n_select       <= '0';
+            n_load         <= '1';
+            n_en           <= '1';
+        end if;   
+                
+    when CHK_RST => -- Reception bit Start Checksum
+    		if n_0 = '1' AND LinSynchro = '0' then
+                n_select       <= '0';
+                n_load         <= '1';
+                n_en           <= '1';
+                n_Tbit_select  <= '1';
+    		elsif n_0 = '1' AND LinSynchro = '1' then
+                Error_Start    <= '1';
+    		elsif n_0 = '0' AND LinSynchro = '0' then
+                n_en           <= '1';
+      end if;  
+               
+    when CHK_RD => -- Reception bit Data Checksum
+    		if NbTbit_0 = '1' AND LinSynchro = '1' then
+                n_select       <= '0';
+                n_load         <= '1';
+                n_en           <= '1';
+    		elsif n_0 = '1' AND NbTbit_0 = '0' then
+                n_en           <= '1';
+    		elsif n_0 = '0' then
+                n_Tbit_en      <= '1';
+                n_select       <= '0';
+                n_load         <= '1';
+                n_en           <= '1';
+                OctetRecu_en   <= '1';
+                Identifieur_en    <= '1';
+                NbDataField_load  <= '1';
+                NbDataField_EN    <= '1';
+      end if;  
+                
+    when CHK_RSP => -- Reception bit Stop Checksum
+        if n_0 = '0' AND LinSynchro = '1' AND Identifier = SelAdr then
+            MessageReceiveSet <= '1';
+            NbOcyeyRecu_RST   <= '1';
+        elsif n_0 = '0' AND LinSynchro = '1' AND Identifier /= SelAdr then
+            MessageReceiveSet <= '1';
+            NbOcyeyRecu_RST   <= '1';
+        elsif n_0 = '0' AND LinSynchro = '0' then
+            Error_Stop     <= '1';
+        elsif n_0 = '0' then
+            n_en           <= '1';
+        end if;                         
+        
+    when others =>
+      -- Sec 
+      null;
+  end case;
+end process CFM_RES;
+\end{lstlisting}
+
+Ce code VHDL implémente le réseau combinatoire de sortie (\texttt{CFM\_RES}) pour l’automate de réception LIN.
+Il met à jour les signaux de sortie tels que \texttt{Error\_Start}, \texttt{Error\_Stop}, \texttt{OctetRecu\_WR}, etc., en fonction de l’état actuel (\texttt{P\_CFM}) et des signaux d’entrée.
+Chaque état de l’automate est géré dans une structure \texttt{CASE}, avec des conditions spécifiques pour définir les actions à entreprendre dans chaque état.
+Des valeurs par défaut sont également définies au début du processus pour éviter des comportements indésirlés.  
+\newline
+
+Une fois ces processus implémentés, il nous reste qu'a les assemblés pour ne formé qu'une machine Complete.
+\newline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{figure}[H]
+%    \centering
+%    \includegraphics[width=0.95\linewidth]{images/presen/Schema_complet_RectionLin.png}
+%    \caption{Machine Séquentielle réception LIN}
+%    \label{fig:placeholder}
+%\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Le schéma complet de l’interface de réception LIN est présenté ci-dessus, illustrant l’intégration des différentes parties opératives et commandes ( Répresentant la machine séquentielle ).
+\newline
+
+\subsection{FIFO}
+
+La mémoire FIFO (First In, First Out) a été conçue pour stocker temporairement les données reçues via l’interface LIN avant leur traitement ultérieur.
+Elle est structurée autour d'un composant clef, la FIFO.
+Cette section à été réaliser sur un schéma blocs, en reprenant les concepts vus en cours.
+\newline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{figure}[H]
+%    \centering
+%    \includegraphics[width=0.95\linewidth]{images/presen/Schema_FIFO.png}
+%    \caption{Schéma bloc FIFO}
+%    \label{fig:placeholder}
+%\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Etat Interne}
+
+Etat interne est un composant VHDL qui gère les états internes du système de réception LIN. 
+Le systeme à été conçu pour suivre et contrôler les différentes étapes du processus de réception des trames LIN.
+L'Objectifs étant d'additionner des fonctionnalités de contrôle et de gestion des états internes pour ne formé qu'une seul trame.
+\newline
+
+Ce systeme à lui aussi été conçu sous la forme d'un schéma bloc, reprenant les concepts vus en cours. Avec des bascules D, des compteurs et l'ajout de OR pour gérer les RESET.
+\newline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{figure}[H]
+%    \centering
+%    \includegraphics[width=0.95\linewidth]{images/presen/Schema_ETATINTERNE.png}
+%    \caption{Schéma bloc FIFO}
+%    \label{fig:placeholder}
+%\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
