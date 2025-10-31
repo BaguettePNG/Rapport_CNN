@@ -15,7 +15,7 @@ rigoureusement la structure des blocs : réseau combinatoire d’entrée, résea
 et registres correspondant à la machine à états.
 \newline
 
-\subsubsection{Réseau Combinatoire d’Entrée}
+\subsubsection{Synchronisation des Entrées}
 
 \begin{lstlisting}[style=VHDLStyle, caption={Reseau Cominatoire d'entrée}]
 InputProc_Synchro :  PROCESS(H, nRST)
@@ -67,7 +67,7 @@ END PROCESS OutputProc_Comb;
 
 Le processus \texttt{OutputProc\_Comb} contrôle la sortie des données et des états vers le microprocesseur. Il met à jour les signaux \texttt{D07, OctetLu\_RD, EtatLu\_RST, DecNbOctet} en fonction de l’état courant de la machine et des signaux synchronisés d’entrée. La logique combinatoire assure la correspondance entre les actions de lecture/écriture et l’état de la machine.
 
-\subsubsection{Registres et Machine à États}
+\subsubsection{Réseau Combinatoire d'Entrée}
 
 \begin{lstlisting}[style=VHDLStyle, caption={Registres}]
 ClockedProc : PROCESS(H, nRST)

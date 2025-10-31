@@ -6,30 +6,28 @@
 \contentsline {figure}{\numberline {5}{\ignorespaces Interface microprocesseur associée au circuit à concevoir}}{8}{figure.caption.7}%
 \contentsline {figure}{\numberline {6}{\ignorespaces Chronogrammes des échanges entre le circuit et son environnement}}{8}{figure.caption.8}%
 \contentsline {figure}{\numberline {7}{\ignorespaces Schema Conception Registre interne Système}}{9}{figure.caption.9}%
-\contentsline {figure}{\numberline {8}{\ignorespaces Interface microprocesseur associée au circuit à concevoir}}{10}{figure.caption.10}%
-\contentsline {figure}{\numberline {9}{\ignorespaces Structure fonctionnelle du système}}{12}{figure.caption.11}%
-\contentsline {figure}{\numberline {10}{\ignorespaces Architecture du système de réception de trame LIN V1}}{12}{figure.caption.12}%
-\contentsline {figure}{\numberline {11}{\ignorespaces Échanges avec le processeur}}{13}{figure.caption.13}%
-\contentsline {figure}{\numberline {12}{\ignorespaces Architecture du système de réception de trame LIN V2}}{13}{figure.caption.14}%
-\contentsline {figure}{\numberline {13}{\ignorespaces Description finale du circuit}}{14}{figure.caption.15}%
-\contentsline {figure}{\numberline {14}{\ignorespaces Machine Sequentielle Reception Trame}}{17}{figure.caption.16}%
-\contentsline {figure}{\numberline {15}{\ignorespaces Structure partie Opérative Reception Trame}}{18}{figure.caption.18}%
-\contentsline {figure}{\numberline {16}{\ignorespaces Structure partie Commande Reception Trame}}{19}{figure.caption.19}%
-\contentsline {figure}{\numberline {17}{\ignorespaces Machine de MEALY Unité de Commande Reception Trame}}{20}{figure.caption.20}%
-\contentsline {figure}{\numberline {18}{\ignorespaces Machine Sequentielle Reception Trame}}{21}{figure.caption.21}%
-\contentsline {figure}{\numberline {19}{\ignorespaces Structure partie Opérative Interface Microprocesseur}}{21}{figure.caption.22}%
-\contentsline {figure}{\numberline {20}{\ignorespaces Structure partie Commande Interface Microprocesseur}}{22}{figure.caption.23}%
-\contentsline {figure}{\numberline {21}{\ignorespaces Machine de MEALY Unité de Commande Interface Micro}}{22}{figure.caption.24}%
-\contentsline {figure}{\numberline {22}{\ignorespaces Implémentation de la FIFO}}{23}{figure.caption.25}%
-\contentsline {figure}{\numberline {23}{\ignorespaces implémentation de l'état interne en représentation structurelle au niveau RT}}{24}{figure.caption.26}%
-\contentsline {figure}{\numberline {24}{\ignorespaces Chronogramme de simulation de l’Interface Microprocesseur}}{40}{figure.caption.27}%
-\contentsline {figure}{\numberline {25}{\ignorespaces Block Diagramme de test de l’Interface Microprocesseur}}{41}{figure.caption.28}%
-\contentsline {figure}{\numberline {26}{\ignorespaces Schéma RTL InterfaceMicroprocesseur}}{43}{figure.caption.29}%
-\contentsline {figure}{\numberline {27}{\ignorespaces Partie opérative avec multiplexeur et Tristate : InterfaceMicroprocesseur}}{44}{figure.caption.30}%
-\contentsline {figure}{\numberline {28}{\ignorespaces Synthese matérielle InterfaceMicroprocesseur}}{44}{figure.caption.31}%
-\contentsline {figure}{\numberline {29}{\ignorespaces Synthèse matérielle Vivado}}{46}{figure.caption.32}%
-\contentsline {figure}{\numberline {30}{\ignorespaces Illustration d'une LUT et de sa table de vérité}}{47}{figure.caption.33}%
-\contentsline {figure}{\numberline {31}{\ignorespaces Synthèse Logique Vivado}}{47}{figure.caption.34}%
-\contentsline {figure}{\numberline {32}{\ignorespaces Slice du FPGA après routage}}{48}{figure.caption.35}%
-\contentsline {figure}{\numberline {33}{\ignorespaces Vue du système routé et des buffers associés sur le FPGA}}{49}{figure.caption.36}%
-\contentsline {figure}{\numberline {34}{\ignorespaces Exemple de routage d'une LUT3 dans le FPGA}}{49}{figure.caption.37}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Description fonctionnelle du circuit à concevoir}}{10}{figure.caption.10}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Représentation fonctionnelle des échanges entre l'émetteur LIN et le système à processeur}}{12}{figure.caption.11}%
+\contentsline {figure}{\numberline {10}{\ignorespaces Structure fonctionnelle initiale du circuit après introduction des interfaces}}{12}{figure.caption.12}%
+\contentsline {figure}{\numberline {11}{\ignorespaces Échanges fonctionnels entre le système et le processeur}}{13}{figure.caption.13}%
+\contentsline {figure}{\numberline {12}{\ignorespaces Architecture fonctionnelle optimisée du système de réception de trame LIN}}{13}{figure.caption.14}%
+\contentsline {figure}{\numberline {13}{\ignorespaces Description fonctionnelle finale du circuit complet}}{14}{figure.caption.15}%
+\contentsline {figure}{\numberline {14}{\ignorespaces Organisation séquentielle du bloc de réception de trame}}{16}{figure.caption.16}%
+\contentsline {figure}{\numberline {15}{\ignorespaces Structure opérative du bloc de réception de trame}}{16}{figure.caption.18}%
+\contentsline {figure}{\numberline {16}{\ignorespaces Automate de réception de trame LIN}}{17}{figure.caption.19}%
+\contentsline {figure}{\numberline {17}{\ignorespaces Machine de Mealy – Unité de commande de réception de trame}}{18}{figure.caption.20}%
+\contentsline {figure}{\numberline {18}{\ignorespaces Structure opérative de l’interface microprocesseur}}{18}{figure.caption.21}%
+\contentsline {figure}{\numberline {19}{\ignorespaces Machine de Mealy – Interface microprocesseur}}{19}{figure.caption.22}%
+\contentsline {figure}{\numberline {20}{\ignorespaces Implémentation structurelle de la mémoire FIFO}}{19}{figure.caption.23}%
+\contentsline {figure}{\numberline {21}{\ignorespaces Implémentation structurelle du registre d’état au niveau RT}}{20}{figure.caption.24}%
+\contentsline {figure}{\numberline {22}{\ignorespaces Chronogramme de simulation de l’Interface Microprocesseur}}{36}{figure.caption.25}%
+\contentsline {figure}{\numberline {23}{\ignorespaces Block Diagramme de test de l’Interface Microprocesseur}}{37}{figure.caption.26}%
+\contentsline {figure}{\numberline {24}{\ignorespaces Schéma RTL InterfaceMicroprocesseur}}{39}{figure.caption.27}%
+\contentsline {figure}{\numberline {25}{\ignorespaces Partie opérative avec multiplexeur et Tristate : InterfaceMicroprocesseur}}{40}{figure.caption.28}%
+\contentsline {figure}{\numberline {26}{\ignorespaces Synthese matérielle InterfaceMicroprocesseur}}{40}{figure.caption.29}%
+\contentsline {figure}{\numberline {27}{\ignorespaces Synthèse matérielle Vivado}}{42}{figure.caption.30}%
+\contentsline {figure}{\numberline {28}{\ignorespaces Illustration d'une LUT et de sa table de vérité}}{43}{figure.caption.31}%
+\contentsline {figure}{\numberline {29}{\ignorespaces Synthèse Logique Vivado}}{43}{figure.caption.32}%
+\contentsline {figure}{\numberline {30}{\ignorespaces Slice du FPGA après routage}}{44}{figure.caption.33}%
+\contentsline {figure}{\numberline {31}{\ignorespaces Vue du système routé et des buffers associés sur le FPGA}}{45}{figure.caption.34}%
+\contentsline {figure}{\numberline {32}{\ignorespaces Exemple de routage d'une LUT3 dans le FPGA}}{45}{figure.caption.35}%
