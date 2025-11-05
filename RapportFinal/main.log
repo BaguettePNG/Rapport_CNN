@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.9.23)  31 OCT 2025 14:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.9.23)  5 NOV 2025 16:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -753,7 +753,20 @@ LaTeX Warning: Label `fig:placeholder' multiply defined.
 
 LaTeX Warning: Label `fig:placeholder' multiply defined.
 
-) (./include/3_Struc_Fonc.aux) (./include/4_solu_archi.aux) (./include/5_Pres_Fonc.aux) (./include/6_Simu.aux
+) (./include/3_Struc_Fonc.aux) (./include/4_solu_archi.aux) (./include/5_Pres_Fonc.aux
+
+LaTeX Warning: Label `fig:placeholder' multiply defined.
+
+
+LaTeX Warning: Label `fig:placeholder' multiply defined.
+
+
+LaTeX Warning: Label `fig:placeholder' multiply defined.
+
+
+LaTeX Warning: Label `fig:placeholder' multiply defined.
+
+) (./include/6_Simu.aux
 
 LaTeX Warning: Label `fig:placeholder' multiply defined.
 
@@ -1519,42 +1532,48 @@ File: Graphix/logo_poly.png Graphic file (type png)
 Package pdftex.def Info: Graphix/logo_poly.png  used on input line 172.
 (pdftex.def)             Requested size: 112.92159pt x 42.56989pt.
 [23]
-Underfull \hbox (badness 7081) in paragraph at lines 228--228
+<images/presen/ReceptionTrameOP.png, id=692, 1038.88126pt x 365.86688pt>
+File: images/presen/ReceptionTrameOP.png Graphic file (type png)
+<use images/presen/ReceptionTrameOP.png>
+Package pdftex.def Info: images/presen/ReceptionTrameOP.png  used on input line 183.
+(pdftex.def)             Requested size: 394.63864pt x 138.9806pt.
+
+Underfull \hbox (badness 7081) in paragraph at lines 243--243
 []|\OT1/cmr/m/n/9 Identifiant du mes-sage re^^Xcu
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 228--228
+Underfull \hbox (badness 10000) in paragraph at lines 243--243
 \OT1/cmr/m/n/9 ^^Ra com-pa-rer avec l'adresse
  []
 
 
-Underfull \hbox (badness 3260) in paragraph at lines 228--228
+Underfull \hbox (badness 3260) in paragraph at lines 243--243
 []|\OT1/cmr/m/n/9 Signal de syn-chro-ni-sa-tion de
  []
 
 
-Underfull \hbox (badness 3209) in paragraph at lines 228--228
+Underfull \hbox (badness 3209) in paragraph at lines 243--243
 \OT1/cmr/m/n/9 d'oc-tets de donn^^Sees dans le
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 228--228
+Underfull \hbox (badness 10000) in paragraph at lines 243--243
 []|\OT1/cmr/m/n/9 Signal de contr^ole in-terne
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 228--228
+Underfull \hbox (badness 10000) in paragraph at lines 243--243
 []|\OT1/cmr/m/n/9 Incr^^Sementation du comp-teur
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 228--228
+Underfull \hbox (badness 10000) in paragraph at lines 243--243
 []|\OT1/cmr/m/n/9 R^^Seinitialisation du comp-teur
  []
 
 
-Underfull \hbox (badness 1325) in paragraph at lines 228--228
+Underfull \hbox (badness 1325) in paragraph at lines 243--243
 []|\OT1/cmr/m/n/9 Validation du re-gistre d'oc-tet
  []
 
@@ -1567,15 +1586,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: Graphix/Logo_Universite_de_nantes.png Graphic file (type png)
 <use Graphix/Logo_Universite_de_nantes.png>
-Package pdftex.def Info: Graphix/Logo_Universite_de_nantes.png  used on input line 229.
+Package pdftex.def Info: Graphix/Logo_Universite_de_nantes.png  used on input line 244.
 (pdftex.def)             Requested size: 120.50502pt x 40.46945pt.
 File: Graphix/logo_poly.png Graphic file (type png)
 <use Graphix/logo_poly.png>
-Package pdftex.def Info: Graphix/logo_poly.png  used on input line 229.
+Package pdftex.def Info: Graphix/logo_poly.png  used on input line 244.
 (pdftex.def)             Requested size: 112.92159pt x 42.56989pt.
-[24]
+[24 <./images/presen/ReceptionTrameOP.png>]
 
-LaTeX Warning: Reference `fig:automatereceptionlin' on page 25 undefined on input line 234.
+LaTeX Warning: Reference `fig:automatereceptionlin' on page 25 undefined on input line 249.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1586,24 +1605,24 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: Graphix/Logo_Universite_de_nantes.png Graphic file (type png)
 <use Graphix/Logo_Universite_de_nantes.png>
-Package pdftex.def Info: Graphix/Logo_Universite_de_nantes.png  used on input line 236.
+Package pdftex.def Info: Graphix/Logo_Universite_de_nantes.png  used on input line 251.
 (pdftex.def)             Requested size: 120.50502pt x 40.46945pt.
 File: Graphix/logo_poly.png Graphic file (type png)
 <use Graphix/logo_poly.png>
-Package pdftex.def Info: Graphix/logo_poly.png  used on input line 236.
+Package pdftex.def Info: Graphix/logo_poly.png  used on input line 251.
 (pdftex.def)             Requested size: 112.92159pt x 42.56989pt.
 [25]
-Underfull \hbox (badness 10000) in paragraph at lines 243--245
+Underfull \hbox (badness 10000) in paragraph at lines 258--260
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 258--261
+Underfull \hbox (badness 10000) in paragraph at lines 273--276
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 275--279
+Underfull \hbox (badness 10000) in paragraph at lines 290--294
 
  []
 
@@ -1616,11 +1635,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: Graphix/Logo_Universite_de_nantes.png Graphic file (type png)
 <use Graphix/Logo_Universite_de_nantes.png>
-Package pdftex.def Info: Graphix/Logo_Universite_de_nantes.png  used on input line 291.
+Package pdftex.def Info: Graphix/Logo_Universite_de_nantes.png  used on input line 306.
 (pdftex.def)             Requested size: 120.50502pt x 40.46945pt.
 File: Graphix/logo_poly.png Graphic file (type png)
 <use Graphix/logo_poly.png>
-Package pdftex.def Info: Graphix/logo_poly.png  used on input line 291.
+Package pdftex.def Info: Graphix/logo_poly.png  used on input line 306.
 (pdftex.def)             Requested size: 112.92159pt x 42.56989pt.
 [26]
 
@@ -1632,11 +1651,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: Graphix/Logo_Universite_de_nantes.png Graphic file (type png)
 <use Graphix/Logo_Universite_de_nantes.png>
-Package pdftex.def Info: Graphix/Logo_Universite_de_nantes.png  used on input line 347.
+Package pdftex.def Info: Graphix/Logo_Universite_de_nantes.png  used on input line 362.
 (pdftex.def)             Requested size: 120.50502pt x 40.46945pt.
 File: Graphix/logo_poly.png Graphic file (type png)
 <use Graphix/logo_poly.png>
-Package pdftex.def Info: Graphix/logo_poly.png  used on input line 347.
+Package pdftex.def Info: Graphix/logo_poly.png  used on input line 362.
 (pdftex.def)             Requested size: 112.92159pt x 42.56989pt.
 [27]
 
@@ -1648,14 +1667,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: Graphix/Logo_Universite_de_nantes.png Graphic file (type png)
 <use Graphix/Logo_Universite_de_nantes.png>
-Package pdftex.def Info: Graphix/Logo_Universite_de_nantes.png  used on input line 402.
+Package pdftex.def Info: Graphix/Logo_Universite_de_nantes.png  used on input line 417.
 (pdftex.def)             Requested size: 120.50502pt x 40.46945pt.
 File: Graphix/logo_poly.png Graphic file (type png)
 <use Graphix/logo_poly.png>
-Package pdftex.def Info: Graphix/logo_poly.png  used on input line 402.
+Package pdftex.def Info: Graphix/logo_poly.png  used on input line 417.
 (pdftex.def)             Requested size: 112.92159pt x 42.56989pt.
 [28]
-Underfull \hbox (badness 10000) in paragraph at lines 431--435
+Underfull \hbox (badness 10000) in paragraph at lines 446--450
 
  []
 
@@ -1668,11 +1687,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: Graphix/Logo_Universite_de_nantes.png Graphic file (type png)
 <use Graphix/Logo_Universite_de_nantes.png>
-Package pdftex.def Info: Graphix/Logo_Universite_de_nantes.png  used on input line 455.
+Package pdftex.def Info: Graphix/Logo_Universite_de_nantes.png  used on input line 470.
 (pdftex.def)             Requested size: 120.50502pt x 40.46945pt.
 File: Graphix/logo_poly.png Graphic file (type png)
 <use Graphix/logo_poly.png>
-Package pdftex.def Info: Graphix/logo_poly.png  used on input line 455.
+Package pdftex.def Info: Graphix/logo_poly.png  used on input line 470.
 (pdftex.def)             Requested size: 112.92159pt x 42.56989pt.
 [29]
 
@@ -1684,11 +1703,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: Graphix/Logo_Universite_de_nantes.png Graphic file (type png)
 <use Graphix/Logo_Universite_de_nantes.png>
-Package pdftex.def Info: Graphix/Logo_Universite_de_nantes.png  used on input line 511.
+Package pdftex.def Info: Graphix/Logo_Universite_de_nantes.png  used on input line 526.
 (pdftex.def)             Requested size: 120.50502pt x 40.46945pt.
 File: Graphix/logo_poly.png Graphic file (type png)
 <use Graphix/logo_poly.png>
-Package pdftex.def Info: Graphix/logo_poly.png  used on input line 511.
+Package pdftex.def Info: Graphix/logo_poly.png  used on input line 526.
 (pdftex.def)             Requested size: 112.92159pt x 42.56989pt.
 [30]
 
@@ -1700,11 +1719,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: Graphix/Logo_Universite_de_nantes.png Graphic file (type png)
 <use Graphix/Logo_Universite_de_nantes.png>
-Package pdftex.def Info: Graphix/Logo_Universite_de_nantes.png  used on input line 568.
+Package pdftex.def Info: Graphix/Logo_Universite_de_nantes.png  used on input line 583.
 (pdftex.def)             Requested size: 120.50502pt x 40.46945pt.
 File: Graphix/logo_poly.png Graphic file (type png)
 <use Graphix/logo_poly.png>
-Package pdftex.def Info: Graphix/logo_poly.png  used on input line 568.
+Package pdftex.def Info: Graphix/logo_poly.png  used on input line 583.
 (pdftex.def)             Requested size: 112.92159pt x 42.56989pt.
 [31]
 
@@ -1716,11 +1735,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: Graphix/Logo_Universite_de_nantes.png Graphic file (type png)
 <use Graphix/Logo_Universite_de_nantes.png>
-Package pdftex.def Info: Graphix/Logo_Universite_de_nantes.png  used on input line 625.
+Package pdftex.def Info: Graphix/Logo_Universite_de_nantes.png  used on input line 640.
 (pdftex.def)             Requested size: 120.50502pt x 40.46945pt.
 File: Graphix/logo_poly.png Graphic file (type png)
 <use Graphix/logo_poly.png>
-Package pdftex.def Info: Graphix/logo_poly.png  used on input line 625.
+Package pdftex.def Info: Graphix/logo_poly.png  used on input line 640.
 (pdftex.def)             Requested size: 112.92159pt x 42.56989pt.
 [32]
 
@@ -1732,44 +1751,69 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: Graphix/Logo_Universite_de_nantes.png Graphic file (type png)
 <use Graphix/Logo_Universite_de_nantes.png>
-Package pdftex.def Info: Graphix/Logo_Universite_de_nantes.png  used on input line 681.
+Package pdftex.def Info: Graphix/Logo_Universite_de_nantes.png  used on input line 696.
 (pdftex.def)             Requested size: 120.50502pt x 40.46945pt.
 File: Graphix/logo_poly.png Graphic file (type png)
 <use Graphix/logo_poly.png>
-Package pdftex.def Info: Graphix/logo_poly.png  used on input line 681.
+Package pdftex.def Info: Graphix/logo_poly.png  used on input line 696.
 (pdftex.def)             Requested size: 112.92159pt x 42.56989pt.
 [33]
-Overfull \hbox (7.20839pt too wide) in paragraph at lines 709--714
+Overfull \hbox (7.20839pt too wide) in paragraph at lines 724--729
 \OT1/cmr/m/n/10 r^^Seception LIN. Il met ^^Ra jour les si-gnaux de sor-tie tels que \OT1/cmtt/m/n/10 Error[]Start\OT1/cmr/m/n/10 , \OT1/cmtt/m/n/10 Error[]Stop\OT1/cmr/m/n/10 , \OT1/cmtt/m/n/10 OctetRecu[]WR\OT1/cmr/m/n/10 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 709--714
+Underfull \hbox (badness 10000) in paragraph at lines 724--729
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 715--717
+Underfull \hbox (badness 10000) in paragraph at lines 730--732
 
  []
 
+<images/presen/ReceptionTrameSeq.png, id=1169, 1196.21906pt x 572.89032pt>
+File: images/presen/ReceptionTrameSeq.png Graphic file (type png)
+<use images/presen/ReceptionTrameSeq.png>
+Package pdftex.def Info: images/presen/ReceptionTrameSeq.png  used on input line 735.
+(pdftex.def)             Requested size: 394.63864pt x 189.00194pt.
 
-Overfull \hbox (4.84013pt too wide) in paragraph at lines 727--729
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.0pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.0pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.0pt}.
+
+File: Graphix/Logo_Universite_de_nantes.png Graphic file (type png)
+<use Graphix/Logo_Universite_de_nantes.png>
+Package pdftex.def Info: Graphix/Logo_Universite_de_nantes.png  used on input line 739.
+(pdftex.def)             Requested size: 120.50502pt x 40.46945pt.
+File: Graphix/logo_poly.png Graphic file (type png)
+<use Graphix/logo_poly.png>
+Package pdftex.def Info: Graphix/logo_poly.png  used on input line 739.
+(pdftex.def)             Requested size: 112.92159pt x 42.56989pt.
+[34]
+Overfull \hbox (4.84013pt too wide) in paragraph at lines 740--742
 []\OT1/cmr/m/n/10 Le sch^^Sema com-plet de l'in-ter-face de r^^Seception LIN est pr^^Sesent^^Se ci-dessus, illus-trant l'int^^Segration
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 727--729
+Underfull \hbox (badness 10000) in paragraph at lines 740--742
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 732--736
+Underfull \hbox (badness 10000) in paragraph at lines 745--749
 
  []
 
+<images/presen/FIFO.png, id=1202, 1051.67906pt x 500.62032pt>
+File: images/presen/FIFO.png Graphic file (type png)
+<use images/presen/FIFO.png>
+Package pdftex.def Info: images/presen/FIFO.png  used on input line 752.
+(pdftex.def)             Requested size: 394.63864pt x 187.85437pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 748--752
+Underfull \hbox (badness 10000) in paragraph at lines 759--763
 
  []
 
@@ -1782,18 +1826,38 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 File: Graphix/Logo_Universite_de_nantes.png Graphic file (type png)
 <use Graphix/Logo_Universite_de_nantes.png>
-Package pdftex.def Info: Graphix/Logo_Universite_de_nantes.png  used on input line 752.
+Package pdftex.def Info: Graphix/Logo_Universite_de_nantes.png  used on input line 763.
 (pdftex.def)             Requested size: 120.50502pt x 40.46945pt.
 File: Graphix/logo_poly.png Graphic file (type png)
 <use Graphix/logo_poly.png>
-Package pdftex.def Info: Graphix/logo_poly.png  used on input line 752.
+Package pdftex.def Info: Graphix/logo_poly.png  used on input line 763.
 (pdftex.def)             Requested size: 112.92159pt x 42.56989pt.
-[34]
-Underfull \hbox (badness 10000) in paragraph at lines 753--755
+[35 <./images/presen/ReceptionTrameSeq.png> <./images/presen/FIFO.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 764--766
 
  []
 
-)
+<images/presen/ETAT_INTERNE.png, id=1212, 554.82281pt x 597.73312pt>
+File: images/presen/ETAT_INTERNE.png Graphic file (type png)
+<use images/presen/ETAT_INTERNE.png>
+Package pdftex.def Info: images/presen/ETAT_INTERNE.png  used on input line 769.
+(pdftex.def)             Requested size: 394.63864pt x 425.15962pt.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.0pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.0pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.0pt}.
+
+File: Graphix/Logo_Universite_de_nantes.png Graphic file (type png)
+<use Graphix/Logo_Universite_de_nantes.png>
+Package pdftex.def Info: Graphix/Logo_Universite_de_nantes.png  used on input line 788.
+(pdftex.def)             Requested size: 120.50502pt x 40.46945pt.
+File: Graphix/logo_poly.png Graphic file (type png)
+<use Graphix/logo_poly.png>
+Package pdftex.def Info: Graphix/logo_poly.png  used on input line 788.
+(pdftex.def)             Requested size: 112.92159pt x 42.56989pt.
+[36 <./images/presen/ETAT_INTERNE.png>])
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.0pt, for example:
@@ -1809,11 +1873,11 @@ File: Graphix/logo_poly.png Graphic file (type png)
 <use Graphix/logo_poly.png>
 Package pdftex.def Info: Graphix/logo_poly.png  used on input line 103.
 (pdftex.def)             Requested size: 112.92159pt x 42.56989pt.
-[35]
+[37]
 \openout2 = `include/6_Simu.aux'.
 
  (./include/6_Simu.tex
-<images//Simulation/Chrono.png, id=1203, 1549.79pt x 658.46pt>
+<images//Simulation/Chrono.png, id=1227, 1549.79pt x 658.46pt>
 File: images//Simulation/Chrono.png Graphic file (type png)
 <use images//Simulation/Chrono.png>
 Package pdftex.def Info: images//Simulation/Chrono.png  used on input line 11.
@@ -1834,12 +1898,12 @@ File: Graphix/logo_poly.png Graphic file (type png)
 <use Graphix/logo_poly.png>
 Package pdftex.def Info: Graphix/logo_poly.png  used on input line 39.
 (pdftex.def)             Requested size: 112.92159pt x 42.56989pt.
-[36
+[38
 
 
 
  <./images//Simulation/Chrono.png>]
-<images/Simulation/banc_test.png, id=1212, 820.56563pt x 557.08125pt>
+<images/Simulation/banc_test.png, id=1235, 820.56563pt x 557.08125pt>
 File: images/Simulation/banc_test.png Graphic file (type png)
 <use images/Simulation/banc_test.png>
 Package pdftex.def Info: images/Simulation/banc_test.png  used on input line 50.
@@ -1864,7 +1928,7 @@ File: Graphix/logo_poly.png Graphic file (type png)
 <use Graphix/logo_poly.png>
 Package pdftex.def Info: Graphix/logo_poly.png  used on input line 76.
 (pdftex.def)             Requested size: 112.92159pt x 42.56989pt.
-[37 <./images/Simulation/banc_test.png>])
+[39 <./images/Simulation/banc_test.png>])
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.0pt, for example:
@@ -1880,7 +1944,7 @@ File: Graphix/logo_poly.png Graphic file (type png)
 <use Graphix/logo_poly.png>
 Package pdftex.def Info: Graphix/logo_poly.png  used on input line 105.
 (pdftex.def)             Requested size: 112.92159pt x 42.56989pt.
-[38]
+[40]
 \openout2 = `include/7_Synthe.aux'.
 
  (./include/7_Synthe.tex
@@ -1888,12 +1952,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 3--7
 
  []
 
-<images/Synthe/RTL_Shematic.png, id=1226, 992.20688pt x 383.93437pt>
+<images/Synthe/RTL_Shematic.png, id=1248, 992.20688pt x 383.93437pt>
 File: images/Synthe/RTL_Shematic.png Graphic file (type png)
 <use images/Synthe/RTL_Shematic.png>
 Package pdftex.def Info: images/Synthe/RTL_Shematic.png  used on input line 18.
 (pdftex.def)             Requested size: 373.86685pt x 144.66632pt.
-<images/Synthe/mux_tris.png, id=1227, 463.7325pt x 129.48375pt>
+<images/Synthe/mux_tris.png, id=1249, 463.7325pt x 129.48375pt>
 File: images/Synthe/mux_tris.png Graphic file (type png)
 <use images/Synthe/mux_tris.png>
 Package pdftex.def Info: images/Synthe/mux_tris.png  used on input line 51.
@@ -1913,7 +1977,7 @@ File: Graphix/logo_poly.png Graphic file (type png)
 <use Graphix/logo_poly.png>
 Package pdftex.def Info: Graphix/logo_poly.png  used on input line 55.
 (pdftex.def)             Requested size: 112.92159pt x 42.56989pt.
-[39
+[41
 
 
 
@@ -1922,7 +1986,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 56--61
 
  []
 
-<images/Synthe/RTL_HARD_HDL.jpg, id=1235, 773.13844pt x 607.51968pt>
+<images/Synthe/RTL_HARD_HDL.jpg, id=1257, 773.13844pt x 607.51968pt>
 File: images/Synthe/RTL_HARD_HDL.jpg Graphic file (type jpg)
 <use images/Synthe/RTL_HARD_HDL.jpg>
 Package pdftex.def Info: images/Synthe/RTL_HARD_HDL.jpg  used on input line 67.
@@ -1947,7 +2011,7 @@ File: Graphix/logo_poly.png Graphic file (type png)
 <use Graphix/logo_poly.png>
 Package pdftex.def Info: Graphix/logo_poly.png  used on input line 79.
 (pdftex.def)             Requested size: 112.92159pt x 42.56989pt.
-[40 <./images/Synthe/mux_tris.png> <./images/Synthe/RTL_HARD_HDL.jpg>])
+[42 <./images/Synthe/mux_tris.png> <./images/Synthe/RTL_HARD_HDL.jpg>])
 Underfull \hbox (badness 10000) in paragraph at lines 83--107
 
  []
@@ -1967,7 +2031,7 @@ File: Graphix/logo_poly.png Graphic file (type png)
 <use Graphix/logo_poly.png>
 Package pdftex.def Info: Graphix/logo_poly.png  used on input line 107.
 (pdftex.def)             Requested size: 112.92159pt x 42.56989pt.
-[41]
+[43]
 \openout2 = `include/8_Routage.aux'.
 
  (./include/8_Routage.tex
@@ -1980,7 +2044,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 12--16
 
  []
 
-<images/Routage/pdf_recadre_recadre.pdf, id=1249, 175.3968pt x 721.29135pt>
+<images/Routage/pdf_recadre_recadre.pdf, id=1272, 175.3968pt x 721.29135pt>
 File: images/Routage/pdf_recadre_recadre.pdf Graphic file (type pdf)
 <use images/Routage/pdf_recadre_recadre.pdf>
 Package pdftex.def Info: images/Routage/pdf_recadre_recadre.pdf  used on input line 19.
@@ -1995,7 +2059,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 23--26
 
  []
 
-<images/Routage/schematic_RTL_VIVADO_recadre.pdf, id=1250, 544.81975pt x 448.60326pt>
+<images/Routage/schematic_RTL_VIVADO_recadre.pdf, id=1273, 544.81975pt x 448.60326pt>
 File: images/Routage/schematic_RTL_VIVADO_recadre.pdf Graphic file (type pdf)
 <use images/Routage/schematic_RTL_VIVADO_recadre.pdf>
 Package pdftex.def Info: images/Routage/schematic_RTL_VIVADO_recadre.pdf  used on input line 29.
@@ -2020,7 +2084,7 @@ File: Graphix/logo_poly.png Graphic file (type png)
 <use Graphix/logo_poly.png>
 Package pdftex.def Info: Graphix/logo_poly.png  used on input line 38.
 (pdftex.def)             Requested size: 112.92159pt x 42.56989pt.
-[42
+[44
 
 
 
@@ -2029,12 +2093,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 39--44
 
  []
 
-<images/Routage/LUT_EXEMPLE.png, id=1263, 1006.76125pt x 589.20125pt>
+<images/Routage/LUT_EXEMPLE.png, id=1286, 1006.76125pt x 589.20125pt>
 File: images/Routage/LUT_EXEMPLE.png Graphic file (type png)
 <use images/Routage/LUT_EXEMPLE.png>
 Package pdftex.def Info: images/Routage/LUT_EXEMPLE.png  used on input line 52.
 (pdftex.def)             Requested size: 228.47699pt x 133.71533pt.
-<images/Routage/TABLE_LUT.png, id=1264, 223.83624pt x 283.0575pt>
+<images/Routage/TABLE_LUT.png, id=1287, 223.83624pt x 283.0575pt>
 File: images/Routage/TABLE_LUT.png Graphic file (type png)
 <use images/Routage/TABLE_LUT.png>
 Package pdftex.def Info: images/Routage/TABLE_LUT.png  used on input line 60.
@@ -2049,7 +2113,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 68--70
 
  []
 
-<images/Routage/Mux_Tris_Vivado.png, id=1265, 655.69969pt x 347.04657pt>
+<images/Routage/Mux_Tris_Vivado.png, id=1288, 655.69969pt x 347.04657pt>
 File: images/Routage/Mux_Tris_Vivado.png Graphic file (type png)
 <use images/Routage/Mux_Tris_Vivado.png>
 Package pdftex.def Info: images/Routage/Mux_Tris_Vivado.png  used on input line 73.
@@ -2059,7 +2123,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 78--80
 
  []
 
-<images/Routage/Rout_1.png, id=1266, 492.84125pt x 640.3925pt>
+<images/Routage/Rout_1.png, id=1289, 492.84125pt x 640.3925pt>
 File: images/Routage/Rout_1.png Graphic file (type png)
 <use images/Routage/Rout_1.png>
 Package pdftex.def Info: images/Routage/Rout_1.png  used on input line 88.
@@ -2079,13 +2143,13 @@ File: Graphix/logo_poly.png Graphic file (type png)
 <use Graphix/logo_poly.png>
 Package pdftex.def Info: Graphix/logo_poly.png  used on input line 91.
 (pdftex.def)             Requested size: 112.92159pt x 42.56989pt.
-[43 <./images/Routage/LUT_EXEMPLE.png> <./images/Routage/TABLE_LUT.png> <./images/Routage/Mux_Tris_Vivado.png>]
-<images/Routage/Rout_2.png, id=1278, 824.07875pt x 691.58376pt>
+[45 <./images/Routage/LUT_EXEMPLE.png> <./images/Routage/TABLE_LUT.png> <./images/Routage/Mux_Tris_Vivado.png>]
+<images/Routage/Rout_2.png, id=1300, 824.07875pt x 691.58376pt>
 File: images/Routage/Rout_2.png Graphic file (type png)
 <use images/Routage/Rout_2.png>
 Package pdftex.def Info: images/Routage/Rout_2.png  used on input line 102.
 (pdftex.def)             Requested size: 186.93343pt x 156.8765pt.
-<images/Routage/buff.png, id=1279, 723.70375pt x 459.7175pt>
+<images/Routage/buff.png, id=1301, 723.70375pt x 459.7175pt>
 File: images/Routage/buff.png Graphic file (type png)
 <use images/Routage/buff.png>
 Package pdftex.def Info: images/Routage/buff.png  used on input line 110.
@@ -2106,13 +2170,13 @@ File: Graphix/logo_poly.png Graphic file (type png)
 <use Graphix/logo_poly.png>
 Package pdftex.def Info: Graphix/logo_poly.png  used on input line 117.
 (pdftex.def)             Requested size: 112.92159pt x 42.56989pt.
-[44 <./images/Routage/Rout_1.png>]
-<images/Routage/Rou_3.png, id=1287, 617.30624pt x 583.17876pt>
+[46 <./images/Routage/Rout_1.png>]
+<images/Routage/Rou_3.png, id=1309, 617.30624pt x 583.17876pt>
 File: images/Routage/Rou_3.png Graphic file (type png)
 <use images/Routage/Rou_3.png>
 Package pdftex.def Info: images/Routage/Rou_3.png  used on input line 128.
 (pdftex.def)             Requested size: 145.39618pt x 137.35847pt.
-<images/Routage/Rou_4.png, id=1288, 1183.42125pt x 666.49pt>
+<images/Routage/Rou_4.png, id=1310, 1183.42125pt x 666.49pt>
 File: images/Routage/Rou_4.png Graphic file (type png)
 <use images/Routage/Rou_4.png>
 Package pdftex.def Info: images/Routage/Rou_4.png  used on input line 136.
@@ -2137,7 +2201,7 @@ File: Graphix/logo_poly.png Graphic file (type png)
 <use Graphix/logo_poly.png>
 Package pdftex.def Info: Graphix/logo_poly.png  used on input line 109.
 (pdftex.def)             Requested size: 112.92159pt x 42.56989pt.
-[45 <./images/Routage/Rout_2.png> <./images/Routage/buff.png> <./images/Routage/Rou_3.png> <./images/Routage/Rou_4.png>]
+[47 <./images/Routage/Rout_2.png> <./images/Routage/buff.png> <./images/Routage/Rou_3.png> <./images/Routage/Rou_4.png>]
 \openout2 = `include/Conclusion.aux'.
 
  (./include/Conclusion.tex
@@ -2186,7 +2250,7 @@ File: Graphix/logo_poly.png Graphic file (type png)
 <use Graphix/logo_poly.png>
 Package pdftex.def Info: Graphix/logo_poly.png  used on input line 111.
 (pdftex.def)             Requested size: 112.92159pt x 42.56989pt.
-[46
+[48
 
 
 
@@ -2209,7 +2273,7 @@ File: Graphix/logo_poly.png Graphic file (type png)
 <use Graphix/logo_poly.png>
 Package pdftex.def Info: Graphix/logo_poly.png  used on input line 59.
 (pdftex.def)             Requested size: 112.92159pt x 42.56989pt.
-[47
+[49
 
 
 
@@ -2229,7 +2293,7 @@ File: Graphix/logo_poly.png Graphic file (type png)
 <use Graphix/logo_poly.png>
 Package pdftex.def Info: Graphix/logo_poly.png  used on input line 113.
 (pdftex.def)             Requested size: 112.92159pt x 42.56989pt.
-[48] (./main.lof)
+[50] (./main.lof)
 \tf@lof=\write6
 \openout6 = `main.lof'.
 
@@ -2249,7 +2313,7 @@ File: Graphix/logo_poly.png Graphic file (type png)
 <use Graphix/logo_poly.png>
 Package pdftex.def Info: Graphix/logo_poly.png  used on input line 117.
 (pdftex.def)             Requested size: 112.92159pt x 42.56989pt.
-[49
+[51
 
 
 ] 
@@ -2270,18 +2334,18 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 72E2A57AF446097E6E5AF7F912DAAF03;9201.
  ) 
 Here is how much of TeX's memory you used:
- 42832 strings out of 474222
- 991745 string characters out of 5748733
+ 42890 strings out of 474222
+ 993406 string characters out of 5748733
  2156975 words of memory out of 5000000
- 63611 multiletter control sequences out of 15000+600000
+ 63663 multiletter control sequences out of 15000+600000
  570937 words of font info for 85 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,15n,107p,789b,2531s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on main.pdf (49 pages, 3822406 bytes).
+Output written on main.pdf (51 pages, 3926238 bytes).
 PDF statistics:
- 1701 PDF objects out of 1728 (max. 8388607)
- 1499 compressed objects within 15 object streams
- 781 named destinations out of 1000 (max. 500000)
- 586 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1729 PDF objects out of 2073 (max. 8388607)
+ 1516 compressed objects within 16 object streams
+ 787 named destinations out of 1000 (max. 500000)
+ 606 words of extra memory for PDF output out of 10000 (max. 10000000)
 

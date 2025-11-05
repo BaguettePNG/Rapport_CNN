@@ -20,14 +20,18 @@
 \contentsline {figure}{\numberline {19}{\ignorespaces Machine de Mealy – Interface microprocesseur}}{19}{figure.caption.22}%
 \contentsline {figure}{\numberline {20}{\ignorespaces Implémentation structurelle de la mémoire FIFO}}{19}{figure.caption.23}%
 \contentsline {figure}{\numberline {21}{\ignorespaces Implémentation structurelle du registre d’état au niveau RT}}{20}{figure.caption.24}%
-\contentsline {figure}{\numberline {22}{\ignorespaces Chronogramme de simulation de l’Interface Microprocesseur}}{36}{figure.caption.25}%
-\contentsline {figure}{\numberline {23}{\ignorespaces Block Diagramme de test de l’Interface Microprocesseur}}{37}{figure.caption.26}%
-\contentsline {figure}{\numberline {24}{\ignorespaces Schéma RTL InterfaceMicroprocesseur}}{39}{figure.caption.27}%
-\contentsline {figure}{\numberline {25}{\ignorespaces Partie opérative avec multiplexeur et Tristate : InterfaceMicroprocesseur}}{40}{figure.caption.28}%
-\contentsline {figure}{\numberline {26}{\ignorespaces Synthese matérielle InterfaceMicroprocesseur}}{40}{figure.caption.29}%
-\contentsline {figure}{\numberline {27}{\ignorespaces Synthèse matérielle Vivado}}{42}{figure.caption.30}%
-\contentsline {figure}{\numberline {28}{\ignorespaces Illustration d'une LUT et de sa table de vérité}}{43}{figure.caption.31}%
-\contentsline {figure}{\numberline {29}{\ignorespaces Synthèse Logique Vivado}}{43}{figure.caption.32}%
-\contentsline {figure}{\numberline {30}{\ignorespaces Slice du FPGA après routage}}{44}{figure.caption.33}%
-\contentsline {figure}{\numberline {31}{\ignorespaces Vue du système routé et des buffers associés sur le FPGA}}{45}{figure.caption.34}%
-\contentsline {figure}{\numberline {32}{\ignorespaces Exemple de routage d'une LUT3 dans le FPGA}}{45}{figure.caption.35}%
+\contentsline {figure}{\numberline {22}{\ignorespaces Schéma partie opérative réception LIN}}{24}{figure.caption.25}%
+\contentsline {figure}{\numberline {23}{\ignorespaces Machine Séquentielle réception LIN}}{35}{figure.caption.26}%
+\contentsline {figure}{\numberline {24}{\ignorespaces Schéma bloc FIFO}}{35}{figure.caption.27}%
+\contentsline {figure}{\numberline {25}{\ignorespaces Schéma bloc EtatInterne}}{36}{figure.caption.28}%
+\contentsline {figure}{\numberline {26}{\ignorespaces Chronogramme de simulation de l’Interface Microprocesseur}}{38}{figure.caption.29}%
+\contentsline {figure}{\numberline {27}{\ignorespaces Block Diagramme de test de l’Interface Microprocesseur}}{39}{figure.caption.30}%
+\contentsline {figure}{\numberline {28}{\ignorespaces Schéma RTL InterfaceMicroprocesseur}}{41}{figure.caption.31}%
+\contentsline {figure}{\numberline {29}{\ignorespaces Partie opérative avec multiplexeur et Tristate : InterfaceMicroprocesseur}}{42}{figure.caption.32}%
+\contentsline {figure}{\numberline {30}{\ignorespaces Synthese matérielle InterfaceMicroprocesseur}}{42}{figure.caption.33}%
+\contentsline {figure}{\numberline {31}{\ignorespaces Synthèse matérielle Vivado}}{44}{figure.caption.34}%
+\contentsline {figure}{\numberline {32}{\ignorespaces Illustration d'une LUT et de sa table de vérité}}{45}{figure.caption.35}%
+\contentsline {figure}{\numberline {33}{\ignorespaces Synthèse Logique Vivado}}{45}{figure.caption.36}%
+\contentsline {figure}{\numberline {34}{\ignorespaces Slice du FPGA après routage}}{46}{figure.caption.37}%
+\contentsline {figure}{\numberline {35}{\ignorespaces Vue du système routé et des buffers associés sur le FPGA}}{47}{figure.caption.38}%
+\contentsline {figure}{\numberline {36}{\ignorespaces Exemple de routage d'une LUT3 dans le FPGA}}{47}{figure.caption.39}%

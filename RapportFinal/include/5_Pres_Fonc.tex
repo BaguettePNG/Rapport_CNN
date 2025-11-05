@@ -178,14 +178,29 @@ Il a simplement été nécessaire de reproduire le schéma global dans HDL Desig
 
 Le schéma correspondant est présenté ci-dessous :
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\begin{figure}[H]
-%    \centering
-%    \includegraphics[width=0.95\linewidth]{images/presen/Schema_PO_RectionLin.png}
-%    \caption{Schéma partie opérative réception LIN}
-%    \label{fig:placeholder}
-%\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{images/presen/ReceptionTrameOP.png}
+    \caption{Schéma partie opérative réception LIN}
+    \label{fig:placeholder}
+\end{figure}
+
+Le decodeur présents avant le décompteurs DataField permet de de gérer la valeur chargé dans celui-ci.
+Voici la table de vérité associée :
+
+\begin{center}
+\renewcommand{\arraystretch}{1.2} % espace vertical
+\small % uniformise la taille du texte
+\begin{tabularx}{\textwidth}{|X||X|}
+\hline			
+\textbf{OctetRecu} & \textbf{Decode\_OUT} \\ \hline 
+00 & 001 \\
+01 & 001 \\
+10 & 010 \\
+11 & 100 \\ 
+\hline 
+\end{tabularx}
+\end{center}
 
 Voici aussi le tableau des entrées et sorties de la partie opérative : 
 
@@ -715,14 +730,12 @@ Des valeurs par défaut sont également définies au début du processus pour é
 Une fois ces processus implémentés, il nous reste qu'a les assemblés pour ne formé qu'une machine Complete.
 \newline
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\begin{figure}[H]
-%    \centering
-%    \includegraphics[width=0.95\linewidth]{images/presen/Schema_complet_RectionLin.png}
-%    \caption{Machine Séquentielle réception LIN}
-%    \label{fig:placeholder}
-%\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{images/presen/ReceptionTrameSeq.png}
+    \caption{Machine Séquentielle réception LIN}
+    \label{fig:placeholder}
+\end{figure}
 
 Le schéma complet de l’interface de réception LIN est présenté ci-dessus, illustrant l’intégration des différentes parties opératives et commandes ( Répresentant la machine séquentielle ).
 \newline
@@ -734,14 +747,12 @@ Elle est structurée autour d'un composant clef, la FIFO.
 Cette section à été réaliser sur un schéma blocs, en reprenant les concepts vus en cours.
 \newline
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\begin{figure}[H]
-%    \centering
-%    \includegraphics[width=0.95\linewidth]{images/presen/Schema_FIFO.png}
-%    \caption{Schéma bloc FIFO}
-%    \label{fig:placeholder}
-%\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{images/presen/FIFO.png}
+    \caption{Schéma bloc FIFO}
+    \label{fig:placeholder}
+\end{figure}
 
 \subsection{Etat Interne}
 
@@ -753,11 +764,26 @@ L'Objectifs étant d'additionner des fonctionnalités de contrôle et de gestion
 Ce systeme à lui aussi été conçu sous la forme d'un schéma bloc, reprenant les concepts vus en cours. Avec des bascules D, des compteurs et l'ajout de OR pour gérer les RESET.
 \newline
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\begin{figure}[H]
-%    \centering
-%    \includegraphics[width=0.95\linewidth]{images/presen/Schema_ETATINTERNE.png}
-%    \caption{Schéma bloc FIFO}
-%    \label{fig:placeholder}
-%\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{images/presen/ETAT_INTERNE.png}
+    \caption{Schéma bloc EtatInterne}
+    \label{fig:placeholder}
+\end{figure}
+
+Le module de Decode présent avant le compteur/decompteur permet de savoir si il doit compter ou décompter. Ce signal sera généré en fonction des états des signaux de la partie commande.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.2} % espace vertical
+\small % uniformise la taille du texte
+\begin{tabularx}{\textwidth}{|X|X||X|}
+\hline			
+\textbf{NbTbitInc} & \textbf{NbTbitDec} & \textbf{UP/DN} \\ \hline 
+0 & 0 & X \\
+0 & 1 & 1 \\
+0 & 0 & 0 \\
+1 & 1 & X \\ 
+\hline 
+\end{tabularx}
+\end{center}
+
