@@ -11,42 +11,42 @@
 \contentsline {section}{\numberline {6}Description et justification de la solution architecturale obtenue pour le circuit}{15}{section.6}%
 \contentsline {subsection}{\numberline {6.1}Horloge}{15}{subsection.6.1}%
 \contentsline {subsection}{\numberline {6.2}Architecture de la Réception de Trame}{15}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Architecture de l’Interface Microprocesseur}{18}{subsection.6.3}%
-\contentsline {subsection}{\numberline {6.4}Architecture de la Mémoire FIFO}{19}{subsection.6.4}%
-\contentsline {subsection}{\numberline {6.5}Implémentation du Registre d’État}{20}{subsection.6.5}%
-\contentsline {section}{\numberline {7}Présentation du fonctionnement des fonctions}{21}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Interface MicroProcesseur}{21}{subsection.7.1}%
-\contentsline {subsubsection}{\numberline {7.1.1}Synchronisation des Entrées}{21}{subsubsection.7.1.1}%
-\contentsline {subsubsection}{\numberline {7.1.2}Réseau Combinatoire de Sortie}{21}{subsubsection.7.1.2}%
-\contentsline {subsubsection}{\numberline {7.1.3}Réseau Combinatoire d'Entrée}{22}{subsubsection.7.1.3}%
-\contentsline {subsubsection}{\numberline {7.1.4}Réseau Synchronisé de Sortie}{23}{subsubsection.7.1.4}%
-\contentsline {subsection}{\numberline {7.2}Interface de Réception LIN}{23}{subsection.7.2}%
-\contentsline {subsubsection}{\numberline {7.2.1}Partie opérative}{24}{subsubsection.7.2.1}%
-\contentsline {subsubsection}{\numberline {7.2.2}Partie Commande}{26}{subsubsection.7.2.2}%
-\contentsline {subsection}{\numberline {7.3}FIFO}{35}{subsection.7.3}%
-\contentsline {subsection}{\numberline {7.4}Etat Interne}{35}{subsection.7.4}%
-\contentsline {section}{\numberline {8}Simulation des fonctions}{38}{section.8}%
-\contentsline {subsection}{\numberline {8.1}Interface Microprocesseur}{38}{subsection.8.1}%
-\contentsline {subsubsection}{\numberline {8.1.1}Déclarations et signaux}{38}{subsubsection.8.1.1}%
-\contentsline {subsubsection}{\numberline {8.1.2}Instanciation du composant testé}{38}{subsubsection.8.1.2}%
-\contentsline {subsubsection}{\numberline {8.1.3}Environnement de test}{38}{subsubsection.8.1.3}%
-\contentsline {subsubsection}{\numberline {8.1.4}Stimuli supplémentaires}{39}{subsubsection.8.1.4}%
-\contentsline {subsubsection}{\numberline {8.1.5}Analyse du chronogramme de simulation}{39}{subsubsection.8.1.5}%
-\contentsline {subsection}{\numberline {8.2}Interface Reception LIN}{40}{subsection.8.2}%
-\contentsline {subsubsection}{\numberline {8.2.1}Déclarations et signaux}{40}{subsubsection.8.2.1}%
-\contentsline {subsubsection}{\numberline {8.2.2}Instanciation du composant testé}{40}{subsubsection.8.2.2}%
-\contentsline {subsubsection}{\numberline {8.2.3}Environnement de test}{40}{subsubsection.8.2.3}%
-\contentsline {subsubsection}{\numberline {8.2.4}Stimuli supplémentaires}{40}{subsubsection.8.2.4}%
-\contentsline {subsubsection}{\numberline {8.2.5}Analyse du chronogramme de simulation}{40}{subsubsection.8.2.5}%
-\contentsline {section}{\numberline {9}Synthèse des fonctions}{41}{section.9}%
-\contentsline {subsection}{\numberline {9.1}Interface Microprocesseur}{41}{subsection.9.1}%
-\contentsline {subsection}{\numberline {9.2}Interface Reception Trame}{43}{subsection.9.2}%
-\contentsline {subsection}{\numberline {9.3}FIFO}{44}{subsection.9.3}%
-\contentsline {subsection}{\numberline {9.4}EtatInterne}{44}{subsection.9.4}%
-\contentsline {subsection}{\numberline {9.5}Reception LIN}{44}{subsection.9.5}%
-\contentsline {section}{\numberline {10}Routages des Fonctions }{45}{section.10}%
-\contentsline {subsection}{\numberline {10.1}Interface Microprocesseur}{45}{subsection.10.1}%
-\contentsline {subsection}{\numberline {10.2}Interface Reception Lin}{49}{subsection.10.2}%
-\contentsline {section}{\numberline {11}Conclusion}{53}{section.11}%
-\contentsline {section}{\numberline {12}Annexes}{54}{section.12}%
-\contentsline {subsection}{\numberline {12.1}Testbench InterfaceMicroprocesseur}{54}{subsection.12.1}%
+\contentsline {subsection}{\numberline {6.3}Architecture de l’Interface Microprocesseur}{19}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Architecture de la Mémoire FIFO}{20}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Implémentation du Registre d’État}{21}{subsection.6.5}%
+\contentsline {section}{\numberline {7}Présentation du fonctionnement des fonctions}{22}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Interface MicroProcesseur}{22}{subsection.7.1}%
+\contentsline {subsubsection}{\numberline {7.1.1}Synchronisation des Entrées}{22}{subsubsection.7.1.1}%
+\contentsline {subsubsection}{\numberline {7.1.2}Réseau Combinatoire de Sortie}{22}{subsubsection.7.1.2}%
+\contentsline {subsubsection}{\numberline {7.1.3}Réseau Combinatoire d'Entrée}{23}{subsubsection.7.1.3}%
+\contentsline {subsubsection}{\numberline {7.1.4}Réseau Synchronisé de Sortie}{24}{subsubsection.7.1.4}%
+\contentsline {subsection}{\numberline {7.2}Interface de Réception LIN}{24}{subsection.7.2}%
+\contentsline {subsubsection}{\numberline {7.2.1}Partie opérative}{25}{subsubsection.7.2.1}%
+\contentsline {subsubsection}{\numberline {7.2.2}Partie Commande}{27}{subsubsection.7.2.2}%
+\contentsline {subsection}{\numberline {7.3}FIFO}{36}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Etat Interne}{36}{subsection.7.4}%
+\contentsline {section}{\numberline {8}Simulation des fonctions}{39}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Interface Microprocesseur}{39}{subsection.8.1}%
+\contentsline {subsubsection}{\numberline {8.1.1}Déclarations et signaux}{39}{subsubsection.8.1.1}%
+\contentsline {subsubsection}{\numberline {8.1.2}Instanciation du composant testé}{39}{subsubsection.8.1.2}%
+\contentsline {subsubsection}{\numberline {8.1.3}Environnement de test}{39}{subsubsection.8.1.3}%
+\contentsline {subsubsection}{\numberline {8.1.4}Stimuli supplémentaires}{40}{subsubsection.8.1.4}%
+\contentsline {subsubsection}{\numberline {8.1.5}Analyse du chronogramme de simulation}{40}{subsubsection.8.1.5}%
+\contentsline {subsection}{\numberline {8.2}Interface Reception LIN}{41}{subsection.8.2}%
+\contentsline {subsubsection}{\numberline {8.2.1}Déclarations et signaux}{41}{subsubsection.8.2.1}%
+\contentsline {subsubsection}{\numberline {8.2.2}Instanciation du composant testé}{41}{subsubsection.8.2.2}%
+\contentsline {subsubsection}{\numberline {8.2.3}Environnement de test}{41}{subsubsection.8.2.3}%
+\contentsline {subsubsection}{\numberline {8.2.4}Stimuli supplémentaires}{41}{subsubsection.8.2.4}%
+\contentsline {subsubsection}{\numberline {8.2.5}Analyse du chronogramme de simulation}{41}{subsubsection.8.2.5}%
+\contentsline {section}{\numberline {9}Synthèse des fonctions}{42}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Interface Microprocesseur}{42}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Interface Reception Trame}{44}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}FIFO}{45}{subsection.9.3}%
+\contentsline {subsection}{\numberline {9.4}EtatInterne}{45}{subsection.9.4}%
+\contentsline {subsection}{\numberline {9.5}Reception LIN}{45}{subsection.9.5}%
+\contentsline {section}{\numberline {10}Routages des Fonctions }{46}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Interface Microprocesseur}{46}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Interface Reception Lin}{50}{subsection.10.2}%
+\contentsline {section}{\numberline {11}Conclusion}{54}{section.11}%
+\contentsline {section}{\numberline {12}Annexes}{55}{section.12}%
+\contentsline {subsection}{\numberline {12.1}Testbench InterfaceMicroprocesseur}{55}{subsection.12.1}%
