@@ -82,3 +82,152 @@ physiques} disponibles dans le FPGA, notamment :
 
 Grâce à cette conversion, le design passe d’une \textbf{représentation abstraite de la logique} à une \textbf{implémentation matérielle concrète}, optimisée pour le FPGA cible. Cela permet non seulement de visualiser l’organisation physique des composants.
 \newline
+
+\subsection{Interface Reception Trame}
+
+Comme pour l’Interface Microprocesseur, nous avons le schéma RTL de l’Interface Reception Trame. 
+Celui ci représente la machine squénce finie implémentée dans le FPGA. Celui ci nous permet de
+visualiser les différents registres, multiplexeurs et portes logiques utilisés pour la conception de cette machine.
+\newline
+
+Voici le schéma RTL de l’Interface Reception Trame :
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\begin{figure}[H]
+%    \centering
+%    \includegraphics[width=0.9\linewidth]{images/Synthe/RTL_Shematic_IRT.png}
+%    \caption{Schéma RTL InterfaceReceptionTrame}
+%    \label{fig:RTL_Shematic_IRT}
+%\end{figure}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{Structure générale}
+Le schéma peut être décomposé en plusieurs parties :
+\begin{itemize}
+    \item \textbf{Entrées principales} : signaux tels que 
+    \texttt{LIN}, \texttt{SeldADR}, \texttt{nCLR}, \texttt{H}, etc.
+    \item \textbf{Registres (Flip-Flops D)} : éléments synchronisés par l’horloge, 
+    servant à mémoriser l’état interne du circuit.
+    \item \textbf{Multiplexeurs (MUX)} : permettent de sélectionner une donnée 
+    parmi plusieurs, selon les conditions de contrôle.
+    \item \textbf{Logique combinatoire} : réalisée par des portes AND, OR, NOT 
+    et XOR, afin de générer les conditions de transition et les sorties.
+    \item \textbf{Sorties} : plusieurs signaux de sortie pour la FIFO et l'EtatInterne.
+\end{itemize}
+
+\subsection*{Fonctionnement global}
+
+Nous pouvons retrouver la partie opérative dessinée en classe, lors de nos TD, celle ci contenant, des multiplexeurs et des portes logiques,
+ainsi que des compteurs/décompteurs.
+\newline
+
+Voici la partie opérative de l’Interface Reception Trame :
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\begin{figure}[H]
+%    \centering
+%    \includegraphics[width=0.9\linewidth]{images/Synthe/ZOOM_1_RTL_Shematic_RTL.png}
+%    \caption{Schéma RTL InterfaceReceptionTrame}
+%    \label{fig:ZOOM_1_RTL_Shematic_RTL}
+%\end{figure}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+A la suite nous obtenons la synthese matérielle qui nous permet de visualiser les ressources matérielles utilisées pour la conception de cette machine.
+\newline
+
+Voici la synthese matérielle de l’Interface Reception Trame :
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\begin{figure}[H]
+%    \centering
+%    \includegraphics[width=0.9\linewidth]{images/Synthe/ZOOM_1_RTL_Shematic_RTL.png}
+%    \caption{Schéma RTL InterfaceReceptionTrame}
+%    \label{fig:ZOOM_1_RTL_Shematic_RTL}
+%\end{figure}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Comme pour l’Interface Microprocesseur, cette transformation consiste à mapper les éléments logiques du schéma RTL, tels que les portes 
+\textbf{ AND, OR, NOT} ou les \textbf{multiplexeurs}, sur les \textbf{ressources matérielles 
+physiques} disponibles dans le FPGA, notamment :    
+\newline
+
+\begin{itemize}
+    \item \textbf{LUT (Look-Up Tables)} : les fonctions combinatoires, comme les portes logiques ou les multiplexeurs, sont réalisées à l’aide de LUT. Chaque LUT peut implémenter n’importe quelle fonction booléenne sur un nombre limité d’entrées, ce qui permet de reproduire fidèlement la logique définie dans le HDL.
+    \item \textbf{Flip-flops} : les éléments séquentiels tels que les registres ou les bascules sont mappés sur des flip-flops pour stocker les bits et synchroniser les signaux dans le temps.
+    \item \textbf{Buffers} : certains chemins logiques nécessitent des buffers pour renforcer les signaux ou adapter les niveaux électriques, garantissant ainsi la stabilité et l’intégrité du routage sur la puce
+\end{itemize}
+
+\subsection{FIFO}
+
+Comme pour les deux autres modules, nous avons le schéma RTL de la FIFO : 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\begin{figure}[H]
+%    \centering
+%    \includegraphics[width=0.9\linewidth]{images/Synthe/RTL_Shematic_FIFO.png}
+%    \caption{Schéma RTL FIFO}
+%    \label{fig:RTL_Shematic_FIFO}
+%\end{figure}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{EtatInterne}
+
+Comme pour les deux autres modules, nous avons le schéma RTL de la EtatInterne : 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\begin{figure}[H]
+%    \centering
+%    \includegraphics[width=0.9\linewidth]{images/Synthe/RTL_Shematic_ETAT.png}
+%    \caption{Schéma RTL EtatInterne}
+%    \label{fig:RTL_Shematic_ETAT}
+%\end{figure}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Dans celui ci nous pouvons observer les différents registres, multiplexeurs et portes logiques utilisés pour la conception de cette machine.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\begin{figure}[H]
+%    \centering
+%    \includegraphics[width=0.9\linewidth]{images/Synthe/ZOOM_1_RTL_Shematic_EtatInterne.png}
+%    \caption{Schéma RTL EtatInterne}
+%    \label{fig:RTL_Shematic_EtatInterne}
+%\end{figure}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Nous observons une bascule D qui permet de socket l'erreur de bit Synchro, comme vu dans la partie TD.
+
+\subsection{Reception LIN}
+
+A la suite nous avons décider d'observer le schéma RTL de la Reception LIN, celui ci regroupans tous les systemes précédents.
+Dans ce schéma nous allons retrouver les différents blocs que nous avons synthétisé précédemment, à savoir :
+\begin{itemize}
+    \item Interface Microprocesseur
+    \item Interface Reception Trame
+    \item FIFO
+    \item EtatInterne
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\begin{figure}[H]
+%    \centering
+%    \includegraphics[width=0.9\linewidth]{images/Synthe_RTL_Shematic_Reception.png}
+%    \caption{Schéma RTL Reception LIN}
+%    \label{fig:RTL_Shematic_Reception}
+%\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Ce schéma nous permet d'observer toute les ressources logiques utilisées pour la conception de notre projet. 
+\newline

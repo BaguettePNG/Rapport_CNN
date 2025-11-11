@@ -40,8 +40,13 @@
 \contentsline {subsubsection}{\numberline {8.2.5}Analyse du chronogramme de simulation}{40}{subsubsection.8.2.5}%
 \contentsline {section}{\numberline {9}Synthèse des fonctions}{41}{section.9}%
 \contentsline {subsection}{\numberline {9.1}Interface Microprocesseur}{41}{subsection.9.1}%
-\contentsline {section}{\numberline {10}Routages des Fonctions }{44}{section.10}%
-\contentsline {subsection}{\numberline {10.1}Interface Microprocesseur}{44}{subsection.10.1}%
-\contentsline {section}{\numberline {11}Conclusion}{48}{section.11}%
-\contentsline {section}{\numberline {12}Annexes}{49}{section.12}%
-\contentsline {subsection}{\numberline {12.1}Testbench InterfaceMicroprocesseur}{49}{subsection.12.1}%
+\contentsline {subsection}{\numberline {9.2}Interface Reception Trame}{43}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}FIFO}{44}{subsection.9.3}%
+\contentsline {subsection}{\numberline {9.4}EtatInterne}{44}{subsection.9.4}%
+\contentsline {subsection}{\numberline {9.5}Reception LIN}{44}{subsection.9.5}%
+\contentsline {section}{\numberline {10}Routages des Fonctions }{45}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Interface Microprocesseur}{45}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Interface Reception Lin}{49}{subsection.10.2}%
+\contentsline {section}{\numberline {11}Conclusion}{53}{section.11}%
+\contentsline {section}{\numberline {12}Annexes}{54}{section.12}%
+\contentsline {subsection}{\numberline {12.1}Testbench InterfaceMicroprocesseur}{54}{subsection.12.1}%

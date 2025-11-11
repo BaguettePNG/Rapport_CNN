@@ -156,3 +156,78 @@ En résumé, la conception suit une progression en trois étapes :
 Cette approche permet de passer d'une description abstraite en langage HDL à une implémentation matérielle 
 concrète, où chaque fonction logique est traduite en ressources physiques. 
 Vivado fournit alors une vision globale et détaillée du FPGA, allant de la logique combinatoire jusqu'au câblage interne des composants.
+
+\subsection{Interface Reception Lin}
+
+Cette Phase n'étant pas réellement necessaire pour la validation du projet, nous avans décider de juste de faire l'implémentation du projet global, et non de montrer les ressources de chacune des sections.
+\newline
+
+Donc comme l'interface microprocesseur, nous avons fait l'implémentation de l'interface de réception LIN ( global ) et voici le résultat du routage :
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{images/Routage/impl_schematic_recadre.pdf}
+    \caption{Schéma Implémentation Matérielle Reception LIN}
+    \label{fig:Impl_RTL_Shematic_Reception}
+\end{figure}
+
+
+Dans celui ci, nous pouvons observer les différentes ressources matérielles utilisées pour l'implémentation de l'interface de réception LIN.
+notamment les LUTs, les Flip-Flops, et les autres composants logiques.
+\newline
+
+Ce schéma étant dense et complexe, nous n'allons pas détailler chaque partie, mais il illustre bien comment les ressources matérielles sont utilisées pour réaliser les fonctions de l'interface de réception LIN.
+Voici un exemple de LUT retrouvée dans le routage de l'interface de réception Trame : 
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{images/Routage/ZOOM_Imple.png}
+    \caption{Schéma Implémentation Matérielle Reception LIN Zoom 1}
+    \label{fig:Impl_ZOOM_1_RTL_Shematic_Reception}
+\end{figure}
+
+
+Dans ce zoom, nous pouvons voir une LUT spécifique utilisée dans le routage de l'interface de réception LIN. La présentation d'un LUT est plus détaillée 
+dans la section précédente.
+\newline
+
+Voici également le routage global de l'interface de réception LIN sur le FPGA :
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{images/Routage/RoutageFinal.png}
+    \caption{Slice du FPGA après routage de l'interface de réception LIN}
+    \label{fig:Routage_Shematic_Reception}
+\end{figure}
+
+
+Pareillement, cette représentation étant dense, nous n'allons pas détailler chaque partie, mais elle illustre comment les ressources matérielles sont utilisées pour réaliser les fonctions de l'interface de réception LIN.
+\newline
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{images/Routage/RoutageFinal_Zoom.png}
+    \caption{Slice du FPGA après routage de l'interface de réception LIN - Zoom sur Zone 0}
+    \label{fig:Routage_ZOOM_1_Shematic_Reception}
+\end{figure}
+
+A la fin du projet nous avons la possibilité de voir l'utilisation des ressources du FPGA par Vivado.
+
+\begin{table}[h!]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|c|c|c|c|c|c|}
+\hline
+\textbf{Name} & \textbf{Slice LUTs (20800)} & \textbf{Slice Registers (41600)} & 
+\textbf{Slice (8150)} & \textbf{LUT as Logic (20800)} & 
+\textbf{Bonded IOB (106)} & \textbf{BUFCTRL (32)} \\ \hline
+RecepteurLin & 140 & 132 & 55 & 140 & 15 & 1 \\ \hline
+\end{tabular}%
+}
+\caption{Utilisation des ressources FPGA pour le module \texttt{RecepteurLin}}
+\label{tab:recepteurlin}
+\end{table}
+

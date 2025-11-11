@@ -29,9 +29,13 @@
 \contentsline {figure}{\numberline {28}{\ignorespaces Schéma RTL InterfaceMicroprocesseur}}{41}{figure.caption.31}%
 \contentsline {figure}{\numberline {29}{\ignorespaces Partie opérative avec multiplexeur et Tristate : InterfaceMicroprocesseur}}{42}{figure.caption.32}%
 \contentsline {figure}{\numberline {30}{\ignorespaces Synthese matérielle InterfaceMicroprocesseur}}{42}{figure.caption.33}%
-\contentsline {figure}{\numberline {31}{\ignorespaces Synthèse matérielle Vivado}}{44}{figure.caption.34}%
-\contentsline {figure}{\numberline {32}{\ignorespaces Illustration d'une LUT et de sa table de vérité}}{45}{figure.caption.35}%
-\contentsline {figure}{\numberline {33}{\ignorespaces Synthèse Logique Vivado}}{45}{figure.caption.36}%
-\contentsline {figure}{\numberline {34}{\ignorespaces Slice du FPGA après routage}}{46}{figure.caption.37}%
-\contentsline {figure}{\numberline {35}{\ignorespaces Vue du système routé et des buffers associés sur le FPGA}}{47}{figure.caption.38}%
-\contentsline {figure}{\numberline {36}{\ignorespaces Exemple de routage d'une LUT3 dans le FPGA}}{47}{figure.caption.39}%
+\contentsline {figure}{\numberline {31}{\ignorespaces Synthèse matérielle Vivado}}{45}{figure.caption.34}%
+\contentsline {figure}{\numberline {32}{\ignorespaces Illustration d'une LUT et de sa table de vérité}}{46}{figure.caption.35}%
+\contentsline {figure}{\numberline {33}{\ignorespaces Synthèse Logique Vivado}}{46}{figure.caption.36}%
+\contentsline {figure}{\numberline {34}{\ignorespaces Slice du FPGA après routage}}{47}{figure.caption.37}%
+\contentsline {figure}{\numberline {35}{\ignorespaces Vue du système routé et des buffers associés sur le FPGA}}{48}{figure.caption.38}%
+\contentsline {figure}{\numberline {36}{\ignorespaces Exemple de routage d'une LUT3 dans le FPGA}}{48}{figure.caption.39}%
+\contentsline {figure}{\numberline {37}{\ignorespaces Schéma Implémentation Matérielle Reception LIN}}{49}{figure.caption.40}%
+\contentsline {figure}{\numberline {38}{\ignorespaces Schéma Implémentation Matérielle Reception LIN Zoom 1}}{50}{figure.caption.41}%
+\contentsline {figure}{\numberline {39}{\ignorespaces Slice du FPGA après routage de l'interface de réception LIN}}{51}{figure.caption.42}%
+\contentsline {figure}{\numberline {40}{\ignorespaces Slice du FPGA après routage de l'interface de réception LIN - Zoom sur Zone 0}}{52}{figure.caption.43}%
