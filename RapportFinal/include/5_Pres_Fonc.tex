@@ -15,6 +15,32 @@ rigoureusement la structure des blocs : réseau combinatoire d’entrée, résea
 et registres correspondant à la machine à états.
 \newline
 
+Voici le tableau récapitulant les entrées et sorties du bloc Interface Microprocesseur complet :
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l||c|l|}
+\hline
+\textbf{Signal} & \textbf{Direction} & \textbf{Type} \\ \hline
+Cnd        & IN     & std\_logic \\ \hline
+EtatLu     & IN     & std\_logic\_vector(7 DOWNTO 0) \\ \hline
+H          & IN     & std\_logic \\ \hline
+OctetLu    & IN     & std\_logic\_vector(7 DOWNTO 0) \\ \hline
+RnW        & IN     & std\_logic \\ \hline
+nCS        & IN     & std\_logic \\ \hline
+nRST       & IN     & std\_logic \\ \hline
+DecNbOctet & OUT    & std\_logic \\ \hline
+EtatLu\_RST & OUT   & std\_logic \\ \hline
+M\_Received & OUT   & std\_logic \\ \hline
+OctetLu\_RD & OUT   & std\_logic \\ \hline
+SelAdr     & OUT    & std\_logic\_vector(7 DOWNTO 0) \\ \hline
+D07        & INOUT  & std\_logic\_vector(7 DOWNTO 0) \\ \hline
+\end{tabular}
+\caption{Signaux du module \texttt{Interface Microprocesseur}}
+\label{tab:signaux_recepteurlin}
+\end{table}
+
+
 \subsubsection{Synchronisation des Entrées}
 
 \begin{lstlisting}[style=VHDLStyle, caption={Reseau Cominatoire d'entrée}]
@@ -147,29 +173,6 @@ L’interface de réception LIN a été étudiée sous la forme d’une machine 
 La partie opérative est développée sous la forme d’un schéma fonctionnel comprenant différents blocs tels que des multiplexeurs et des compteurs/décompteurs.
 La partie commande, quant à elle, a été modélisée sous la forme d’un automate, traduit en machine de Moore, puis implémenté en VHDL.
 
-Voici un tableau recapitulant les entrées et les sorties du bloc Repetion LIN complet : 
-\newline
-
-\begin{center}
-\renewcommand{\arraystretch}{1.2} % espace vertical
-\small % pour uniformiser la taille du texte
-    \begin{tabularx}{\textwidth}{|c||c|c|X|}
-     \hline			
-       \textbf{Signaux} & \textbf{Mode} & \textbf{Type} & \textbf{Description}  \\ \hline 
-       LIN & IN & \texttt{STD\_LOGIC} & Bus de données d'entrée \\
-       SelAdr & IN & \texttt{STD\_LOGIC\_VECTOR(7 DOWNTO 0)} & Sélection Adrress Composant \\
-       OctetRecu & OUT & \texttt{STD\_LOGIC\_VECTOR(7 DOWNTO 0)} & Bus de données de sortie \\
-       OctetRecu\_WR & OUT & \texttt{STD\_LOGIC} & Read / Write opération \\
-       OctetRecu\_RST & OUT & \texttt{STD\_LOGIC} & Réinitialisation des données reçues \\
-       Erreur\_Start & OUT & \texttt{STD\_LOGIC} & Bit d'erreur de Start \\
-       Erreur\_Stop & OUT & \texttt{STD\_LOGIC} & Bit d'erreur de Stop\\
-       Erreur\_SynchroBreak & OUT & \texttt{STD\_LOGIC} & Bit d'erreur de Synchro Break\\
-       IncNbOctet & OUT & \texttt{STD\_LOGIC} & Flag de reception pour lecture \\
-       MessageReceived\_SET & OUT & \texttt{STD\_LOGIC} & Indicateur de trame reçue \\
-       NbOctetRecu\_RST & OUT & \texttt{STD\_LOGIC} & Réinitialisation du compteur d'octets \\
-     \hline  
-    \end{tabularx}
-\end{center}
 
 \subsubsection{Partie opérative}
 
@@ -204,45 +207,37 @@ Voici la table de vérité associée :
 
 Voici aussi le tableau des entrées et sorties de la partie opérative : 
 
-\begin{center}
-\renewcommand{\arraystretch}{1.2} % espace vertical
-\small % pour uniformiser la taille du texte
-\begin{tabularx}{\textwidth}{|c||c|c|X|}
-\hline			
-\textbf{Signaux} & \textbf{Mode} & \textbf{Type} & \textbf{Description}  \\ 
-\hline \hline
-
-H & IN & \texttt{STD\_LOGIC} & Horloge principale du système. \\ 
-Identifier & IN & \texttt{STD\_LOGIC\_VECTOR(7 DOWNTO 0)} & Identifiant du message reçu à comparer avec l’adresse sélectionnée. \\ 
-LinSynchro & IN & \texttt{STD\_LOGIC} & Signal de synchronisation de trame LIN. \\ 
-NbTbit\_0 & IN & \texttt{STD\_LOGIC} & Bit de configuration du nombre de bits de trame. \\ 
-NbDataField\_0 & IN & \texttt{STD\_LOGIC} & Bit de configuration du nombre d’octets de données dans le champ Data. \\ 
-SelAdr & IN & \texttt{STD\_LOGIC\_VECTOR(7 DOWNTO 0)} & Sélection de l’adresse du composant (comparée à Identifier). \\ 
-nCLR & IN & \texttt{STD\_LOGIC} & Signal de réinitialisation asynchrone active à l’état bas. \\ 
-n\_0 & IN & \texttt{STD\_LOGIC} & Signal de contrôle interne (sélection ou validation). \\ 
-Error\_Start & OUT & \texttt{STD\_LOGIC} & Bit d’erreur sur le champ Start. \\ 
-Error\_Stop & OUT & \texttt{STD\_LOGIC} & Bit d’erreur sur le champ Stop. \\ 
-Error\_Synchro & OUT & \texttt{STD\_LOGIC} & Bit d’erreur de synchronisation (Synchro Break). \\ 
-Identifieur\_en & OUT & \texttt{STD\_LOGIC} & Validation de l’identifiant reçu. \\ 
-IncNbOctet & OUT & \texttt{STD\_LOGIC} & Incrémentation du compteur d’octets reçus. \\ 
-MessageReceiveSet & OUT & \texttt{STD\_LOGIC} & Indique qu’une trame complète a été reçue. \\ 
-NbDataField\_EN & OUT & \texttt{STD\_LOGIC} & Activation du champ de données (Data Field). \\ 
-NbDataField\_load & OUT & \texttt{STD\_LOGIC} & Chargement du nombre d’octets de données. \\ 
-NbOctetRecu\_RST & OUT & \texttt{STD\_LOGIC} & Réinitialisation du compteur d’octets reçus. \\ 
-OctetRecu\_RST & OUT & \texttt{STD\_LOGIC} & Réinitialisation du registre d’octet reçu. \\ 
-OctetRecu\_WR & OUT & \texttt{STD\_LOGIC} & Signal d’écriture de l’octet reçu. \\ 
-OctetRecu\_en & OUT & \texttt{STD\_LOGIC} & Validation du registre d’octet reçu. \\ 
-n\_Tbit\_Load & OUT & \texttt{STD\_LOGIC} & Chargement du registre associé au Tbit. \\ 
-n\_Tbit\_en & OUT & \texttt{STD\_LOGIC} & Activation du registre Tbit. \\ 
-n\_Tbit\_select & OUT & \texttt{STD\_LOGIC} & Sélection de la source ou mode du Tbit. \\ 
-n\_en & OUT & \texttt{STD\_LOGIC} & Activation du signal ou compteur “n”. \\ 
-n\_load & OUT & \texttt{STD\_LOGIC} & Chargement de la valeur “n”. \\ 
-n\_select & OUT & \texttt{STD\_LOGIC} & Sélection de la source du signal “n”. \\ 
+\begin{table}[H]
+\centering
+\begin{tabular}{|l||c|l|}
 \hline
-
-\end{tabularx}
-\end{center}
-
+\textbf{Signal} & \textbf{Direction} & \textbf{Type} \\ \hline
+H                  & IN     & std\_logic \\ \hline
+Identifien\_EN     & IN     & std\_logic \\ \hline
+LIN                & IN     & std\_logic \\ \hline
+NbBit\_EN          & IN     & std\_logic \\ \hline
+NbBit\_LOAD        & IN     & std\_logic \\ \hline
+NbBit\_SELECT      & IN     & std\_logic \\ \hline
+NbDataField\_EN    & IN     & std\_logic \\ \hline
+NbDataField\_Load  & IN     & std\_logic \\ \hline
+OctetRecu\_EN      & IN     & std\_logic \\ \hline
+nCLR               & IN     & std\_logic \\ \hline
+n\_EN              & IN     & std\_logic \\ \hline
+n\_LOAD            & IN     & std\_logic \\ \hline
+n\_SELECT          & IN     & std\_logic \\ \hline
+Identifieur        & OUT    & std\_logic\_vector(7 DOWNTO 0) \\ \hline
+LinSynchro         & OUT    & std\_logic \\ \hline
+NbDataField        & OUT    & std\_logic\_vector(2 DOWNTO 0) \\ \hline
+NbDataField\_0     & OUT    & std\_logic \\ \hline
+NbTBit\_0          & OUT    & std\_logic \\ \hline
+NbTbit             & OUT    & std\_logic\_vector(3 DOWNTO 0) \\ \hline
+OctetRecu          & OUT    & std\_logic\_vector(7 DOWNTO 0) \\ \hline
+n                  & OUT    & std\_logic\_vector(11 DOWNTO 0) \\ \hline
+n\_0               & OUT    & std\_logic \\ \hline
+\end{tabular}
+\caption{Signaux du module (partie opérative de réception LIN)}
+\label{tab:signaux_lin}
+\end{table}
 
 \subsubsection{Partie Commande}
 
@@ -727,6 +722,45 @@ Chaque état de l’automate est géré dans une structure \texttt{CASE}, avec d
 Des valeurs par défaut sont également définies au début du processus pour éviter des comportements indésirlés.  
 \newline
 
+Voici un tableau recapitulant les entrées et les sorties du bloc Repetion LIN partie commande : 
+\newline
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l||c|l|}
+\hline
+\textbf{Signal} & \textbf{Direction} & \textbf{Type} \\ \hline
+H                 & IN     & std\_logic \\ \hline
+Identifier        & IN     & std\_logic\_vector(7 DOWNTO 0) \\ \hline
+LinSynchro        & IN     & std\_logic \\ \hline
+NbTbit\_0         & IN     & std\_logic \\ \hline
+NbDataField\_0     & IN     & std\_logic \\ \hline
+SelAdr            & IN     & std\_logic\_vector(7 DOWNTO 0) \\ \hline
+nCLR              & IN     & std\_logic \\ \hline
+n\_0              & IN     & std\_logic \\ \hline
+Error\_Start       & OUT    & std\_logic \\ \hline
+Error\_Stop        & OUT    & std\_logic \\ \hline
+Error\_Synchro     & OUT    & std\_logic \\ \hline
+Identifieur\_en    & OUT    & std\_logic \\ \hline
+IncNbOctet         & OUT    & std\_logic \\ \hline
+MessageReceiveSet  & OUT    & std\_logic \\ \hline
+NbDataField\_EN    & OUT    & std\_logic \\ \hline
+NbDataField\_load  & OUT    & std\_logic \\ \hline
+NbOcyeyRecu\_RST   & OUT    & std\_logic \\ \hline
+OctetRecu\_RST     & OUT    & std\_logic \\ \hline
+OctetRecu\_WR      & OUT    & std\_logic \\ \hline
+OctetRecu\_en      & OUT    & std\_logic \\ \hline
+n\_Tbit\_Load       & OUT    & std\_logic \\ \hline
+n\_Tbit\_en         & OUT    & std\_logic \\ \hline
+n\_Tbit\_select     & OUT    & std\_logic \\ \hline
+n\_en              & OUT    & std\_logic \\ \hline
+n\_load            & OUT    & std\_logic \\ \hline
+n\_select          & OUT    & std\_logic \\ \hline
+\end{tabular}
+\caption{Signaux du module (partie commande de réception LIN)}
+\label{tab:signaux_lin_reception}
+\end{table}
+
 Une fois ces processus implémentés, il nous reste qu'a les assemblés pour ne formé qu'une machine Complete.
 \newline
 
@@ -739,6 +773,34 @@ Une fois ces processus implémentés, il nous reste qu'a les assemblés pour ne 
 
 Le schéma complet de l’interface de réception LIN est présenté ci-dessus, illustrant l’intégration des différentes parties opératives et commandes ( Répresentant la machine séquentielle ).
 \newline
+
+Voici le tableau des entrées et sorties du bloc Repetion LIN complet :
+\newline
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l||c|l|}
+\hline
+\textbf{Signal} & \textbf{Direction} & \textbf{Type} \\ \hline
+H                  & IN     & std\_logic \\ \hline
+Lin                & IN     & std\_logic \\ \hline
+SelAdr             & IN     & std\_logic\_vector(7 DOWNTO 0) \\ \hline
+nCLR               & IN     & std\_logic \\ \hline
+Error\_Start       & OUT    & std\_logic \\ \hline
+Error\_Stop        & OUT    & std\_logic \\ \hline
+Error\_Synchro     & OUT    & std\_logic \\ \hline
+IncNbOctet         & OUT    & std\_logic \\ \hline
+MessageReceiveSet  & OUT    & std\_logic \\ \hline
+NbOcyeyRecu\_RST   & OUT    & std\_logic \\ \hline
+OctetRecu          & OUT    & std\_logic\_vector(7 DOWNTO 0) \\ \hline
+OctetRecu\_RST     & OUT    & std\_logic \\ \hline
+OctetRecu\_WR      & OUT    & std\_logic \\ \hline
+\end{tabular}
+\caption{Signaux du module (partie réception LIN)}
+\label{tab:signaux_lin_reception2}
+\end{table}
+
+
 
 \subsection{FIFO}
 
@@ -753,6 +815,27 @@ Cette section à été réaliser sur un schéma blocs, en reprenant les concepts
     \caption{Schéma bloc FIFO}
     \label{fig:placeholder}
 \end{figure}
+
+Voici le tableau des entrées et sorties du bloc FIFO :
+\newline
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l||c|l|}
+\hline
+\textbf{Signal} & \textbf{Direction} & \textbf{Type} \\ \hline
+H              & IN     & std\_logic \\ \hline
+OctetLu\_RD    & IN     & std\_logic \\ \hline
+OctetRecu      & IN     & std\_logic\_vector(7 DOWNTO 0) \\ \hline
+OctetRecu\_RST & IN     & std\_logic \\ \hline
+OctetRecu\_WR  & IN     & std\_logic \\ \hline
+nCLR           & IN     & std\_logic \\ \hline
+OctetLu        & OUT    & std\_logic\_vector(7 DOWNTO 0) \\ \hline
+\end{tabular}
+\caption{Signaux du module (lecture des octets LIN)}
+\label{tab:signaux_lin_octetlu}
+\end{table}
+
 
 \subsection{Etat Interne}
 
@@ -787,3 +870,40 @@ Le module de Decode présent avant le compteur/decompteur permet de savoir si il
 \end{tabularx}
 \end{center}
 
+Voici le tableau des entrées et sorties du bloc Etat Interne :
+\newline
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l||c|l|}
+\hline
+\textbf{Signal} & \textbf{Direction} & \textbf{Type} \\ \hline
+ErrorStart          & IN     & std\_logic \\ \hline
+ErrorStop           & IN     & std\_logic \\ \hline
+ErrorSynchro        & IN     & std\_logic \\ \hline
+H                   & IN     & std\_logic \\ \hline
+MessageReceive\_SET & IN     & std\_logic \\ \hline
+NbTbitDec           & IN     & std\_logic \\ \hline
+NbTbitInc           & IN     & std\_logic \\ \hline
+NbTbit\_RST         & IN     & std\_logic \\ \hline
+ReadStatus\_RST     & IN     & std\_logic \\ \hline
+nCLR                & IN     & std\_logic \\ \hline
+EtatLu              & OUT    & std\_logic\_vector(7 DOWNTO 0) \\ \hline
+\end{tabular}
+\caption{Signaux du module (lecture de l'état LIN)}
+\label{tab:signaux_lin_etatlu}
+\end{table}
+
+\subsection{Réception LIN Complete}
+
+Après avoir développé les différentes parties du système de réception LIN, nous procédons à l’intégration de ces composants pour former une unité cohérente et fonctionnelle.
+\newline
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{images/presen/RecepteurLIN.png}
+    \caption{Schéma bloc Réception LIN Complete}
+    \label{fig:placeholder}
+\end{figure}
+
+On retrouve les différentes parties vues précédemment, à savoir l’interface de réception LIN, la mémoire FIFO et le module d’état interne.

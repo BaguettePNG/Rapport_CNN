@@ -2,115 +2,104 @@
 
 \subsection*{Objectif}
 
-Les spécifications ont pour objectif de définir le comportement attendu du système, c’est-à-dire 
-\textbf{ce que le circuit doit faire} en réponse au cahier des charges. 
-Elles constituent une description \textbf{fonctionnelle} du système, exprimée du point de vue de son 
-\textbf{environnement} — c’est-à-dire de tout ce qui interagit avec lui, sans se soucier de son 
-implémentation interne.
+Les spécifications ont pour objectif de définir le comportement attendu du système, autrement dit, 
+ce qui doit être réalisé en réponse au cahier des charges. Elles constituent l'expression formelle 
+des besoins fonctionnels, en se plaçant du point de vue de l'environnement du système,
+c'est-à-dire, tout ce qui est externe au circuit mais interagit avec lui.
+\newline
 
-\medskip
+La phase de spécification représente la première étape de la conception d'un circuit. Elle adopte
+une approche boîte noire : on s'intéresse uniquement à ce que le système doit faire, sans se 
+préoccuper des solutions techniques internes ni du comment il fonctionnera. Les spécifications 
+sont donc indépendantes de la technologie utilisée.
+\newline
 
-Cette phase correspond au \textbf{niveau de spécification fonctionnelle} dans le diagramme en Y. 
-Elle adopte une approche \textbf{boîte noire}, centrée sur les entrées et sorties observables, 
-indépendamment de toute considération technologique (langage, type logique, fréquence, etc.).
+Au départ, nous avions pour indication de créer un bloc capable de communiquer à la fois avec 
+le système de trame LIN et avec le microcontrôleur. Afin de simplifier notre étude et nos 
+spécifications, nous avons choisi de diviser le système en deux parties : la réception de 
+trame, qui se chargera de gérer la réception des données octet par octet, et un autre bloc dédié à 
+la communication avec le microcontrôleur.
+\newline
 
-\medskip
-
-Le cahier des charges indique que le circuit doit pouvoir \textbf{communiquer à la fois avec le système 
-de trame LIN et avec un microcontrôleur}. 
-Afin de clarifier les fonctions du système, nous avons choisi de le \textbf{décomposer en deux sous-blocs principaux} :
-\begin{itemize}
-    \item un bloc de \textbf{réception de trame LIN}, chargé de décoder et de stocker les données reçues ;
-    \item un bloc d’\textbf{interface microprocesseur}, permettant l’échange de données et de signaux de contrôle avec le microcontrôleur.
-\end{itemize}
-
+% Feuille 1 NOLAN 
 \begin{figure}[H]
    \centering
    \includegraphics[width=0.8\linewidth]{images/CDC/Schema_cdc_final.pdf}
-   \caption{Description fonctionnelle du circuit à concevoir}
+   \caption{Descetip au circuit à concevoir}
    \label{fig:placeholder}
 \end{figure}
+    
 
 \subsection{Interface Microprocesseur}
 
-Ce sous-système permet la communication entre le circuit et le microprocesseur.  
-Les signaux décrits ici représentent les \textbf{flux d’informations échangés} (données, commandes, synchronisation, validation), 
-sans spécifier leur codage logique ni leur type de signal électrique.
+D'après les données du cahier des charges, nous pouvons définir tous les signaux nécessaires pour 
+le système réception trame : 
 
 \begin{center}
-\renewcommand{\arraystretch}{1.2}
-\small
+\renewcommand{\arraystretch}{1.2} % espace vertical
+\small % pour uniformiser la taille du texte
 \begin{tabularx}{\textwidth}{|c||c|c|X|}
     \hline			
-    \textbf{Signal} & \textbf{Sens} & \textbf{Nature} & \textbf{Rôle fonctionnel}  \\ \hline 
-    D\_BUS & Bidirectionnel & Données & Bus de transfert de données entre le microprocesseur et le circuit \\ 
-    CS & Entrée & Commande & Sélection du circuit (validation de la communication) \\ 
-    RW & Entrée & Commande & Indique une opération de lecture ou d’écriture \\ 
-    CD & Entrée & Commande & Sélectionne entre registre de commande et registre de données \\ 
-    RESET & Entrée & Commande & Réinitialisation du système \\ 
-    MSG\_RECEIVED & Sortie & Indicateur & Signal indiquant la fin de réception d’une trame \\ 
-    CLK & Entrée & Synchronisation & Signal d’horloge du système \\ 
+    \textbf{Signaux} & \textbf{Mode} & \textbf{Type} & \textbf{Description}  \\ \hline 
+    D07 & Bidirectionnel & \texttt{Données} & Bus de données \\
+    nCS & Entrée & \texttt{Commande} & Chip Select \\
+    RnW & Entrée & \texttt{Commande} & Operation Lecture / Ecriture \\
+    CnD & Entrée & \texttt{Commande} & Operation Contrôle / Données \\
+    nCLR & Entrée & \texttt{Commande} & Réinitialisation \\
+    M\_Received & Sortie & \texttt{Commande} & Fin de réception de la trame \\
+    H & Entrée & \texttt{Synchronisation} & Horloge \\
     \hline  
 \end{tabularx}
 \end{center}
 
-\subsection{Bloc Réception de Trame LIN}
 
-Ce bloc assure le \textbf{décodage séquentiel} des trames LIN reçues.  
-Il analyse le flux série provenant du bus LIN et extrait les octets de données en respectant la structure du protocole.
+\subsection{Reception Trame}
+
+D'après les données du cahier des charges, nous pouvons définir tous les signaux nécessaires pour le système interface Reception Trame : 
 
 \begin{center}
-\renewcommand{\arraystretch}{1.2}
-\small
+\renewcommand{\arraystretch}{1.2} % pour un peu plus d'espace vertical
+\small % pour uniformiser la taille du texte
 \begin{tabularx}{\textwidth}{|c||c|c|X|}
     \hline			
-    \textbf{Signal} & \textbf{Sens} & \textbf{Nature} & \textbf{Rôle fonctionnel}  \\ \hline 
-    LIN\_RX & Entrée & Données & Flux série reçu depuis le bus LIN \\ 
-    DATA\_OUT & Sortie & Données & Octet de données extrait et validé \\ 
-    VALID & Sortie & Indicateur & Indique la disponibilité d’un nouvel octet reçu \\ 
+    \textbf{Signaux} & \textbf{Mode} & \textbf{Type} & \textbf{Description}  \\ \hline 
+    LIN & Entrée & \texttt{Données} & Reception de la trame LIN \\
     \hline  
 \end{tabularx}
 \end{center}
 
-\subsection{Mémoire FIFO}
+\subsection{FIFO}
 
-Ce bloc a pour rôle de \textbf{stocker temporairement les octets reçus} avant leur transfert vers le microprocesseur.  
-Il fonctionne selon le principe « premier entré, premier sorti ».
+Pour le moment, nous savons qu'il s'agit d'un registre de stockage fonctionnant en mode FIFO, destiné à mémoriser les données de réception d'une trame LIN : 
 
 \begin{center}
-\renewcommand{\arraystretch}{1.2}
-\small
+\renewcommand{\arraystretch}{1.2} % pour un peu plus d'espace vertical
+\small % pour uniformiser la taille du texte
 \begin{tabularx}{\textwidth}{|c||c|c|X|}
     \hline
-    \textbf{Signal} & \textbf{Sens} & \textbf{Nature} & \textbf{Rôle fonctionnel} \\ \hline
-    DATA\_IN & Entrée & Données & Octet à mémoriser dans la file FIFO \\ 
-    DATA\_OUT & Sortie & Données & Octet extrait de la file FIFO \\ 
-    WRITE\_REQ & Entrée & Commande & Requête d’écriture (nouvelle donnée reçue) \\ 
-    READ\_REQ & Entrée & Commande & Requête de lecture (demande du microprocesseur) \\ 
-    EMPTY & Sortie & Indicateur & Indique que la FIFO est vide \\ 
-    FULL & Sortie & Indicateur & Indique que la FIFO est pleine \\ 
+    \textbf{Signaux} & \textbf{Mode} & \textbf{Type} & \textbf{Description} \\ \hline
+    OctetRecu & Entrée & \texttt{Données} & Signal Entrée \\
+    OctetLu & Sortie & \texttt{Données} & Signal Sortie \\
     \hline
 \end{tabularx}
 \end{center}
 
-\subsection{Registre d’État}
+\subsection{ETAT}
 
-Le registre d’état fournit une \textbf{synthèse du déroulement de la réception}.  
-Il conserve les informations nécessaires à la supervision ou au diagnostic 
-(erreurs détectées, nombre d’octets reçus, trame complète, etc.).
+Ce registre peut être considéré comme le registre de log de la trame. Grâce au cahier des charges, nous connaissons précisément ses fonctionnalités :
 
 \begin{center}
-\renewcommand{\arraystretch}{1.2}
-\small
+\renewcommand{\arraystretch}{1.2} % espace vertical
+\small % pour uniformiser la taille du texte
 \begin{tabularx}{\textwidth}{|c||c|c|X|}
     \hline			
-    \textbf{Signal} & \textbf{Sens} & \textbf{Nature} & \textbf{Rôle fonctionnel}  \\ \hline 
-    ERR\_START & Entrée & Indicateur & Erreur sur le bit de début de trame \\ 
-    ERR\_STOP & Entrée & Indicateur & Erreur sur le bit de fin de trame \\ 
-    ERR\_SYNC & Entrée & Indicateur & Erreur de synchronisation \\ 
-    BYTE\_COUNT & Entrée & Données & Nombre d’octets reçus dans la trame \\ 
-    FRAME\_VALID & Entrée & Indicateur & Validation de la réception complète \\ 
-    STATE\_OUT & Sortie & Données & Octet d’état global de la réception \\ 
+    \textbf{Signaux} & \textbf{Mode} & \textbf{Type} & \textbf{Description}  \\ \hline 
+    Erreur\_Start & Entrée & \texttt{Commande} & Bit d'erreur de Start \\
+    Erreur\_Stop & Entrée & \texttt{Commande} & Bit d'erreur de Stop \\
+    Erreur\_SynchroBreak & Entrée & \texttt{Commande} & Bit d'erreur de Synchro Break \\
+    NbOctetReceived & Entrée & \texttt{Données} & Nombre d'octets reçus \\
+    MessageReceived\_SET & Entrée & \texttt{Commande} & Indicateur de trame reçue \\
+    EtatLu & Sortie & \texttt{Données} & Octet d'information de la trame \\
     \hline  
 \end{tabularx}
 \end{center}

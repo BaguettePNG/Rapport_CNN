@@ -1,41 +1,18 @@
 \section{Conclusion}
 
-Pour ce premier rapport concernant le projet \textbf{Réception LIN} de conception de circuit numérique, 
-nous avons suivi plusieurs étapes successives afin de concevoir ce système.  
+Ce projet de \textbf{Réception LIN} en conception de circuit numérique nous a permis de mettre en œuvre une démarche complète, depuis l’analyse du cahier des charges jusqu’à l’implémentation finale sur FPGA.  
 
-Dans un premier temps, lors des séances de TD, nous avons décomposé notre étude en plusieurs parties afin de répondre au cahier des charges. 
-L’utilisation du \textbf{diagramme en Y} nous a permis d’analyser séparément chacune de ces étapes et de structurer notre démarche. 
+Au cours des différentes étapes, nous avons appliqué une méthodologie rigoureuse basée sur le \textbf{diagramme en Y}, ce qui nous a permis de structurer efficacement notre réflexion et de maîtriser chaque niveau de conception.  
 \newline
 
-La phase de \textbf{spécification fonctionnelle} nous a permis de définir l’ensemble des ressources 
-nécessaires, 
-en lien direct avec le cahier des charges, ainsi que le nombre de blocs et les signaux de base.  
+La phase de \textbf{spécification fonctionnelle} a défini les ressources nécessaires et les signaux principaux.  
+La \textbf{solution architecturale} a ensuite permis de modéliser clairement le système à l’aide de machines séquentielles (Moore et Mealy), en distinguant la partie commande et la partie opérative.  
+Cette approche a facilité l’écriture d’un code \textbf{VHDL clair, modulaire et cohérent}.  
 \newline
 
-Ensuite, la \textbf{solution architecturale} a permis de préciser chaque partie en les reliant à des 
-modèles connus 
-(machines séquentielles, machines de Moore ou machines de Mealy). 
-Cette étape a été essentielle pour découper notre système en une partie opérative et une partie commande :  
+Les phases de \textbf{simulation} et de \textbf{synthèse} ont confirmé la validité du fonctionnement logique et le bon découpage du système en ressources matérielles (LUT, bascules, multiplexeurs, etc.).  
+Enfin, l’\textbf{implémentation sur FPGA} a validé le fonctionnement global du récepteur LIN, en assurant le respect des contraintes temporelles et la conformité au cahier des charges.  
 \newline
 
-\begin{itemize}
-    \item la partie opérative a été conçue à partir de blocs logiques simples (multiplexeurs, bascules D, etc.) ;  
-    \item la partie commande a été décrite sous forme d’automates, associés à des machines de Moore ou de Mealy, 
-    afin d’obtenir une description claire et structurée.  
-\end{itemize}
-Cette méthodologie nous a permis d’écrire un code plus simple, lisible et cohérent.  
-
-La phase de \textbf{simulation} a ensuite validé le fonctionnement du système en stimulant les différents ports d’entrée 
-et en observant les sorties.  
-\newline
-
-La phase de \textbf{synthèse} nous a permis de vérifier la logique interne du système à travers les schémas RTL générés. 
-Ces schémas ont ensuite été exploités dans Vivado, qui a associé les différentes fonctions logiques aux \textbf{LUT}.  
-\newline
-
-Enfin, l’\textbf{implémentation} nous a donné accès au routage sur FPGA. 
-Cette étape a permis de vérifier concrètement l’affectation des ressources matérielles et le câblage interne du système.  
-\newline
-
-En conclusion, ce premier travail nous a permis de valider l’\textbf{interface microprocesseur}. 
-La suite du projet consistera à finaliser la conception complète du récepteur LIN afin de répondre à l’intégralité du cahier des charges.
+Ainsi, ce projet nous a permis de concevoir et de valider avec succès un système complet de \textbf{réception LIN}, pleinement opérationnel et prêt à être intégré dans un environnement embarqué.  
+Il nous a également apporté une meilleure maîtrise des outils de conception numérique (\textit{Vivado}, simulations \textit{VHDL}) et une compréhension approfondie du lien entre la modélisation logique et la réalisation matérielle.  

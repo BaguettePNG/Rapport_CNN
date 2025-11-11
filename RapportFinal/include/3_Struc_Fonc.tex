@@ -2,92 +2,161 @@
 
 \subsubsection*{Objectifs}
 
-Cette section présente l'organisation fonctionnelle du système et la répartition des rôles entre les différents sous-ensembles. Chaque bloc (réception de trame, mémoire FIFO, registre d'état, interface microprocesseur) est décrit dans sa fonction et ses interactions avec les autres.  
-L'objectif est de montrer comment les fonctionnalités définies lors de la spécification sont structurées logiquement pour répondre au cahier des charges, tout en restant indépendantes de toute technologie d'implémentation.
+Cette section présente l'organisation du système en blocs fonctionnels et décrit leurs 
+interactions. Chaque bloc (réception de trame, FIFO, registre d'état, interface microprocesseur) 
+est expliqué dans son rôle et sa contribution au fonctionnement global. L'objectif est de montrer 
+comment les fonctionnalités spécifiées sont réparties de manière logique pour répondre au cahier 
+des charges.
+\newline
+
+Dans cette section, nous établissons une structure fonctionnelle indépendante de la technologie.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{images/inter/Structure_Fonc_Circuit.pdf}
-    \caption{Représentation fonctionnelle des échanges entre l'émetteur LIN et le système à processeur}
-    \label{fig:structure_fonc}
+    \caption{Représentation des échanges avec les entités Émetteur LIN et Système à processeur}
+    \label{fig:placeholder}
 \end{figure}
 
-À ce stade, le système est structuré autour de deux blocs principaux :  
-l'interface microprocesseur et la réception des trames LIN.  
-Ces deux blocs communiquent via un bloc d'échange chargé d'assurer la cohérence des transferts d'informations et la coordination entre les différents registres internes.
+Pour le moment, nous nous sommes limités à deux blocs principaux : l'interface microprocesseur et 
+la réception des trames. Ces deux blocs sont connectés à un bloc d'échange, qui permet la 
+communication entre eux. Ce bloc assure l'interprétation des échanges avec le microprocesseur ainsi 
+que la gestion des deux registres de données.
+\newline
 
+% page 12
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{images/inter/Schema_base_circuit.pdf}
-    \caption{Structure fonctionnelle initiale du circuit après introduction des interfaces}
-    \label{fig:schema_base_circuit}
+    \caption{Solution fonctionnelle après introduction des interfaces LIN V1}
+    \label{fig:placeholder}
 \end{figure}
 
-Le comportement général peut être représenté par un automate de communication illustrant les échanges avec le processeur :
+Dans notre démarche d'optimisation du système, nous nous sommes rendu compte que le bloc d'échange 
+microprocesseur pouvait être intégré au bloc d'interface. Cela permettra de supprimer des signaux 
+supplémentaires, inutiles et encombrants.
+\newline
+
+%page 13
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/inter/Schema_avance_circuit.pdf}
+    \caption{Architecture du système de réception de trame LIN V2}
+    \label{fig:placeholder}
+\end{figure}
+
+Par la suite, nous avons décidé d'ajouter deux blocs de registres internes : le registre de stockage 
+des données de la trame LIN (FIFO) et le registre d'état interne (ETAT), qui permet de connaître les 
+informations sur l'état de la réception.
+\newline
+
+%page 16
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/inter/Schema_Final.pdf}
+    \caption{Description finale du circuit}
+    \label{fig:placeholder}
+\end{figure}
+
+Comme indiqué ci-dessus, dans le schéma de notre système global, nous avons décidé d'ajouter 
+certains signaux internes entre les blocs de registres et les interfaces.
+\newline
+
+\subsubsection{Interface Reception Trame}
+
+De même, nous pouvons représenter l'automate du système de réception de trame LIN :
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{images/inter/Comportement_VAV_Emetteur_LIN.pdf}
+    \caption{Comportement du circuit vis à vis de l'émetteur LIN}
+    \label{fig:placeholder}
+\end{figure}
+
+À ce niveau de détail, les automates des états \textit{Sync field}, \textit{ID field}, \textit{Data field} et \textit{Checksum field} sont identiques.  
+
+On retrouve :
+\begin{itemize}
+    \item Attente (bit de start)
+    \item Réception du bit de start
+    \item Réception des bits de data
+    \item Réception du bit de stop
+    \item 1 état d’attente
+\end{itemize}
+
+Nombre total d’états :
+\begin{itemize}
+    \item Réception Sync Break : 2 états
+    \item Autres champs : 4 $\times$ 4 états
+\end{itemize}
+
+\noindent
+\textbf{Total : 18 états}
+
+\subsubsection{Interface Microprocesseur}
+
+De même, nous pouvons représenter l'automate du système d'échange microprocesseur :
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{images/inter/Echange_Processeur.pdf}
-    \caption{Échanges fonctionnels entre le système et le processeur}
-    \label{fig:echange_processeur}
+    \caption{Comportement du circuit vis à vis du microprocesseur}
+    \label{fig:placeholder}
 \end{figure}
 
-Lors de la phase d’analyse, il est apparu que le bloc d’échange microprocesseur pouvait être intégré directement à l’interface microprocesseur.  
-Cette simplification permet de réduire le nombre de signaux intermédiaires et d’améliorer la clarté fonctionnelle du système.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\linewidth]{images/inter/Schema_avance_circuit.pdf}
-    \caption{Architecture fonctionnelle optimisée du système de réception de trame LIN}
-    \label{fig:schema_avance_circuit}
-\end{figure}
-
-Enfin, deux registres internes ont été ajoutés :  
+2 Solution Possibles : 
 \begin{itemize}
-    \item un registre de stockage des données de trame (FIFO) ;
-    \item un registre d'état interne (ETAT), contenant les informations de suivi et d’erreur.
+    \item ReqOctet : Lecture de l'octet
+    \item ReqEtat : Lecture de l'état
 \end{itemize}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\linewidth]{images/inter/Schema_Final.pdf}
-    \caption{Description fonctionnelle finale du circuit complet}
-    \label{fig:schema_final}
-\end{figure}
-
-Le schéma global ci-dessus illustre les interactions fonctionnelles entre les différents blocs du système. Les échanges sont exprimés en termes de flux d’informations (données, ordres, signaux de contrôle), sans référence à la nature physique ou logique de ces signaux.
-
-\subsubsection*{Bloc FIFO}
+\subsubsection{FIFO}
 
 \begin{center}
-\renewcommand{\arraystretch}{1.2}
-\small
-\begin{tabularx}{\textwidth}{|c||c|X|}
-    \hline
-    \textbf{Signal} & \textbf{Sens} & \textbf{Rôle fonctionnel} \\ \hline
-    Écriture\_Octet & Entrée & Déclenche l’enregistrement d’un octet dans la mémoire FIFO. \\ \hline
-    Réinitialisation\_FIFO & Entrée & Vide la mémoire FIFO et remet à zéro les compteurs internes. \\ \hline
-    Lecture\_Octet & Entrée & Permet l’accès séquentiel aux données stockées dans la mémoire FIFO. \\ \hline
-\end{tabularx}
+\renewcommand{\arraystretch}{1.2} % espace vertical
+\small % pour uniformiser la taille du texte
+    \begin{tabularx}{\textwidth}{|c||c|c|X|}
+     \hline			
+       \textbf{Signaux} & \textbf{Mode} & \textbf{Type} & \textbf{Description}  \\ \hline 
+       OctetRecu\_WR & Entrée & \texttt{Commande} & Read / Write opération \\
+       OctetRecu\_RST & Entrée & \texttt{Commande} & Réinitialisation des données reçue \\
+       OctetLu\_RD & Entrée & \texttt{Commande} & Sélection de la mémoire (Control / Data) \\
+     \hline  
+    \end{tabularx}
 \end{center}
 
-Ces signaux assurent la gestion du flux d’informations entre la réception de trame et le microprocesseur.  
-Ils garantissent la synchronisation et la fiabilité du stockage des données reçues, en évitant toute perte ou chevauchement.
+La définition de ces nouveaux signaux permet de gérer de manière précise le fonctionnement de la 
+FIFO. OctetRecu\_WR est un signal d'écriture qui déclenche l'enregistrement d'un octet reçu dans 
+la mémoire FIFO, garantissant que chaque donnée entrante est correctement stockée. OctetRecu\_RST 
+est un signal de réinitialisation qui vide complètement la FIFO et remet à zéro tous les compteurs 
+internes, permettant ainsi de reprendre la réception de données sans risque de corruption ou de 
+chevauchement. OctetLu\_RD est un signal de lecture qui active l'accès aux données stockées dans 
+la FIFO et permet leur transfert vers le microprocesseur ou d'autres blocs du système. Ensemble, 
+ces signaux assurent une communication fiable, synchronisée et organisée entre l'interface 
+microprocesseur et le registre de réception, tout en facilitant la gestion des flux de données 
+entrants.
+\newline
 
-\subsubsection*{Bloc ÉTAT}
+\subsubsection{ETAT}
 
 \begin{center}
-\renewcommand{\arraystretch}{1.2}
-\small
-\begin{tabularx}{\textwidth}{|c||c|X|}
-    \hline
-    \textbf{Signal} & \textbf{Sens} & \textbf{Rôle fonctionnel} \\ \hline
-    Réinitialisation\_Compteur & Entrée & Réinitialise le nombre d’octets reçus. \\ \hline
-    Décrémentation\_Compteur & Entrée & Indique qu’un octet a été lu depuis la FIFO. \\ \hline
-    Réinitialisation\_État & Entrée & Remet à zéro les indicateurs d’état et d’erreur après lecture. \\ \hline
-\end{tabularx}
+\renewcommand{\arraystretch}{1.2} % espace vertical
+\small % pour uniformiser la taille du texte
+    \begin{tabularx}{\textwidth}{|c||c|c|X|}
+     \hline			
+       \textbf{Signaux} & \textbf{Mode} & \textbf{Type} & \textbf{Description}  \\ \hline 
+       NbOctetRecu\_RST & Entrée & \texttt{Commande} & Réinitialisation du compteur d'octets \\
+       DecNbOctet & Entrée & \texttt{Commande} & Flag de lecture pour FIFO \\
+       EtatLu\_RST & Entrée & \texttt{Commande} & Reset de l'état lu \\
+     \hline  
+    \end{tabularx}
 \end{center}
 
-Ces signaux permettent le suivi interne du processus de réception et la gestion des informations d’erreur.  
-Ils facilitent la communication avec le microprocesseur tout en assurant une supervision fiable et indépendante de toute implémentation matérielle.
-
+La définition de ces signaux du bloc ETAT permet de contrôler et de suivre l'état interne de la 
+réception des données. NbOctetRecu\_RST réinitialise le compteur d'octets reçus, assurant un 
+suivi précis du nombre de données traitées. DecNbOctet agit comme un indicateur de lecture pour 
+la FIFO, signalant quand un octet peut être lu et transféré, ce qui permet une gestion correcte 
+des flux de données. EtatLu\_RST permet de réinitialiser les informations d'état lues, garantissant 
+que le système dispose toujours d'une représentation exacte de l'état actuel de la réception. 
+Ensemble, ces signaux assurent une supervision fiable et synchronisée des opérations internes, 
+facilitant le contrôle et la gestion du flux de données dans le système.
