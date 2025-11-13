@@ -1,5 +1,5 @@
-\section{Routages des Fonctions
-}
+\section{Routages des Fonctions}
+
 \subsection{Interface Microprocesseur}
 
 Après l'étape de \textbf{synthèse}, nous pouvons nous intéresser à l'assignation des ressources 
@@ -156,6 +156,67 @@ En résumé, la conception suit une progression en trois étapes :
 Cette approche permet de passer d'une description abstraite en langage HDL à une implémentation matérielle 
 concrète, où chaque fonction logique est traduite en ressources physiques. 
 Vivado fournit alors une vision globale et détaillée du FPGA, allant de la logique combinatoire jusqu'au câblage interne des composants.
+
+\subsection{FIFO}
+
+Après l'étape de synthèse, nous pouvons nous intéresser à l'assignation des ressources 
+matérielles du système FIFO, qui permet de générer un schéma de ressources utilisées pour l'implémentation
+de la FIFO.
+\newline
+
+Voici le schéma RTL de la FIFO implémentée :
+
+\begin{figure}[H]
+    \centering
+    \resizebox{\textwidth}{!}{%
+        \rotatebox{-90}{\includegraphics[width=0.9\linewidth]{images/Routage/fifo_viv_recadre.pdf}}
+    }
+    \caption{Schéma Vivado de la FIFO - Vue générale}
+    \label{fig:RTL_FIFO}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \resizebox{\textwidth}{!}{%
+        \includegraphics[width=0.9\linewidth]{images/Routage/Zoom_FIFI_viv.png}
+    }
+    \caption{Schéma Vivado de la FIFO - Vue détaillée}
+    \label{fig:RTL_FIFO}
+\end{figure}
+
+On identifie clairement l'architecture dual-port de la FIFO avec ses \textbf{registres} organisés en matrice 9x8 bits 
+pour le stockage des données. La gestion des adresses est assurée par un \textbf{compteur 4 bits} implémenté avec des bascules 
+\textbf{FDCE} et des \textbf{LUT} qui calculent les incréments et les conditions de débordement. Les entrées-sorties sont conditionnées 
+par des \textbf{buffers} pour l'interface avec l'extérieur du FPGA, tandis qu'un \textbf{buffer global} distribue 
+l'horloge à l'ensemble du système. La logique de contrôle, répartie dans de multiples \textbf{LUT2 à LUT6}, gère simultanément les 
+opérations d'écriture via \texttt{OctetRecu\_WR} et de lecture via \texttt{OctetLu\_RD} tout en maintenant la cohérence des pointeurs 
+et en générant les signaux de statut.
+\newline
+
+\subsection{EtatInterne}
+
+Après l'étape de synthèse, nous pouvons nous intéresser à l'assignation des ressources
+matérielles du système EtatInterne, qui permet de générer un schéma de ressources utilisées pour l'implémentation
+de l'EtatInterne.
+\newline
+
+Voici le schéma RTL de l'EtatInterne implémentée :
+
+\begin{figure}[H]
+    \centering
+    \resizebox{\textwidth}{!}{%
+        \rotatebox{-90}{\includegraphics{images/Routage/InternalState_viv_recadre.pdf}}
+    }
+    \caption{Schéma RTL de l'EtatInterne}
+    \label{fig:RTL_EtatInterne}
+\end{figure}
+
+On identifie clairement un ensemble de \textbf{bascules D)} organisées pour mémoriser les différents états du système. 
+Ces bascules sont pilotées par une logique combinatoire implémentée via des \textbf{LUT }, qui définissent les 
+transitions d'état en fonction des signaux de commande et des conditions internes. Les entrées sont conditionnées par des 
+\textbf{buffers} afin d'isoler et d'adapter les signaux externes aux ressources internes du FPGA, assurant ainsi une 
+intégrité électrique et temporelle. En sortie, des \textbf{buffers} sont utilisés pour transmettre l'état courant vers les blocs suivants.
+\newline
 
 \subsection{Interface Reception Lin}
 

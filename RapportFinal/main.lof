@@ -32,16 +32,25 @@
 \contentsline {figure}{\numberline {31}{\ignorespaces Schéma bloc Réception LIN Complete}}{45}{figure.caption.40}%
 \contentsline {figure}{\numberline {32}{\ignorespaces Chronogramme de simulation de l’Interface Microprocesseur}}{46}{figure.caption.41}%
 \contentsline {figure}{\numberline {33}{\ignorespaces Block Diagramme de test de l’Interface Microprocesseur}}{47}{figure.caption.42}%
-\contentsline {figure}{\numberline {34}{\ignorespaces Schéma RTL InterfaceMicroprocesseur}}{49}{figure.caption.43}%
-\contentsline {figure}{\numberline {35}{\ignorespaces Partie opérative avec multiplexeur et Tristate : InterfaceMicroprocesseur}}{50}{figure.caption.44}%
-\contentsline {figure}{\numberline {36}{\ignorespaces Synthese matérielle InterfaceMicroprocesseur}}{50}{figure.caption.45}%
-\contentsline {figure}{\numberline {37}{\ignorespaces Synthèse matérielle Vivado}}{53}{figure.caption.46}%
-\contentsline {figure}{\numberline {38}{\ignorespaces Illustration d'une LUT et de sa table de vérité}}{54}{figure.caption.47}%
-\contentsline {figure}{\numberline {39}{\ignorespaces Synthèse Logique Vivado}}{54}{figure.caption.48}%
-\contentsline {figure}{\numberline {40}{\ignorespaces Slice du FPGA après routage}}{55}{figure.caption.49}%
-\contentsline {figure}{\numberline {41}{\ignorespaces Vue du système routé et des buffers associés sur le FPGA}}{56}{figure.caption.50}%
-\contentsline {figure}{\numberline {42}{\ignorespaces Exemple de routage d'une LUT3 dans le FPGA}}{56}{figure.caption.51}%
-\contentsline {figure}{\numberline {43}{\ignorespaces Schéma Implémentation Matérielle Reception LIN}}{57}{figure.caption.52}%
-\contentsline {figure}{\numberline {44}{\ignorespaces Schéma Implémentation Matérielle Reception LIN Zoom 1}}{58}{figure.caption.53}%
-\contentsline {figure}{\numberline {45}{\ignorespaces Slice du FPGA après routage de l'interface de réception LIN}}{59}{figure.caption.54}%
-\contentsline {figure}{\numberline {46}{\ignorespaces Slice du FPGA après routage de l'interface de réception LIN - Zoom sur Zone 0}}{60}{figure.caption.55}%
+\contentsline {figure}{\numberline {34}{\ignorespaces Simulation de l’échantillonnage au milieu des bits}}{48}{figure.caption.43}%
+\contentsline {figure}{\numberline {35}{\ignorespaces Simulation du stockage des bits dans le registre à décalage}}{49}{figure.caption.44}%
+\contentsline {figure}{\numberline {36}{\ignorespaces Simulation de la réception correcte des octets d'une trame}}{50}{figure.caption.45}%
+\contentsline {figure}{\numberline {37}{\ignorespaces Simulation du comptage/décomptage du nombre d'octets}}{50}{figure.caption.46}%
+\contentsline {figure}{\numberline {38}{\ignorespaces Simulation de la gestion correcte du bit de signalisation \texttt {M\_Received}}}{51}{figure.caption.47}%
+\contentsline {figure}{\numberline {39}{\ignorespaces Simulation de la gestion des erreurs - Cas 1 : Erreur de Stop}}{51}{figure.caption.48}%
+\contentsline {figure}{\numberline {40}{\ignorespaces Schéma RTL InterfaceMicroprocesseur}}{52}{figure.caption.49}%
+\contentsline {figure}{\numberline {41}{\ignorespaces Partie opérative avec multiplexeur et Tristate : InterfaceMicroprocesseur}}{53}{figure.caption.50}%
+\contentsline {figure}{\numberline {42}{\ignorespaces Synthese matérielle InterfaceMicroprocesseur}}{53}{figure.caption.51}%
+\contentsline {figure}{\numberline {43}{\ignorespaces Synthèse matérielle Vivado}}{56}{figure.caption.52}%
+\contentsline {figure}{\numberline {44}{\ignorespaces Illustration d'une LUT et de sa table de vérité}}{57}{figure.caption.53}%
+\contentsline {figure}{\numberline {45}{\ignorespaces Synthèse Logique Vivado}}{57}{figure.caption.54}%
+\contentsline {figure}{\numberline {46}{\ignorespaces Slice du FPGA après routage}}{58}{figure.caption.55}%
+\contentsline {figure}{\numberline {47}{\ignorespaces Vue du système routé et des buffers associés sur le FPGA}}{59}{figure.caption.56}%
+\contentsline {figure}{\numberline {48}{\ignorespaces Exemple de routage d'une LUT3 dans le FPGA}}{59}{figure.caption.57}%
+\contentsline {figure}{\numberline {49}{\ignorespaces Schéma Vivado de la FIFO - Vue générale}}{60}{figure.caption.58}%
+\contentsline {figure}{\numberline {50}{\ignorespaces Schéma Vivado de la FIFO - Vue détaillée}}{60}{figure.caption.59}%
+\contentsline {figure}{\numberline {51}{\ignorespaces Schéma RTL de l'EtatInterne}}{61}{figure.caption.60}%
+\contentsline {figure}{\numberline {52}{\ignorespaces Schéma Implémentation Matérielle Reception LIN}}{62}{figure.caption.61}%
+\contentsline {figure}{\numberline {53}{\ignorespaces Schéma Implémentation Matérielle Reception LIN Zoom 1}}{63}{figure.caption.62}%
+\contentsline {figure}{\numberline {54}{\ignorespaces Slice du FPGA après routage de l'interface de réception LIN}}{64}{figure.caption.63}%
+\contentsline {figure}{\numberline {55}{\ignorespaces Slice du FPGA après routage de l'interface de réception LIN - Zoom sur Zone 0}}{65}{figure.caption.64}%

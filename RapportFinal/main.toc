@@ -42,16 +42,18 @@
 \contentsline {subsubsection}{\numberline {8.2.2}Instanciation du composant testé}{48}{subsubsection.8.2.2}%
 \contentsline {subsubsection}{\numberline {8.2.3}Environnement de test}{48}{subsubsection.8.2.3}%
 \contentsline {subsubsection}{\numberline {8.2.4}Stimuli supplémentaires}{48}{subsubsection.8.2.4}%
-\contentsline {subsubsection}{\numberline {8.2.5}Analyse du chronogramme de simulation}{48}{subsubsection.8.2.5}%
-\contentsline {section}{\numberline {9}Synthèse des fonctions}{49}{section.9}%
-\contentsline {subsection}{\numberline {9.1}Interface Microprocesseur}{49}{subsection.9.1}%
-\contentsline {subsection}{\numberline {9.2}Interface Reception Trame}{51}{subsection.9.2}%
-\contentsline {subsection}{\numberline {9.3}FIFO}{52}{subsection.9.3}%
-\contentsline {subsection}{\numberline {9.4}EtatInterne}{52}{subsection.9.4}%
-\contentsline {subsection}{\numberline {9.5}Reception LIN}{52}{subsection.9.5}%
-\contentsline {section}{\numberline {10}Routages des Fonctions }{53}{section.10}%
-\contentsline {subsection}{\numberline {10.1}Interface Microprocesseur}{53}{subsection.10.1}%
-\contentsline {subsection}{\numberline {10.2}Interface Reception Lin}{57}{subsection.10.2}%
-\contentsline {section}{\numberline {11}Conclusion}{61}{section.11}%
-\contentsline {section}{\numberline {12}Annexes}{62}{section.12}%
-\contentsline {subsection}{\numberline {12.1}Testbench InterfaceMicroprocesseur}{62}{subsection.12.1}%
+\contentsline {subsubsection}{\numberline {8.2.5}Analyse du chronogramme de simulation}{51}{subsubsection.8.2.5}%
+\contentsline {section}{\numberline {9}Synthèse des fonctions}{52}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Interface Microprocesseur}{52}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Interface Reception Trame}{54}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}FIFO}{55}{subsection.9.3}%
+\contentsline {subsection}{\numberline {9.4}EtatInterne}{55}{subsection.9.4}%
+\contentsline {subsection}{\numberline {9.5}Reception LIN}{55}{subsection.9.5}%
+\contentsline {section}{\numberline {10}Routages des Fonctions}{56}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Interface Microprocesseur}{56}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}FIFO}{60}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10.3}EtatInterne}{60}{subsection.10.3}%
+\contentsline {subsection}{\numberline {10.4}Interface Reception Lin}{61}{subsection.10.4}%
+\contentsline {section}{\numberline {11}Conclusion}{66}{section.11}%
+\contentsline {section}{\numberline {12}Annexes}{67}{section.12}%
+\contentsline {subsection}{\numberline {12.1}Testbench InterfaceMicroprocesseur}{67}{subsection.12.1}%

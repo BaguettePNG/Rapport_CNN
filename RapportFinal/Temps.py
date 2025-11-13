@@ -1,6 +1,6 @@
 import fitz  # PyMuPDF
 
-pdf_path = "C:\\Users\\bnola\\Documents\\Polytech\\ETN4\\Rapport_CNN\\RapportFinal\\impl_schematic.pdf"
+pdf_path = "C:\\Users\\bnola\\Documents\\Polytech\\ETN4\\Rapport_CNN\\RapportFinal\\images\\Routage\\InternalState_viv.pdf"
 doc = fitz.open(pdf_path)
 
 for page in doc:
@@ -19,4 +19,4 @@ for page in doc:
         page.set_cropbox(rect)
 
 # Sauvegarder le PDF recadré
-doc.save("impl_schematic_recadre.pdf")
+doc.save("InternalState_viv_recadre.pdf")

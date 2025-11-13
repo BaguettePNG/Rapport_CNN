@@ -76,12 +76,161 @@ après la levée du reset, l’environnement de test génère des cycles de lect
 
 \subsection{Interface Reception LIN}
 
+Cette partie présente la simulation du bloc final Interface Réception LIN. La simulation a été réalisée à l’aide d’un environnement pour le Réception LIN qui génère une trame LIN complète sur l'entrée Lin.
+L’intégration des quatre sous-modules et vérifier que la réponse des modules est bien validée par le cahier des charges.
+\newline
+
 \subsubsection{Déclarations et signaux}
+
+La simulation est effectuée sur l’entité de plus haut niveau le Récepteur LIN. L’environnement de test permet de simuler l’émetteur LIN et le microprocesseur.
+Il pilote donc le signal d’entrée LIN, l’horloge H, le reset nCLR, nCS, RnW et CnD.
+Ainsi que le signal d'échange des données D07 et le signal de sortie M Received.
+\newline
 
 \subsubsection{Instanciation du composant testé}
 
+Le composant Recepteur LIN instancié. Il connecté en interne les quatres modules :
+
+\begin{itemize}
+  \item Le Recepteur de trame 
+  \item La FIFO
+  \item La mémoire de l'état interne
+  \item L'interface microprocesseur
+\end{itemize}
+
+
 \subsubsection{Environnement de test}
+
+La simulation se déroule avec une trame complète LIN envoyé contenant un Sync Field (0x55), 
+un Identifiant, et une série d'octets de données. Et une interaction microprocesseur effectuant les cycles de lecture de données, d'états et d'écriture d'adresse.
+
+% Instanciation des modules internes
+%\begin{figure}[H]
+%  \centering
+%  \includegraphics[width=0.95\linewidth]{images/Simulation/banc_test.png}
+%  \caption{Block Diagramme de test de l’Interface Reception Trame}
+%  \label{fig:placeholder}
+%\end{figure}
+
+% Instanciation des modules internes
+%\begin{figure}[H]
+%  \centering
+%  \includegraphics[width=0.95\linewidth]{images/Simulation/banc_test.png}
+%  \caption{Block Diagramme de test de l’Interface Reception LIN}
+%  \label{fig:placeholder}
+%\end{figure}
 
 \subsubsection{Stimuli supplémentaires}
 
+\subsubsection*{Échantillonnage au milieu des bits} % Simu 2
+
+La bonne lecture de chaque bit doit être échantillonné à la moitié de la période d’un bit émis par la trame LIN
+\newline
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\linewidth]{images/Simulation/Simu-2.png}
+  \caption{Simulation de l’échantillonnage au milieu des bits}
+  \label{fig:placeholder}
+\end{figure}
+
+L'analyse du chronogramme montre que chaque bit reçu sur la ligne LIN est échantillonné précisément au milieu de sa période.
+Cela est confirmé par l'alignement des fronts montants du signal \texttt{NbTbit} avec le milieu de chaque bit sur le signal \texttt{LinSynchro}.
+\newline
+
+\subsubsection*{Échantillonnage au milieu des bits} % Simu 3
+
+La vérification se fait sur l'envoie du premier octet d'une trame, l'octet Sync Field envoyé sur la trame LIN, 
+soit 01010101 en binaire. Le stockage se fait en stockant les bits un à un sur la position LSB du registre, 
+et décalant le contenu existant la donnée à chaque nouvelle valeur reçue dans le registre à décalage.
+\newline
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\linewidth]{images/Simulation/Simu-3.png}
+  \caption{Simulation du stockage des bits dans le registre à décalage}
+  \label{fig:placeholder}
+\end{figure}
+
+La position du MSB est de niveau bas en n°1, après réception du 7 autres bits et avoir décalé le 0 de 7 position, 
+il est bien en MSB dans le signal à 8 bit de l'octet reçu en n°3.
+La gestion de l’ordre de bits est donc bien corriger dans le récepteur LIN.
+\newline
+
+Le circuit a converti avec succès le flux série en l'octet parallèle. Ce résultat valide que le registre à décalage opère correctement 
+et assure la gestion correcte de l'ordre des bits dans le récepteur LIN.
+\newline
+
+\subsubsection*{Réception correcte des octets d'une trame} % Simu 4
+
+Le circuit doit bien enregistrer et séparer dans la FIFO chaque champ de la trame LIN (Sync field, Data, Checksum). 
+L'écriture des champs est signalée par l'envoie du signal \texttt{OctetReçu\_WR} au niveau haut.
+L'analyse se fait avec la vérification du champ Sync~Field.
+\newline
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\linewidth]{images/Simulation/Simu-4.png}
+  \caption{Simulation de la réception correcte des octets d'une trame}
+  \label{fig:placeholder}
+\end{figure}
+
+Dans l'encadré n°1, à la fin du champ Sync field le signal est stable et à la bonne valeur.
+Le signal \texttt{OctetRecu\_WR} génère une impulsion à la fin de la réception de l'octet complet. Cela permet de transférer l'octet à la FIFO et de le mémoriser.
+
+L'analyse confirme donc la réception correcte et séquentielle de l'intégralité des octets de la trame par le circuit.
+L'analyse se fait avec la vérification du champ Sync Field.
+\newline
+
+\subsubsection*{Comptage/Décomptage du nombre d'octets} % Simu 6
+
+Cette partie suit la progression de la réception des octets de la trame LIN.
+Lors de la réception de chaque octet on décompte NbOctetsReçus, jusqu'à arriver au dernier octets de donnée de la trame LIN.
+\newline
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\linewidth]{images/Simulation/Simu-6.png}
+  \caption{Simulation du comptage/décomptage du nombre d'octets}
+  \label{fig:placeholder}
+\end{figure}
+
+Lorsque la lecture est effectuée par le microprocesseur, l'analyse montre que le signal DecNbOctet passe brièvement à l'état haut à chaque cycle de lecture.
+Ce front valide le bon décrément du compteur d'octets au fur et à mesure que le microprocesseur lit les données depuis la FIFO.
+\newline
+
+La synchronisation entre les impulsions de \texttt{OctetReçu\_RD} et de \texttt{DecNbOctet} prouve ainsi que la gestion du comptage/décomptage est correcte et respecte le cahier des charges :
+Le compteur NbOctet doit revenir à zéro à la fin du cycle complet, confirmant la libération de la FIFO après transfert intégral des données vers le microprocesseur. Cependant ce signal n’a pas été implémenté dans la FIFO.
+\newline
+
+\subsubsection*{Gestion correcte du bit de signalisation \texttt{M\_Received}} % Simu 7
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\linewidth]{images/Simulation/Simu-7.png}
+  \caption{Simulation de la gestion correcte du bit de signalisation \texttt{M\_Received}}
+  \label{fig:placeholder}
+\end{figure}
+
+Le signal \texttt{M\_Received} est mis à 1 lorsque la trame LIN est entièrement reçue et stockée dans la FIFO.
+L'analyse du chronogramme montre que le signal \texttt{M\_Received} passe à l'état haut juste après la réception complète de la trame LIN 
+( L'état étant arrivé au niveau Checksum Reception bit de Stop (\texttt{CHK\_RSP})),
+indiquant que toutes les données sont prêtes à être lues par le microprocesseur
+\newline
+
+\subsubsection*{Gestion des erreurs} % Simu 10
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\linewidth]{images/Simulation/Simu-10-1.png}
+  \caption{Simulation de la gestion des erreurs - Cas 1 : Erreur de Stop}
+  \label{fig:placeholder}
+\end{figure}
+
+Le chronogramme illustre un scénario de défaillance où le système rencontre une erreur de reception de bit Stop. 
+On observe l'activation du signal Error Stop, qui intervient dans une séquence de fin de trame LIN, dans le champs Checksum Reception de bit de Stop.
+Cette erreur provoque une réponse du système, matérialisée par la mise à 1 du signal Error.
+
 \subsubsection{Analyse du chronogramme de simulation}
+
+L'analyse des chronogrammes valide plusieurs points clés du cahier des charges et de l'énoncé de TP :
