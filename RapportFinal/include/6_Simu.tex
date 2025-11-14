@@ -8,7 +8,7 @@ L’objectif est de vérifier la conformité du fonctionnement par rapport à l�
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.95\linewidth]{images//Simulation/Chrono.png}
+    \includegraphics[width=0.95\linewidth]{images//Simulation/Chronogramme de simulation de l'Interface du Microprocesseur.png}
     \caption{Chronogramme de simulation de l’Interface Microprocesseur}
     \label{fig:placeholder}
 \end{figure}
@@ -68,7 +68,7 @@ L’analyse du chronogramme met en évidence le comportement attendu du composan
   \item lorsque les signaux de contrôle actifs à l’état bas (\texttt{nRST}, \texttt{nCS}) sont à l’état haut, aucune action n’est effectuée,
   \item lorsque ces signaux sont activés (passage à l’état bas), le composant réagit conformément à l’automate interne,
   \item les signaux \texttt{RnW} et \texttt{CnD} permettent de sélectionner respectivement les opérations de lecture/écriture et le type d’accès (commande ou données),
-  \item les valeurs imposées sur \texttt{OctetLu} et \texttt{EtatLu} sont correctement lues via le bus de données \texttt{D07}.
+  \item les valeurs imposées sur \texttt{OctetLu} ( Repère 1 ) et \texttt{EtatLu} ( Repère 2 ) sont correctement lues via le bus de données \texttt{D07}.
 \end{itemize}
 
 Ce chronogramme confirme ainsi le bon fonctionnement du composant \texttt{InterfaceMicroprocesseur} :  
@@ -105,37 +105,28 @@ La simulation se déroule avec une trame complète LIN envoyé contenant un Sync
 un Identifiant, et une série d'octets de données. Et une interaction microprocesseur effectuant les cycles de lecture de données, d'états et d'écriture d'adresse.
 
 % Instanciation des modules internes
-%\begin{figure}[H]
-%  \centering
-%  \includegraphics[width=0.95\linewidth]{images/Simulation/banc_test.png}
-%  \caption{Block Diagramme de test de l’Interface Reception Trame}
-%  \label{fig:placeholder}
-%\end{figure}
-
-% Instanciation des modules internes
-%\begin{figure}[H]
-%  \centering
-%  \includegraphics[width=0.95\linewidth]{images/Simulation/banc_test.png}
-%  \caption{Block Diagramme de test de l’Interface Reception LIN}
-%  \label{fig:placeholder}
-%\end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\linewidth]{images/Simulation/SousTest_ReceptionLinTotal.png}
+  \caption{Block Diagramme de test de l’Interface Reception LIN}
+  \label{fig:placeholder}
+\end{figure}
 
 \subsubsection{Stimuli supplémentaires}
 
 \subsubsection*{Échantillonnage au milieu des bits} % Simu 2
 
-La bonne lecture de chaque bit doit être échantillonné à la moitié de la période d’un bit émis par la trame LIN
+La bonne lecture de chaque bit doit être échantillonnée à la moitié de la période d’un bit émis par la trame LIN.
 \newline
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.95\linewidth]{images/Simulation/Simu-2.png}
-  \caption{Simulation de l’échantillonnage au milieu des bits}
+  \includegraphics[width=0.95\linewidth]{images/Simulation/Chronogramme échantillonnage au milieu des bits.png}
+  \caption{Chronogramme échantillonnage au milieu des bits}
   \label{fig:placeholder}
 \end{figure}
 
-L'analyse du chronogramme montre que chaque bit reçu sur la ligne LIN est échantillonné précisément au milieu de sa période.
-Cela est confirmé par l'alignement des fronts montants du signal \texttt{NbTbit} avec le milieu de chaque bit sur le signal \texttt{LinSynchro}.
+On observe le décomptage de NbTbit et une impulsion en n\_0 à la moitié des bits de la trame LIN, représentée sur le signal LinSynchro. L'échantillonnage s'active lors de l'impulsion en n\_0 et change d’état à la fin de NbTbit, au milieu du MSB de la trame Lin Synchro en numéro 1. Le système réalise donc un échantillonnage correct.
 \newline
 
 \subsubsection*{Échantillonnage au milieu des bits} % Simu 3
@@ -147,8 +138,8 @@ et décalant le contenu existant la donnée à chaque nouvelle valeur reçue dan
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.95\linewidth]{images/Simulation/Simu-3.png}
-  \caption{Simulation du stockage des bits dans le registre à décalage}
+  \includegraphics[width=0.95\linewidth]{images/Simulation/Chronogramme de la sortie du registre à décalage.png}
+  \caption{Chronogramme de la sortie du registre à décalage}
   \label{fig:placeholder}
 \end{figure}
 
@@ -170,8 +161,8 @@ L'analyse se fait avec la vérification du champ Sync~Field.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.95\linewidth]{images/Simulation/Simu-4.png}
-  \caption{Simulation de la réception correcte des octets d'une trame}
+  \includegraphics[width=0.95\linewidth]{images/Simulation/Chronogramme des signaux d'entrée de la FIFO.png}
+  \caption{Chronogramme des signaux d'entrée de la FIFO.}
   \label{fig:placeholder}
 \end{figure}
 
@@ -190,8 +181,8 @@ Lors de la réception de chaque octet on décompte NbOctetsReçus, jusqu'à arri
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.95\linewidth]{images/Simulation/Simu-6.png}
-  \caption{Simulation du comptage/décomptage du nombre d'octets}
+  \includegraphics[width=0.95\linewidth]{images/Simulation/Chronogramme des sorties de l’interface microprocesseur.png}
+  \caption{Chronogramme des sorties de l’interface microprocesseur}
   \label{fig:placeholder}
 \end{figure}
 
@@ -216,6 +207,24 @@ Le signal \texttt{M\_Received} est mis à 1 lorsque la trame LIN est entièremen
 L'analyse du chronogramme montre que le signal \texttt{M\_Received} passe à l'état haut juste après la réception complète de la trame LIN 
 ( L'état étant arrivé au niveau Checksum Reception bit de Stop (\texttt{CHK\_RSP})),
 indiquant que toutes les données sont prêtes à être lues par le microprocesseur
+\newline
+
+\subsubsection*{Lecture de donnée par le microprocesseur} % Simu 8
+
+Le microprocesseur a accès aux données stockées dans la FIFO via nCS, CnD et RnW. Sur le chronogramme suivant, il est possible d’observer les signaux du
+microprocesseur lors d’une requête de données.
+\newline
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\linewidth]{images/Simulation/Simu-8.png}
+  \caption{Chronogramme de la lecture de données par le microprocesseur}
+  \label{fig:placeholder}
+\end{figure}
+
+Le microprocesseur a accès aux données stockées dans la FIFO via nCS, CnD et RnW. Sur le chronogramme suivant, il est possible d’observer les signaux du
+microprocesseur lors d’une requête de données.
 \newline
 
 \subsubsection*{Gestion des erreurs} % Simu 10

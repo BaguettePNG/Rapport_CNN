@@ -150,14 +150,38 @@ visualiser les différents registres, multiplexeurs et portes logiques utilisés
 Voici le schéma RTL de l’Interface Reception Trame :
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%\begin{figure}[H]
-%    \centering
-%    \includegraphics[width=0.9\linewidth]{images/Synthe/RTL_Shematic_IRT.png}
-%    \caption{Schéma RTL InterfaceReceptionTrame}
-%    \label{fig:RTL_Shematic_IRT}
-%\end{figure}
-%
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{images/Synthe/ReceptionTrame_RTL_cropped.pdf}
+    \caption{Schéma RTL InterfaceReceptionTrame}
+    \label{fig:RTL_Shematic_IRT}
+\end{figure}
+
+
+Dans cette image nous pouvons observer deux blocs correspondant aux deux sous modules de l’Interface Reception Trame, à savoir :
+\begin{itemize}
+    \item Partie Commande
+    \item Partie Opérative
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{images/Synthe/ReceptionTrameCD_RTL_cropped.pdf}
+    \caption{Schéma RTL InterfaceReceptionTrame - Partie Commande}
+    \label{fig:RTL_Shematic_IRT}
+\end{figure}
+
+Dans cette image nous pouvons observer la partie commande de l’Interface Reception Trame, celui-ci traduit l'automate de commande en VHDL.
+\newline
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{images/Synthe/ReceptionTrameOP_RTL_cropped.pdf}
+    \caption{Schéma RTL InterfaceReceptionTrame - Partie Opérative}
+    \label{fig:RTL_Shematic_IRT}
+\end{figure}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection*{Structure générale}
@@ -180,34 +204,26 @@ Nous pouvons retrouver la partie opérative dessinée en classe, lors de nos TD,
 ainsi que des compteurs/décompteurs.
 \newline
 
-Voici la partie opérative de l’Interface Reception Trame :
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%\begin{figure}[H]
-%    \centering
-%    \includegraphics[width=0.9\linewidth]{images/Synthe/ZOOM_1_RTL_Shematic_RTL.png}
-%    \caption{Schéma RTL InterfaceReceptionTrame}
-%    \label{fig:ZOOM_1_RTL_Shematic_RTL}
-%\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{images/Synthe/Zoom_1_OP.png}
+    \caption{Schéma RTL Zoom 1 - Partie Opérative InterfaceReceptionTrame}
+    \label{fig:ZOOM_1_RTL_Shematic_RTL}
+\end{figure}
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-A la suite nous obtenons la synthese matérielle qui nous permet de visualiser les ressources matérielles utilisées pour la conception de cette machine.
+Et nous retrouvons également le registre de décalage et la bascule :
 \newline
 
-Voici la synthese matérielle de l’Interface Reception Trame :
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%\begin{figure}[H]
-%    \centering
-%    \includegraphics[width=0.9\linewidth]{images/Synthe/ZOOM_1_RTL_Shematic_RTL.png}
-%    \caption{Schéma RTL InterfaceReceptionTrame}
-%    \label{fig:ZOOM_1_RTL_Shematic_RTL}
-%\end{figure}
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{images/Synthe/Zoom_2_OP.png}
+    \caption{Schéma RTL Zoom 2 - Partie Opérative InterfaceReceptionTrame}
+    \label{fig:ZOOM_1_RTL_Shematic_RTL}
+\end{figure}
 
 Comme pour l’Interface Microprocesseur, cette transformation consiste à mapper les éléments logiques du schéma RTL, tels que les portes 
 \textbf{ AND, OR, NOT} ou les \textbf{multiplexeurs}, sur les \textbf{ressources matérielles 
@@ -226,12 +242,21 @@ Comme pour les deux autres modules, nous avons le schéma RTL de la FIFO :
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%\begin{figure}[H]
-%    \centering
-%    \includegraphics[width=0.9\linewidth]{images/Synthe/RTL_Shematic_FIFO.png}
-%    \caption{Schéma RTL FIFO}
-%    \label{fig:RTL_Shematic_FIFO}
-%\end{figure}
+\begin{figure}[H]
+    \centering
+    \rotatebox{-90}{
+        \resizebox{!}{\textwidth}{
+            \includegraphics{images/Synthe/FIFO_RTL_cropped.pdf}
+        }
+    }
+    \caption{Schéma RTL FIFO}
+    \label{fig:RTL_Shematic_FIFO}
+\end{figure}
+
+Nous observons dans ce schéma les différentes portes logiques utilisées pour la conception de cette FIFO.
+Surtout, nous pouvons observer les registres utilisés pour le stockage des octets reçus.
+\newline
+
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -241,50 +266,27 @@ Comme pour les deux autres modules, nous avons le schéma RTL de la EtatInterne 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%\begin{figure}[H]
-%    \centering
-%    \includegraphics[width=0.9\linewidth]{images/Synthe/RTL_Shematic_ETAT.png}
-%    \caption{Schéma RTL EtatInterne}
-%    \label{fig:RTL_Shematic_ETAT}
-%\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{images/Synthe/EtatInterne_RTL_cropped.pdf}
+    \caption{Schéma RTL EtatInterne}
+    \label{fig:RTL_Shematic_ETAT}
+\end{figure}
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Dans celui ci nous pouvons observer les différents registres, multiplexeurs et portes logiques utilisés pour la conception de cette machine.
+Dans celui ci nous pouvons observer les portes logiques utilisés pour la conception de cette machine.
+Nous observons une bascule D qui permet de socket l'EtatLu, comme vu dans la partie TD.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\subsection{Reception LIN}
 %
-%\begin{figure}[H]
-%    \centering
-%    \includegraphics[width=0.9\linewidth]{images/Synthe/ZOOM_1_RTL_Shematic_EtatInterne.png}
-%    \caption{Schéma RTL EtatInterne}
-%    \label{fig:RTL_Shematic_EtatInterne}
-%\end{figure}
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%A la suite nous avons décider d'observer le schéma RTL de la Reception LIN, celui ci regroupans tous les systemes précédents.
+%Dans ce schéma nous allons retrouver les différents blocs que nous avons synthétisé précédemment, à savoir :
+%\begin{itemize}
+%    \item Interface Microprocesseur
+%    \item Interface Reception Trame
+%    \item FIFO
+%    \item EtatInterne
+%\end{itemize}
 
-Nous observons une bascule D qui permet de socket l'erreur de bit Synchro, comme vu dans la partie TD.
 
-\subsection{Reception LIN}
-
-A la suite nous avons décider d'observer le schéma RTL de la Reception LIN, celui ci regroupans tous les systemes précédents.
-Dans ce schéma nous allons retrouver les différents blocs que nous avons synthétisé précédemment, à savoir :
-\begin{itemize}
-    \item Interface Microprocesseur
-    \item Interface Reception Trame
-    \item FIFO
-    \item EtatInterne
-\end{itemize}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%\begin{figure}[H]
-%    \centering
-%    \includegraphics[width=0.9\linewidth]{images/Synthe_RTL_Shematic_Reception.png}
-%    \caption{Schéma RTL Reception LIN}
-%    \label{fig:RTL_Shematic_Reception}
-%\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Ce schéma nous permet d'observer toute les ressources logiques utilisées pour la conception de notre projet. 
-\newline

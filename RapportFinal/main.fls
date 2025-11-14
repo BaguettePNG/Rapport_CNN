@@ -475,6 +475,27 @@ INPUT ./Graphix/logo_poly.png
 INPUT ./Graphix/logo_poly.png
 INPUT ./Graphix/logo_poly.png
 OUTPUT main.toc
+INPUT ./Graphix/Logo_Universite_de_nantes.png
+INPUT ./Graphix/Logo_Universite_de_nantes.png
+INPUT ./Graphix/Logo_Universite_de_nantes.png
+INPUT ./Graphix/Logo_Universite_de_nantes.png
+INPUT ./Graphix/logo_poly.png
+INPUT ./Graphix/logo_poly.png
+INPUT ./Graphix/logo_poly.png
+INPUT ./Graphix/logo_poly.png
+INPUT ./main.lof
+INPUT ./main.lof
+INPUT main.lof
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
+INPUT ./Graphix/Logo_Universite_de_nantes.png
+INPUT ./Graphix/Logo_Universite_de_nantes.png
+INPUT ./Graphix/Logo_Universite_de_nantes.png
+INPUT ./Graphix/Logo_Universite_de_nantes.png
+INPUT ./Graphix/logo_poly.png
+INPUT ./Graphix/logo_poly.png
+INPUT ./Graphix/logo_poly.png
+INPUT ./Graphix/logo_poly.png
+OUTPUT main.lof
 INPUT ./include/intro.tex
 INPUT ./include/intro.tex
 INPUT ./Graphix/Logo_Universite_de_nantes.png
@@ -543,7 +564,6 @@ OUTPUT include/1_CDC.aux
 INPUT ./include/1_CDC.tex
 INPUT ./include/1_CDC.tex
 INPUT include/1_CDC.tex
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
 INPUT ./images/CDC/Compo_concevoir.png
 INPUT ./images/CDC/Compo_concevoir.png
 INPUT ./images/CDC/Compo_concevoir.png
@@ -931,11 +951,11 @@ OUTPUT include/6_Simu.aux
 INPUT ./include/6_Simu.tex
 INPUT ./include/6_Simu.tex
 INPUT include/6_Simu.tex
-INPUT ./images//Simulation/Chrono.png
-INPUT ./images//Simulation/Chrono.png
-INPUT ./images//Simulation/Chrono.png
-INPUT ./images//Simulation/Chrono.png
-INPUT ./images//Simulation/Chrono.png
+INPUT ./images//Simulation/Chronogramme de simulation de l'Interface du Microprocesseur.png
+INPUT ./images//Simulation/Chronogramme de simulation de l'Interface du Microprocesseur.png
+INPUT ./images//Simulation/Chronogramme de simulation de l'Interface du Microprocesseur.png
+INPUT ./images//Simulation/Chronogramme de simulation de l'Interface du Microprocesseur.png
+INPUT ./images//Simulation/Chronogramme de simulation de l'Interface du Microprocesseur.png
 INPUT ./Graphix/Logo_Universite_de_nantes.png
 INPUT ./Graphix/Logo_Universite_de_nantes.png
 INPUT ./Graphix/Logo_Universite_de_nantes.png
@@ -951,36 +971,41 @@ INPUT ./Graphix/Logo_Universite_de_nantes.png
 INPUT ./Graphix/Logo_Universite_de_nantes.png
 INPUT ./Graphix/Logo_Universite_de_nantes.png
 INPUT ./Graphix/logo_poly.png
-INPUT ./images/Simulation/Simu-2.png
-INPUT ./images/Simulation/Simu-2.png
-INPUT ./images/Simulation/Simu-2.png
-INPUT ./images/Simulation/Simu-2.png
-INPUT ./images/Simulation/Simu-2.png
+INPUT ./images/Simulation/SousTest_ReceptionLinTotal.png
+INPUT ./images/Simulation/SousTest_ReceptionLinTotal.png
+INPUT ./images/Simulation/SousTest_ReceptionLinTotal.png
+INPUT ./images/Simulation/SousTest_ReceptionLinTotal.png
+INPUT ./images/Simulation/SousTest_ReceptionLinTotal.png
 INPUT ./Graphix/Logo_Universite_de_nantes.png
 INPUT ./Graphix/Logo_Universite_de_nantes.png
 INPUT ./Graphix/Logo_Universite_de_nantes.png
 INPUT ./Graphix/Logo_Universite_de_nantes.png
 INPUT ./Graphix/logo_poly.png
-INPUT ./images/Simulation/Simu-3.png
-INPUT ./images/Simulation/Simu-3.png
-INPUT ./images/Simulation/Simu-3.png
-INPUT ./images/Simulation/Simu-3.png
-INPUT ./images/Simulation/Simu-3.png
-INPUT ./images/Simulation/Simu-4.png
-INPUT ./images/Simulation/Simu-4.png
-INPUT ./images/Simulation/Simu-4.png
-INPUT ./images/Simulation/Simu-4.png
-INPUT ./images/Simulation/Simu-4.png
+INPUT ./images/Simulation/Chronogramme échantillonnage au milieu des bits.png
+INPUT ./images/Simulation/Chronogramme échantillonnage au milieu des bits.png
+INPUT ./images/Simulation/Chronogramme échantillonnage au milieu des bits.png
+INPUT ./images/Simulation/Chronogramme échantillonnage au milieu des bits.png
+INPUT ./images/Simulation/Chronogramme échantillonnage au milieu des bits.png
+INPUT ./images/Simulation/Chronogramme de la sortie du registre à décalage.png
+INPUT ./images/Simulation/Chronogramme de la sortie du registre à décalage.png
+INPUT ./images/Simulation/Chronogramme de la sortie du registre à décalage.png
+INPUT ./images/Simulation/Chronogramme de la sortie du registre à décalage.png
+INPUT ./images/Simulation/Chronogramme de la sortie du registre à décalage.png
 INPUT ./Graphix/Logo_Universite_de_nantes.png
 INPUT ./Graphix/Logo_Universite_de_nantes.png
 INPUT ./Graphix/Logo_Universite_de_nantes.png
 INPUT ./Graphix/Logo_Universite_de_nantes.png
 INPUT ./Graphix/logo_poly.png
-INPUT ./images/Simulation/Simu-6.png
-INPUT ./images/Simulation/Simu-6.png
-INPUT ./images/Simulation/Simu-6.png
-INPUT ./images/Simulation/Simu-6.png
-INPUT ./images/Simulation/Simu-6.png
+INPUT ./images/Simulation/Chronogramme des signaux d'entrée de la FIFO.png
+INPUT ./images/Simulation/Chronogramme des signaux d'entrée de la FIFO.png
+INPUT ./images/Simulation/Chronogramme des signaux d'entrée de la FIFO.png
+INPUT ./images/Simulation/Chronogramme des signaux d'entrée de la FIFO.png
+INPUT ./images/Simulation/Chronogramme des signaux d'entrée de la FIFO.png
+INPUT ./images/Simulation/Chronogramme des sorties de l’interface microprocesseur.png
+INPUT ./images/Simulation/Chronogramme des sorties de l’interface microprocesseur.png
+INPUT ./images/Simulation/Chronogramme des sorties de l’interface microprocesseur.png
+INPUT ./images/Simulation/Chronogramme des sorties de l’interface microprocesseur.png
+INPUT ./images/Simulation/Chronogramme des sorties de l’interface microprocesseur.png
 INPUT ./Graphix/Logo_Universite_de_nantes.png
 INPUT ./Graphix/Logo_Universite_de_nantes.png
 INPUT ./Graphix/Logo_Universite_de_nantes.png
@@ -991,6 +1016,16 @@ INPUT ./images/Simulation/Simu-7.png
 INPUT ./images/Simulation/Simu-7.png
 INPUT ./images/Simulation/Simu-7.png
 INPUT ./images/Simulation/Simu-7.png
+INPUT ./images/Simulation/Simu-8.png
+INPUT ./images/Simulation/Simu-8.png
+INPUT ./images/Simulation/Simu-8.png
+INPUT ./images/Simulation/Simu-8.png
+INPUT ./images/Simulation/Simu-8.png
+INPUT ./Graphix/Logo_Universite_de_nantes.png
+INPUT ./Graphix/Logo_Universite_de_nantes.png
+INPUT ./Graphix/Logo_Universite_de_nantes.png
+INPUT ./Graphix/Logo_Universite_de_nantes.png
+INPUT ./Graphix/logo_poly.png
 INPUT ./images/Simulation/Simu-10-1.png
 INPUT ./images/Simulation/Simu-10-1.png
 INPUT ./images/Simulation/Simu-10-1.png
@@ -1037,11 +1072,61 @@ INPUT ./Graphix/Logo_Universite_de_nantes.png
 INPUT ./Graphix/Logo_Universite_de_nantes.png
 INPUT ./Graphix/Logo_Universite_de_nantes.png
 INPUT ./Graphix/logo_poly.png
+INPUT ./images/Synthe/ReceptionTrame_RTL_cropped.pdf
+INPUT ./images/Synthe/ReceptionTrame_RTL_cropped.pdf
+INPUT ./images/Synthe/ReceptionTrame_RTL_cropped.pdf
+INPUT ./images/Synthe/ReceptionTrame_RTL_cropped.pdf
+INPUT ./images/Synthe/ReceptionTrame_RTL_cropped.pdf
+INPUT ./images/Synthe/ReceptionTrameCD_RTL_cropped.pdf
+INPUT ./images/Synthe/ReceptionTrameCD_RTL_cropped.pdf
+INPUT ./images/Synthe/ReceptionTrameCD_RTL_cropped.pdf
+INPUT ./images/Synthe/ReceptionTrameCD_RTL_cropped.pdf
+INPUT ./images/Synthe/ReceptionTrameCD_RTL_cropped.pdf
 INPUT ./Graphix/Logo_Universite_de_nantes.png
 INPUT ./Graphix/Logo_Universite_de_nantes.png
 INPUT ./Graphix/Logo_Universite_de_nantes.png
 INPUT ./Graphix/Logo_Universite_de_nantes.png
 INPUT ./Graphix/logo_poly.png
+INPUT ./images/Synthe/ReceptionTrameOP_RTL_cropped.pdf
+INPUT ./images/Synthe/ReceptionTrameOP_RTL_cropped.pdf
+INPUT ./images/Synthe/ReceptionTrameOP_RTL_cropped.pdf
+INPUT ./images/Synthe/ReceptionTrameOP_RTL_cropped.pdf
+INPUT ./images/Synthe/ReceptionTrameOP_RTL_cropped.pdf
+INPUT ./Graphix/Logo_Universite_de_nantes.png
+INPUT ./Graphix/Logo_Universite_de_nantes.png
+INPUT ./Graphix/Logo_Universite_de_nantes.png
+INPUT ./Graphix/Logo_Universite_de_nantes.png
+INPUT ./Graphix/logo_poly.png
+INPUT ./images/Synthe/Zoom_1_OP.png
+INPUT ./images/Synthe/Zoom_1_OP.png
+INPUT ./images/Synthe/Zoom_1_OP.png
+INPUT ./images/Synthe/Zoom_1_OP.png
+INPUT ./images/Synthe/Zoom_1_OP.png
+INPUT ./Graphix/Logo_Universite_de_nantes.png
+INPUT ./Graphix/Logo_Universite_de_nantes.png
+INPUT ./Graphix/Logo_Universite_de_nantes.png
+INPUT ./Graphix/Logo_Universite_de_nantes.png
+INPUT ./Graphix/logo_poly.png
+INPUT ./images/Synthe/Zoom_2_OP.png
+INPUT ./images/Synthe/Zoom_2_OP.png
+INPUT ./images/Synthe/Zoom_2_OP.png
+INPUT ./images/Synthe/Zoom_2_OP.png
+INPUT ./images/Synthe/Zoom_2_OP.png
+INPUT ./images/Synthe/FIFO_RTL_cropped.pdf
+INPUT ./images/Synthe/FIFO_RTL_cropped.pdf
+INPUT ./images/Synthe/FIFO_RTL_cropped.pdf
+INPUT ./images/Synthe/FIFO_RTL_cropped.pdf
+INPUT ./images/Synthe/FIFO_RTL_cropped.pdf
+INPUT ./Graphix/Logo_Universite_de_nantes.png
+INPUT ./Graphix/Logo_Universite_de_nantes.png
+INPUT ./Graphix/Logo_Universite_de_nantes.png
+INPUT ./Graphix/Logo_Universite_de_nantes.png
+INPUT ./Graphix/logo_poly.png
+INPUT ./images/Synthe/EtatInterne_RTL_cropped.pdf
+INPUT ./images/Synthe/EtatInterne_RTL_cropped.pdf
+INPUT ./images/Synthe/EtatInterne_RTL_cropped.pdf
+INPUT ./images/Synthe/EtatInterne_RTL_cropped.pdf
+INPUT ./images/Synthe/EtatInterne_RTL_cropped.pdf
 INPUT ./Graphix/Logo_Universite_de_nantes.png
 INPUT ./Graphix/Logo_Universite_de_nantes.png
 INPUT ./Graphix/Logo_Universite_de_nantes.png
@@ -1223,11 +1308,6 @@ INPUT ./Graphix/logo_poly.png
 INPUT ./main.lof
 INPUT ./main.lof
 INPUT main.lof
-INPUT ./Graphix/Logo_Universite_de_nantes.png
-INPUT ./Graphix/Logo_Universite_de_nantes.png
-INPUT ./Graphix/Logo_Universite_de_nantes.png
-INPUT ./Graphix/Logo_Universite_de_nantes.png
-INPUT ./Graphix/logo_poly.png
 OUTPUT main.lof
 INPUT ./Graphix/Logo_Universite_de_nantes.png
 INPUT ./Graphix/Logo_Universite_de_nantes.png
