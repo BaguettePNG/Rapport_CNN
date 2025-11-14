@@ -1,5 +1,68 @@
 \section{Description des différentes spécifications définies en travaux dirigés}
 
+\begin{figure}[h]
+\centering
+\resizebox{\textwidth}{!}{% 
+\begin{tikzpicture}[
+    axis/.style={thick, -latex},
+    font=\small
+]
+
+% Appliquer une rotation de 180°
+\begin{scope}
+
+% Définir les coordonnées pour les trois axes
+\coordinate (O) at (0,0); % Centre
+\coordinate (B) at (-6,6); % Axe Behavioral (inversé en Y)
+\coordinate (S) at (6,6);  % Axe Structural (inversé en Y)  
+\coordinate (P) at (0,-9); % Axe Physical (inversé en Y)
+
+% Dessiner les axes
+\draw[axis] (O) -- (B) node[at end, yshift=15pt] {\textbf{Représentation Comportementale}};
+\draw[axis] (O) -- (S) node[at end, yshift=15pt] {\textbf{Représentation Structurelle}};
+\draw[axis] (O) -- (P) node[at end, below, yshift=25pt] {\textbf{Représentation Physique}};
+
+% Cercles concentriques
+\draw[gray, thin] (O) circle (1.5);
+\draw[gray, thin] (O) circle (3);
+\draw[gray, thin] (O) circle (4.5);
+\draw[gray, thin] (O) circle (6);
+\draw[gray, thin] (O) circle (7.5);
+
+% Niveaux sur l'axe Behavioral (côté gauche) - inversés en Y
+\node[align=center] at (-1.5,1) {Équations Physiques};
+\node[align=center] at (-2,2) {Équations Logiques};
+\node[align=center] at (-3,3) {Transfert de registres};
+\node[align=center] at (-4,4) {Algorithmes};
+\node[align=center] at (-5,5) {Spécification};
+
+% Niveaux sur l'axe Structural (côté droit) - inversés en Y
+\node[align=center] at (1.5,1) {Transistors};
+\node[align=center] at (2,2) {Portes, Bascules};
+\node[align=center] at (3,3) {ALU, MUX, registres};
+\node[align=center] at (4,4) {Modules matériels};    
+\node[align=center] at (5,5) {Processeur, mémoires};
+
+% Niveaux sur l'axe Physical (bas) - inversés en Y
+\node[align=center] at (0,-1.7) {Rectangles, polygones};
+\node[align=center] at (0,-3.2) {Cellules de base};
+\node[align=center] at (0,-4.7) {Modules macro-cellules};
+\node[align=center] at (0,-6.2) {Sous-ensemble};
+\node[align=center] at (0,-7.7) {Cartes, Circuit};
+
+% Flèche rouge montrant le processus
+\draw[red, thin] (5.2,5.2) circle (0.5);
+\draw[red, thin] (4.2,4.2) circle (0.5);
+\draw[red, thick, -latex] (5.2,5.2) -- (4.2,4.2);
+
+\end{scope}
+
+\end{tikzpicture}
+}
+\caption{Diagramme en Y - Spécification du circuit vers conception fonctionnelle}
+\label{fig:diagramme_y}
+\end{figure}
+
 \subsection*{Objectif}
 
 Les spécifications ont pour objectif de définir le comportement attendu du système, autrement dit, 

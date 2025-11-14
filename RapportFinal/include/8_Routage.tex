@@ -1,5 +1,67 @@
 \section{Routages des Fonctions}
 
+\begin{figure}
+   \resizebox{\textwidth}{!}{% 
+\begin{tikzpicture}[
+    axis/.style={thick, -latex},
+    font=\small
+]
+
+% Appliquer une rotation de 180°
+\begin{scope}
+
+% Définir les coordonnées pour les trois axes
+\coordinate (O) at (0,0); % Centre
+\coordinate (B) at (-6,6); % Axe Behavioral (inversé en Y)
+\coordinate (S) at (6,6);  % Axe Structural (inversé en Y)  
+\coordinate (P) at (0,-9);   % Axe Physical (inversé en Y)
+
+% Dessiner les axes
+\draw[axis] (O) -- (B) node[at end, yshift=15pt] {\textbf{Représentation Comportementale}};
+\draw[axis] (O) -- (S) node[at end, yshift=15pt] {\textbf{Représentation Structurelle}};
+\draw[axis] (O) -- (P) node[at end, below, yshift=25pt] {\textbf{Représentation Physique}};
+
+% Cercles concentriques
+\draw[gray, thin] (O) circle (1.5);
+\draw[gray, thin] (O) circle (3);
+\draw[gray, thin] (O) circle (4.5);
+\draw[gray, thin] (O) circle (6);
+\draw[gray, thin] (O) circle (7.5);
+
+% Niveaux sur l'axe Behavioral (côté gauche) - inversés en Y
+\node[align=center] at (-1.5,1) {Equations Physiques};
+\node[align=center] at (-2,2) {Equations Logiques};
+\node[align=center] at (-3,3) {Transfert de registres};
+\node[align=center] at (-4,4) {Algorithmes};
+\node[align=center] at (-5,5) {Specification};
+
+% Niveaux sur l'axe Structural (côté droit) - inversés en Y
+\node[align=center] at (1.5,1) {Transistors};
+\node[align=center] at (2,2) {Portes, Bascules};
+\node[align=center] at (3,3) {ALU, MUX, registres};
+\node[align=center] at (4,4) {Modules matériels};    
+\node[align=center] at (5,5) {Processeur, mémoires};
+
+% Niveaux sur l'axe Physical (bas) - inversés en Y
+\node[align=center] at (0,-1.7) {Rectangles, polygones};
+\node[align=center] at (0,-3.2) {Cellules de base};
+\node[align=center] at (0,-4.7) {Modules macro-Cellules};
+\node[align=center] at (0,-6.2) {Sous encemble};
+\node[align=center] at (0,-7.7) {Cartes, Circuit};
+
+\draw[red, thin] (2.2,2.2) circle (0.5);
+\draw[red, thin] (0,-3.2) circle (0.5);
+
+\draw[red, thick, -latex] (2.2,2.2) -- (0,-3.2);
+
+\end{scope}
+
+\end{tikzpicture}
+   }
+\caption{Diagramme en Y - Action de routage}
+\label{fig:diagramme_y_synthese}
+\end{figure}
+
 \subsection{Interface Microprocesseur}
 
 Après l'étape de \textbf{synthèse}, nous pouvons nous intéresser à l'assignation des ressources 
@@ -218,13 +280,16 @@ transitions d'état en fonction des signaux de commande et des conditions intern
 intégrité électrique et temporelle. En sortie, des \textbf{buffers} sont utilisés pour transmettre l'état courant vers les blocs suivants.
 \newline
 
+Dans ce schéma nous avons des signaux non, reliées surement une erreur de Vivado. Normalement ces signaux devraient être connectés à une LUT dont la 
+table de vérité permettrait de réaliser la fonction \textbf{DECODE}, qui permet de choisir entre incrémentation et décrémentation du compteur du nombre d'octet. .
+\newline 
+
 \subsection{Interface Reception Lin}
 
 Cette Phase n'étant pas réellement necessaire pour la validation du projet, nous avans décider de juste de faire l'implémentation du projet global, et non de montrer les ressources de chacune des sections.
 \newline
 
 Donc comme l'interface microprocesseur, nous avons fait l'implémentation de l'interface de réception LIN ( global ) et voici le résultat du routage :
-
 
 \begin{figure}[H]
     \centering
